@@ -1,13 +1,22 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
 
 import styles from './populargamecard.style'
 
-const PopularGameCard = () => {
+const PopularGameCard = ({ item, selectedGame, handleCardPress }) => {
+  // console.log(item.results)
   return (
-    <View>
-      <Text>Popular Games</Text>
-    </View>
+    <TouchableOpacity
+      style={styles.container(selectedGame, item)}
+      onPress={() => handleCardPress(item)}
+    >
+      <TouchableOpacity style={styles.logoContainer(selectedGame, item)}>
+        <Image 
+        source={{uri: item.background_image }}
+        />
+
+      </TouchableOpacity>
+    </TouchableOpacity>
   )
 }
 

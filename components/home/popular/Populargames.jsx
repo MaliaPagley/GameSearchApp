@@ -5,11 +5,15 @@ import { useRouter } from 'expo-router'
 import { COLORS, SIZES } from '../../../constants';
 import styles from './populargames.style';
 import PopularGameCard from '../../common/cards/popular/PopularGameCard';
+import useFetch from '../../../hook/useFetch';
 
 
 const Populargames = () => {
-  const [isLoading, setIsLoading] = useState(false)
-  const error = false;
+  // const [isLoading, setIsLoading] = useState(false)
+  // const error = false;
+  const { data, isLoading, error } = useFetch('popular', {page: '1', page_size: '10' }) 
+  console.log(data);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -26,13 +30,15 @@ const Populargames = () => {
         <Text>Something went wrong</Text>
       ) : (
         <FlatList
-          data={[1,2,3,4,5,6,7,8,9,10]}
+          data={data}
           renderItem={({item}) => (
             <PopularGameCard
+              selectedGame={selectedGame}
               item={item}
+              handleCardPress={handleCardPress}
             />
           )}
-          keyExtractor={item => item?.game_id}
+          keyExtractor={item => item?.id}
           // ^ Unknown id selection for exact "game_id" until we get the data from IGDB API 
           contentContainerStyle={{ columnGap: SIZES.medium}}
           horizontal

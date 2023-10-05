@@ -1,6 +1,7 @@
 {
   "name": "gamesearchapp",
   "version": "1.0.0",
+  "proxy":"http://localhost:3000",
   "main": "index.js",
   "scripts": {
     "start": "expo start",
