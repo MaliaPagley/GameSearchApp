@@ -9,21 +9,21 @@ SplashScreen.preventAutoHideAsync();
 
 const Layout = () => {
 // Custom fonts
-    const [ fontsLoaded ] = useFonts({
-        DMBold: require('../assets/fonts/DMSans-Bold.ttf'),
-        DMMedium: require('../assets/fonts/DMSans-Medium.ttf'),
-        DMRegular: require('../assets/fonts/DMSans-Regular.ttf'),
+    const [fontsLoaded] = useFonts({
+        "dm-bold": require('../assets/fonts/DMSans-Bold.ttf'),
+        "dm-medium": require('../assets/fonts/DMSans-Medium.ttf'),
+        "dm-regular": require('../assets/fonts/DMSans-Regular.ttf'),
     })
     //If fonts are loaded 
     const onLayoutRootView = useCallback(async () => {
-        if (fontsLoaded) {
+        if (!fontsLoaded) {
             await SplashScreen.hideAsync();
         }
     }, [fontsLoaded]);
 
     if(!fontsLoaded) return null;
-
-    return <Stack onLayout={onLayoutRootView}/>
+    return <Stack onLayout={onLayoutRootView} />;
+  
 }
 
 export default Layout;

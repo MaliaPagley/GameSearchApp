@@ -11,9 +11,13 @@ import useFetch from '../../../hook/useFetch';
 const Populargames = () => {
   // const [isLoading, setIsLoading] = useState(false)
   // const error = false;
-  const { data, isLoading, error } = useFetch('popular', {page: '1', page_size: '10' }) 
-  console.log(data);
+  const { data, isLoading, error } = useFetch(
+    'popular', {page: '1', page_size: '10' }) 
 
+    //Destructuring data 
+  const resultsData = data.results
+
+  const [selectedGame, setSelectedGame] = useState();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -29,21 +33,34 @@ const Populargames = () => {
       ) : error ? (
         <Text>Something went wrong</Text>
       ) : (
+        // <FlatList
+        //   data={data}
+        //   renderItem={({item}) => (
+        //     <PopularGameCard
+        //       selectedGame={selectedGame}
+        //       item={item}
+        //       handleCardPress={handleCardPress}
+        //     />
+        //   )}
+        //   keyExtractor={item => item?.id}
+        //   // ^ Unknown id selection for exact "game_id" until we get the data from IGDB API 
+        //   contentContainerStyle={{ columnGap: SIZES.medium}}
+        //   horizontal
+        //   showsHorizontalScrollIndicator={false}
+        // />
         <FlatList
-          data={data}
-          renderItem={({item}) => (
-            <PopularGameCard
-              selectedGame={selectedGame}
-              item={item}
-              handleCardPress={handleCardPress}
-            />
-          )}
-          keyExtractor={item => item?.id}
-          // ^ Unknown id selection for exact "game_id" until we get the data from IGDB API 
-          contentContainerStyle={{ columnGap: SIZES.medium}}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-        />
+            data={resultsData}
+            renderItem={({ item }) => (
+              <PopularGameCard
+                item={item}
+                
+              />
+            )}
+            keyExtractor={(item) => item.id}
+            contentContainerStyle={{ columnGap: SIZES.medium}}
+            horizontal
+          />
+       
       )}
     
       </View>

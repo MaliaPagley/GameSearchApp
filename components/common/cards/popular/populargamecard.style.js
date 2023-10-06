@@ -3,40 +3,50 @@ import { StyleSheet } from "react-native";
 import { COLORS, FONT, SHADOWS, SIZES } from "../../../../constants";
 
 const styles = StyleSheet.create({
-  container: (selectedGame, item) => ({
+  container: (selectedJob, item) => ({
     width: 250,
-    padding: SIZES.xLarge,
-    backgroundColor: selectedGame === item.game_id ? COLORS.primary : "#FFF",
+    height: 200,
+    // padding: SIZES.small,
+    paddingBottom: SIZES.xxLarge,
+    backgroundColor: selectedJob === item.job_id ? COLORS.primary : "#FFF",
     borderRadius: SIZES.medium,
     justifyContent: "space-between",
     ...SHADOWS.medium,
     shadowColor: COLORS.white,
   }),
-  logoContainer: (selectedGame, item) => ({
-    width: 100,
-    height: 100,
-    backgroundColor: selectedGame === item.id ? "#FFF" : COLORS.white,
-    borderRadius: SIZES.medium,
+  logoContainer: (selectedJob, item) => ({
+    width: 50,
+    height: 50,
+    backgroundColor: selectedJob === item.job_id ? "#FFF" : COLORS.white,
+    borderRadius: SIZES.large,
     justifyContent: "center",
     alignItems: "center",
   }),
   logoImage: {
-    width: "70%",
-    height: "70%",
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    borderRadius: SIZES.small
   },
-  companyName: {
-    fontSize: SIZES.medium,
-    fontFamily: FONT.regular,
-    color: "#B3AEC6",
-    marginTop: SIZES.small / 1.5,
+  gameName: {
+   
+    fontSize: SIZES.large,
+    fontFamily: FONT.bold,
+    color: "white",
+    marginTop: "auto",
+    marginBottom: SIZES.large,
+    paddingLeft: SIZES.small,
+    paddingRight: SIZES.small,
+    textAlign: "center",
+    
   },
   infoContainer: {
     marginTop: SIZES.large,
   },
-  jobName: (selectedGame, item) => ({
+  jobName: (selectedJob, item) => ({
     fontSize: SIZES.large,
     fontFamily: FONT.medium,
-    color: selectedGame === item.game_id ? COLORS.white : COLORS.primary,
+    color: selectedJob === item.job_id ? COLORS.white : COLORS.primary,
   }),
   infoWrapper: {
     flexDirection: "row",
@@ -44,10 +54,10 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
   },
-  publisher: (selectedGame) => ({
+  publisher: (selectedJob, item) => ({
     fontSize: SIZES.medium - 2,
-    fontFamily: FONT.bold,
-    color: selectedGame === item.game_id ? COLORS.white : COLORS.primary,
+    fontFamily: FONT.regular,
+    color: selectedJob === item.job_id ? COLORS.white : COLORS.primary,
   }),
   location: {
     fontSize: SIZES.medium - 2,
