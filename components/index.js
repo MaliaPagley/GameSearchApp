@@ -6,7 +6,7 @@ import Populargames from "./home/popular/Populargames";
 import Newgames from "./home/new/Newgames";
 
 // game details screen
-import Company from "./gamedetails/company/Company";
+import GameHeader from "./gamedetails/header/GameHeader";
 import { default as GameTabs } from "./gamedetails/tabs/Tabs";
 import { default as GameAbout } from "./gamedetails/about/About";
 import { default as GameFooter } from "./gamedetails/footer/Footer";
@@ -20,7 +20,7 @@ export {
   Welcome,
   Newgames,
   Populargames,
-  Company,
+  GameHeader,
   GameTabs,
   GameAbout,
   GameFooter,
