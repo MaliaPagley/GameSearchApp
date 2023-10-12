@@ -12,7 +12,7 @@ import useFetch from '../../hook/useFetch';
 
 const GameDetails = () => {
     const params = useLocalSearchParams(); // Get specific id
-    console.log(params.id)
+    // console.log(params.id)
     const router = useRouter();
     const { data, isLoading, error, refetch } = useFetch(`game-details/${params.id}`)
    
@@ -20,10 +20,10 @@ const GameDetails = () => {
     const [refreshing, setRefreshing] = useState(false);
     const onRefresh = () => {}
   return (
-    <SafeAreaView style={{ flex:1, backgroundColor: COLORS.lightWhite}}>
+    <SafeAreaView style={{ flex:1, backgroundColor: COLORS.blackOnyx}}>
         <Stack.Screen
             options={{
-                headerStyle: { backgroundColor: COLORS.lightWhite },
+                headerStyle: { backgroundColor: COLORS.blackOnyx },
                 headerShadowVisible: false,
                 headerBackVisible: false,
                 headerLeft: () => (
@@ -44,10 +44,33 @@ const GameDetails = () => {
             }}
         />
         <>
-            <GameHeader 
-            id={params.id}
-            name={data.name}
-            />
+        <ScrollView showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+        >
+            {isLoading ? (
+                <ActivityIndicator size="large" color={COLORS.primary}/>
+            ) : error ? (
+                <Text>Something went wrong</Text>
+            ) : data.length === 0 ? (
+                <Text>No data</Text>
+            ) : (
+                <View style={{ padding: SIZES.medium, paddingBottom: 100}}>
+                    <GameHeader 
+                        id={params.id}
+                        name={data.name}
+                        image={data.background_image}
+                        developers={data.developers}
+                        description={data.description_raw}
+                        genres={data.genres.map(genre => genre.name).join(" ")}
+                        tags={data.tags}
+                        released={data.released_at}
+                        addImage={data.background_image_additional}
+                    />
+                </View>
+            )}
+          
+        </ScrollView>
         </>
 
         

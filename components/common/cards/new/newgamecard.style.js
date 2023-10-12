@@ -1,39 +1,44 @@
 import { StyleSheet } from "react-native";
 
-import { COLORS, SHADOWS, SIZES } from "../../../../constants";
+import { COLORS, SHADOWS, SIZES, FONT } from "../../../../constants";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "space-between",
     alignItems: "center",
-    flexDirection: "row",
+    flexDirection: "column",
     padding: SIZES.medium,
-    borderRadius: SIZES.small,
-    backgroundColor: "#FFF",
+    borderRadius: SIZES.large,
+    backgroundColor: COLORS.blackJungleGreen,
     ...SHADOWS.medium,
-    shadowColor: COLORS.white,
+    shadowColor: COLORS.black2,
+    gap: "10x"
   },
   logoContainer: {
-    width: 50,
-    height: 50,
-    backgroundColor: COLORS.white,
+    width: 300,
+    height: 200,
+    backgroundColor: COLORS.redMerlot,
     borderRadius: SIZES.medium,
+    objectFit: "fit",
     justifyContent: "center",
     alignItems: "center",
+    paddingBottom: SIZES.small,
   },
   logoImage: {
-    width: "70%",
-    height: "70%",
+    width: "100%",
+    height: "100%",
+    borderRadius: SIZES.medium,
   },
   textContainer: {
     flex: 1,
     marginHorizontal: SIZES.medium,
   },
-  jobName: {
-    fontSize: SIZES.medium,
-    fontFamily: "DMBold",
-    color: COLORS.primary,
+  gameName: {
+    fontSize: SIZES.large,
+    fontFamily: FONT.bold,
+    color: COLORS.white,
+    textAlign: "center",
   },
   jobType: {
     fontSize: SIZES.small + 2,
@@ -42,6 +47,16 @@ const styles = StyleSheet.create({
     marginTop: 3,
     textTransform: "capitalize",
   },
+  genreContainer: {
+    
+
+  }, 
+  genre: {
+    color: COLORS.white,
+    fontFamily: FONT.regular,
+    fontSize: SIZES.medium,
+    
+  }
 });
 
 export default styles;

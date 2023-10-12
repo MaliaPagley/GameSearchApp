@@ -1,13 +1,11 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
-
 import styles from "./newgamecard.style";
 import { checkImageURL } from "../../../../utils";
 
 const NoImage = require("../../../../assets/noimage.png")
 
-const NewGameCard = ({ game, handleNavigate }) => {
-  // console.log(item.results)
-
+const NewGameCard = ({ game, genre, handleNavigate }) => {
+ 
   return (
     <TouchableOpacity
       style={styles.container}
@@ -19,7 +17,7 @@ const NewGameCard = ({ game, handleNavigate }) => {
           source={{
             uri: game.background_image,
           }}
-          resizeMode='center'
+          resizeMode='cover'
           style={styles.logoImage}
       /> 
       :
@@ -27,16 +25,18 @@ const NewGameCard = ({ game, handleNavigate }) => {
           source={NoImage}
           resizeMode='contain'
           style={styles.logoImage}
-      /> 
+      />
       }
     
         
       </TouchableOpacity>
-      
+        <View style={styles.genreContainer}>
+          <Text style={styles.genre} numberOfLines={2}>{genre}</Text>
+        </View>
 
        <View style={styles.textContainer}>
         <Text style={styles.gameName} numberOfLines={2}>
-          {game.name} - {game.id}
+          {game.name}
         </Text>
 
       </View> 

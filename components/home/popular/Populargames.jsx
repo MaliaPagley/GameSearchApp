@@ -1,4 +1,5 @@
 import { useState }from 'react'
+import React from 'react'
 import { View, Text, TouchableOpacity, FlatList, ActivityIndicator} from 'react-native'
 import { useRouter } from 'expo-router'
 
@@ -10,10 +11,15 @@ import useFetch from '../../../hook/useFetch';
 
 const Populargames = () => {
   const { data, isLoading, error } = useFetch(
-    'popular', {page: '1', page_size: '20' }) 
+    'popular', {page: '1', page_size: '10'}) 
 
     //Destructuring data 
   const resultsData = data.results
+  
+
+
+
+
 
   const [selectedGame, setSelectedGame] = useState();
   return (

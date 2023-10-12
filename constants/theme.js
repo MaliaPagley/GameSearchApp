@@ -6,11 +6,28 @@ const COLORS = {
   gray: "#83829A",
   gray2: "#C1C0C8",
 
+  gray3: "#15191F",
+  
+
   white: "#F3F4F8",
   lightWhite: "#FAFAFC",
 
+  black2: "#121212",
   black: "1B262C",
   red: 'F33535',
+
+//For Cards
+ blackOnyx: "#121212", 
+
+//For Inputs, and other
+  blackJungleGreen: "#1A1F26",
+ //For Base
+  blackMirage: "#15191F",
+
+ redDeepCarmine: "#F33535",
+ redMerlot: "#14191F99",
+
+
 };
 
 const FONT = {

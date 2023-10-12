@@ -10,12 +10,12 @@ import useFetch from '../../../hook/useFetch';
 
 const Newgames = () => {
   const router = useRouter();
-  const { data, isLoading, error } = useFetch(
-    'popular', {page: '1', page_size: '10' }) ;
+  const { data, isLoading, error } = useFetch('new', {page: '1', page_size: '20'}) ;
 
     //Destructuring data 
   const resultsData = data.results
 
+  // const gameGenre = data.genres.map(genre => genre.name).join(" ");
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -32,15 +32,14 @@ const Newgames = () => {
         <Text>Something went wrong</Text>
       ) : (
             resultsData?.map((game) => (
+         
               <NewGameCard 
-              game={game}
-              key={`new-game-${game?.id}`}
-              handleNavigate={() => router.push(`/game-details/${game.id}`)}
-              
+                game={game}
+                genre={game.genres.map(genre => genre.name).join(" ")}
+                key={`new-game-${game?.id}`}
+                handleNavigate={() => router.push(`/game-details/${game.id}`)}
               />
             ))
-       
-       
       )}
     
       </View>

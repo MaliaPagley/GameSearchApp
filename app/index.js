@@ -9,9 +9,9 @@ import { Newgames, Populargames, ScreenHeaderBtn, Welcome } from '../components'
 const Home = () => {
     const router = useRouter()
     return (
-        <SafeAreaView style={{ flex: 1, backgoundColor: COLORS.lightWhite}}> 
+        <SafeAreaView style={{ flex: 1, backgoundColor: COLORS.blackMirage}}> 
             <Stack.Screen options={{ 
-                headerStyle: { backgroundColor: COLORS.lightWhite },
+                headerStyle: { backgroundColor: COLORS.gray2 },
                 headerShadowVisible: false,
                 headerLeft: () => (
                     <ScreenHeaderBtn iconUrl={ icons.menu } dimension="60%" />
@@ -23,7 +23,8 @@ const Home = () => {
 
             }} />
 
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView style={{backgroundColor: COLORS.blackOnyx}}
+            showsVerticalScrollIndicator={false}>
                 <View style={{
                     flex: 1,
                     padding: SIZES.medium

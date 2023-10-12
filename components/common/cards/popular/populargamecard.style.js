@@ -8,11 +8,11 @@ const styles = StyleSheet.create({
     height: 200,
     // padding: SIZES.small,
     paddingBottom: SIZES.xxLarge,
-    backgroundColor: selectedJob === item.job_id ? COLORS.primary : "#FFF",
+    backgroundColor: selectedJob === item.job_id ? COLORS.gray3 : "#FFF",
     borderRadius: SIZES.medium,
     justifyContent: "space-between",
     ...SHADOWS.medium,
-    shadowColor: COLORS.white,
+    // shadowColor: COLORS.white,
   }),
   logoContainer: (selectedJob, item) => ({
     width: 50,
@@ -29,16 +29,14 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.small
   },
   gameName: {
-   
     fontSize: SIZES.large,
-    fontFamily: FONT.bold,
+    fontFamily: FONT.regular,
     color: "white",
-    marginTop: "auto",
+    marginTop: "50px",
     marginBottom: SIZES.large,
     paddingLeft: SIZES.small,
     paddingRight: SIZES.small,
     textAlign: "center",
-    
   },
   infoContainer: {
     marginTop: SIZES.large,

@@ -40,12 +40,31 @@ app.get('/game-details/:id', (req, res) => {
   });
 })
 
+app.get('/new', (req, res) => {
+  const options = {
+    method: 'GET',
+    url: 'https://rawg.io/api/games/lists/main',
+    params: {key: rawgApiKey, 
+      ordering: '-revlevance',
+      discover: 'true',
+      },
+    headers: userAgent
+  };
+  
+  axios.request(options).then(function (response) {
+    res.json(response.data)
+    
+  }).catch(function (error) {
+    console.error(error);
+  });
+})
+
 
 app.get('/popular', (req, res) => {
   const options = {
     method: 'GET',
     url: 'https://rawg.io/api/games',
-    params: {key: rawgApiKey, },
+    params: {key: rawgApiKey},
     headers: userAgent
   };
   
