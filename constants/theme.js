@@ -24,8 +24,8 @@ const COLORS = {
  //For Base
   blackMirage: "#15191F",
 
- redDeepCarmine: "#F33535",
- redMerlot: "#14191F99",
+ redLight: "#F33535",
+ redDark: "#A51C2D",
 
 
 };

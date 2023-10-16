@@ -43,9 +43,9 @@ app.get('/game-details/:id', (req, res) => {
 app.get('/new', (req, res) => {
   const options = {
     method: 'GET',
-    url: 'https://rawg.io/api/games/lists/main',
+    url: 'https://rawg.io/api/games',
     params: {key: rawgApiKey, 
-      ordering: '-revlevance',
+      ordering: 'last-30-days',
       discover: 'true',
       },
     headers: userAgent
@@ -63,7 +63,7 @@ app.get('/new', (req, res) => {
 app.get('/popular', (req, res) => {
   const options = {
     method: 'GET',
-    url: 'https://rawg.io/api/games',
+    url: 'https://rawg.io/api/games/lists/popular',
     params: {key: rawgApiKey},
     headers: userAgent
   };

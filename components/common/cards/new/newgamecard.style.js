@@ -13,10 +13,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.blackJungleGreen,
     ...SHADOWS.medium,
     shadowColor: COLORS.black2,
-    gap: "10x"
+    gap: SIZES.small
   },
   logoContainer: {
-    width: 300,
+    width: 360,
     height: 200,
     backgroundColor: COLORS.redMerlot,
     borderRadius: SIZES.medium,
@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
     paddingBottom: SIZES.small,
   },
   logoImage: {
-    width: "100%",
-    height: "100%",
+    width: 350,
+    height: 200,
     borderRadius: SIZES.medium,
   },
   textContainer: {

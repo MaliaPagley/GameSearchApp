@@ -71,6 +71,7 @@ const GameDetails = () => {
             )}
           
         </ScrollView>
+        <GameFooter />
         </>
 
         

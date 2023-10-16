@@ -24,22 +24,22 @@ const styles = StyleSheet.create({
     
   },
   backgroundImage: {
-    width: "100%",
-    height: "100%",
+    width: 360,
+    height: 200,
     objectFit: "fill",
     borderTopLeftRadius: SIZES.xLarge,
     borderTopRightRadius: SIZES.xLarge,
   },
   addBackgroundImage: {
-    width: "100%",
-    height: "100%",
+    width: 360,
+    height: 200,
     objectFit: "fill",
     borderRadius: SIZES.large,
   },
   gameTitleBox: {
     // marginTop: SIZES.small,
     // marginLeft: SIZES.medium,
-    padding: SIZES.large
+    padding: SIZES.large,
     
   },
   gameTitle: {
@@ -59,11 +59,11 @@ const styles = StyleSheet.create({
     paddingTop: SIZES.small / 2,
     marginLeft: SIZES.xxLarge / 2
   },
- gameName: {
-    fontSize: SIZES.medium - 2,
-    color: COLORS.primary,
-    fontFamily: FONT.medium,
-  },
+//  gameName: {
+//     fontSize: SIZES.medium - 2,
+//     color: COLORS.primary,
+//     fontFamily: FONT.medium,
+//   },
   gameDevelopers: {
     fontSize: SIZES.medium - 2,
     color: COLORS.gray,
@@ -75,9 +75,6 @@ const styles = StyleSheet.create({
     fontSize: SIZES.small,
     textAlign: "center",
     borderRadius: SIZES.large,
-    
-    
-    
   },
   gameGenresBox: {
     padding: SIZES.small
@@ -88,22 +85,22 @@ const styles = StyleSheet.create({
     color: COLORS.white,
     marginLeft: SIZES.medium
   },
-  locationBox: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  locationImage: {
-    width: 14,
-    height: 14,
-    tintColor: COLORS.gray,
-  },
-  locationName: {
-    fontSize: SIZES.medium - 2,
-    color: COLORS.gray,
-    fontFamily: FONT.regular,
-    marginLeft: 2,
-  },
+  // locationBox: {
+  //   flexDirection: "row",
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  // },
+  // locationImage: {
+  //   width: 14,
+  //   height: 14,
+  //   tintColor: COLORS.gray,
+  // },
+  // locationName: {
+  //   fontSize: SIZES.medium - 2,
+  //   color: COLORS.gray,
+  //   fontFamily: FONT.regular,
+  //   marginLeft: 2,
+  // },
 });
 
 export default styles;

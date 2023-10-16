@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     fontSize: SIZES.large,
     fontFamily: FONT.regular,
     color: "white",
-    marginTop: "50px",
+    // marginTop: SIZES.xSmall,
     marginBottom: SIZES.large,
     paddingLeft: SIZES.small,
     paddingRight: SIZES.small,

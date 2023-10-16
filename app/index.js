@@ -11,14 +11,14 @@ const Home = () => {
     return (
         <SafeAreaView style={{ flex: 1, backgoundColor: COLORS.blackMirage}}> 
             <Stack.Screen options={{ 
-                headerStyle: { backgroundColor: COLORS.gray2 },
+                headerStyle: { backgroundColor: COLORS.blackOnyx },
                 headerShadowVisible: false,
-                headerLeft: () => (
-                    <ScreenHeaderBtn iconUrl={ icons.menu } dimension="60%" />
-                ),
-                headerRight: () => (
-                    <ScreenHeaderBtn iconUrl={images.profile} dimension="100%" />
-                ),
+                // headerLeft: () => (
+                //     <ScreenHeaderBtn iconUrl={ icons.menu } dimension="60%" />
+                // ),
+                // headerRight: () => (
+                //     <ScreenHeaderBtn iconUrl={images.profile} dimension="100%" />
+                // ),
                 headerTitle: ""
 
             }} />

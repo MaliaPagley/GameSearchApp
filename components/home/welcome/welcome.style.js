@@ -9,12 +9,12 @@ const styles = StyleSheet.create({
   userName: {
     fontFamily: FONT.regular,
     fontSize: SIZES.large,
-    color: COLORS.secondary,
+    color: COLORS.redDark,
   },
   welcomeMessage: {
     fontFamily: FONT.bold,
     fontSize: SIZES.xLarge,
-    color: COLORS.primary,
+    color: COLORS.redLight,
     marginTop: 2,
   },
   searchContainer: {

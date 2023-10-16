@@ -6,7 +6,7 @@ import styles from './footer.style'
 const Footer = () => {
   return (
     <View>
-      <Text>Footer</Text>
+      <Text>Source: Rawg.io</Text>
     </View>
   )
 }
