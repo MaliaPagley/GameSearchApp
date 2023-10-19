@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     width: 250,
     height: 200,
     // padding: SIZES.small,
-    paddingBottom: SIZES.xxLarge,
+    // paddingBottom: SIZES.xxLarge,
     backgroundColor: selectedJob === item.job_id ? COLORS.gray3 : "#FFF",
     borderRadius: SIZES.medium,
     justifyContent: "space-between",

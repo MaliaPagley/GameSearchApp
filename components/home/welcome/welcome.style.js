@@ -3,30 +3,30 @@ import { StyleSheet } from "react-native";
 import { COLORS, FONT, SIZES } from "../../../constants";
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-  },
-  userName: {
-    fontFamily: FONT.regular,
-    fontSize: SIZES.large,
-    color: COLORS.redDark,
-  },
-  welcomeMessage: {
-    fontFamily: FONT.bold,
-    fontSize: SIZES.xLarge,
-    color: COLORS.redLight,
-    marginTop: 2,
-  },
+  // container: {
+  //   width: "80%",
+  // },
+  // userName: {
+  //   fontFamily: FONT.regular,
+  //   fontSize: SIZES.large,
+  //   color: COLORS.redDark,
+  // },
+  // welcomeMessage: {
+  //   fontFamily: FONT.bold,
+  //   fontSize: SIZES.xLarge,
+  //   color: COLORS.redLight,
+  //   marginTop: 2,
+  // },
   searchContainer: {
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
-    marginTop: SIZES.large,
-    height: 50,
+    // marginTop: SIZES.small,
+    height: 40,
   },
   searchWrapper: {
     flex: 1,
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.blackJungleGreen,
     marginRight: SIZES.small,
     justifyContent: "center",
     alignItems: "center",
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     fontFamily: FONT.regular,
+    color: COLORS.white,
     width: "100%",
     height: "100%",
     paddingHorizontal: SIZES.medium,
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
   searchBtn: {
     width: 50,
     height: "100%",
-    backgroundColor: COLORS.tertiary,
+    backgroundColor: COLORS.grayThunder,
     borderRadius: SIZES.medium,
     justifyContent: "center",
     alignItems: "center",
@@ -56,16 +57,16 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: SIZES.medium,
   },
-  tab: (activeJobType, item) => ({
+  tab: (activeGamePlatform, item) => ({
     paddingVertical: SIZES.small / 2,
     paddingHorizontal: SIZES.small,
     borderRadius: SIZES.medium,
     borderWidth: 1,
-    borderColor: activeJobType === item ? COLORS.secondary : COLORS.gray2,
+    borderColor: activeGamePlatform === item ? COLORS.blackDecent : COLORS.grayThunder,
   }),
-  tabText: (activeJobType, item) => ({
+  tabText: (activeGamePlatform, item) => ({
     fontFamily: FONT.medium,
-    color: activeJobType === item ? COLORS.secondary : COLORS.gray2,
+    color: activeGamePlatform === item ? COLORS.secondary : COLORS.gray2,
   }),
 });
 

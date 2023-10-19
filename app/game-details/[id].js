@@ -15,7 +15,8 @@ const GameDetails = () => {
     // console.log(params.id)
     const router = useRouter();
     const { data, isLoading, error, refetch } = useFetch(`game-details/${params.id}`)
-   
+    // console.log(data.platforms)
+    
 
     const [refreshing, setRefreshing] = useState(false);
     const onRefresh = () => {}
@@ -33,13 +34,13 @@ const GameDetails = () => {
                         handlePress={() => router.back()}
                     />
                 ), 
-                headerRight: () => (
-                    <ScreenHeaderBtn 
-                        iconUrl={icons.share}
-                        dimension="60%"
-                        handlePress={() => router.back()}
-                    />
-                ),
+                // headerRight: () => (
+                //     <ScreenHeaderBtn 
+                //         iconUrl={icons.share}
+                //         dimension="60%"
+                //         handlePress={() => router.back()}
+                //     />
+                // ),
                 headerTitle: ""
             }}
         />
@@ -65,13 +66,14 @@ const GameDetails = () => {
                         genres={data.genres.map(genre => genre.name).join(" ")}
                         tags={data.tags}
                         released={data.released_at}
+                        platform={data.platforms}
                         addImage={data.background_image_additional}
                     />
                 </View>
             )}
           
         </ScrollView>
-        <GameFooter />
+       
         </>
 
         

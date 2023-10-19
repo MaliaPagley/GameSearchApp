@@ -13,28 +13,32 @@ const PopularGameCard = ({ item, selectedJob, handleCardPress }) => {
       style={styles.container(selectedJob, item)}
       onPress={() => handleCardPress(item)}
     >
-      <TouchableOpacity >
-        {checkImageURL(item.background_image) ?  
-        <Image
-          source={{
-            uri: item.background_image,
-          }}
-          resizeMode='center'
-          style={styles.logoImage}
-      /> 
+      <TouchableOpacity
+        onPress={() => handleCardPress(item)}
+      >
+      {checkImageURL(item.background_image) ?  
+          <Image
+            source={{
+              uri: item.background_image,
+            }}
+            resizeMode='center'
+            style={styles.logoImage}
+            
+          /> 
       :
-      <Image
-          source={NoImage}
-          resizeMode='contain'
-          style={styles.logoImage}
-      /> 
+        <Image
+            source={NoImage}
+            resizeMode='contain'
+            style={styles.logoImage}
+            
+        /> 
       }
     
         
       </TouchableOpacity>
-      <Text style={styles.gameName} numberOfLines={2}>
+      {/* <Text style={styles.gameName} numberOfLines={2}>
         {item.name}
-      </Text>
+      </Text> */}
 
        {/* <View style={styles.infoContainer}>
         <Text style={styles.jobName(selectedJob, item)} numberOfLines={1}>

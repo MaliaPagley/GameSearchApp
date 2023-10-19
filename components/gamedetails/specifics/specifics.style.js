@@ -9,33 +9,15 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.medium,
     padding: SIZES.medium,
   },
-  title: {
-    fontSize: SIZES.large,
-    color: COLORS.primary,
-    fontFamily: FONT.bold,
-  },
-  pointsContainer: {
-    marginVertical: SIZES.small,
-  },
-  pointWrapper: {
+  platformContainer: {
     flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
+    justifyContent: "left",
+    paddingLeft: SIZES.small,
+    alignItems: "baseline",
+    gap: SIZES.xSmall,
     marginVertical: SIZES.small / 1.25,
   },
-  pointDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 6,
-    backgroundColor: COLORS.gray2,
-    marginTop: 6,
-  },
-  pointText: {
-    fontSize: SIZES.medium - 2,
-    color: COLORS.gray,
-    fontFamily: FONT.regular,
-    marginLeft: SIZES.small,
-  },
+
 });
 
 export default styles;

@@ -15,15 +15,15 @@ import { icons, SIZES } from '../../../constants'
 // All availble platforms for Flatlist scroll 
 const gamePlatforms = ['Xbox', 'PlayStation', 'Mac', 'PC (Microsoft Windows)', 'Nintendo Switch']
 
-const Welcome = () => {
+const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
   const router = useRouter();
   const [ activeGamePlatform, setGamePlatform ] = useState('PlayStation') 
 
   return (
     <View>
       <View style={styles.container}>
-        <Text style={styles.userName}>Hello Gamers!</Text>
-        <Text style={styles.welcomeMessage}>Find games to play</Text>
+        {/* <Text style={styles.userName}>Hello Gamers!</Text>
+        <Text style={styles.welcomeMessage}>Find games to play</Text> */}
       </View>
       
 
@@ -32,13 +32,14 @@ const Welcome = () => {
         <View style={styles.searchWrapper}>
           <TextInput 
             style={styles.searchInput}
-            onChange={() => {}}
-            placeholder="What are you looking for?"
+            value={searchTerm}
+            onChangeText={(text) => setSearchTerm(text)}
+            placeholder="Search for a game"
           />
         </View> 
 
 {/* SEARCH ICON FOR INPUT */}
-        <TouchableOpacity style={styles.searchBtn} onPress={() => {}}>
+        <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
           <Image 
             source={icons.search}
             resizeMode="contain"

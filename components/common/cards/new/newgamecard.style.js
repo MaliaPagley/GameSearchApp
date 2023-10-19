@@ -48,13 +48,13 @@ const styles = StyleSheet.create({
     textTransform: "capitalize",
   },
   genreContainer: {
-    
-
+   
   }, 
   genre: {
     color: COLORS.white,
     fontFamily: FONT.regular,
     fontSize: SIZES.medium,
+   
     
   }
 });

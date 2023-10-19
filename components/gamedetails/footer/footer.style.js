@@ -3,6 +3,10 @@ import { StyleSheet } from "react-native";
 import { COLORS, FONT, SIZES } from "../../../constants";
 
 const styles = StyleSheet.create({
+  link: {
+    color: "#0066b2",
+    textAlign: "center"
+  },
   container: {
     position: "absolute",
     bottom: 0,

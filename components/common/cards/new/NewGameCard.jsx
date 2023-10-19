@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image, FlatList, StatusBar } from "react-native";
 import styles from "./newgamecard.style";
 import { checkImageURL } from "../../../../utils";
 
@@ -11,7 +11,10 @@ const NewGameCard = ({ game, genre, handleNavigate }) => {
       style={styles.container}
       onPress={handleNavigate}
     >
-      <TouchableOpacity style={styles.logoContainer}>
+      <TouchableOpacity 
+        style={styles.logoContainer}
+        onPress={handleNavigate}
+      >
         {checkImageURL(game.background_image) ?  
         <Image
           source={{
@@ -32,6 +35,17 @@ const NewGameCard = ({ game, genre, handleNavigate }) => {
       </TouchableOpacity>
         <View style={styles.genreContainer}>
           <Text style={styles.genre} numberOfLines={2}>{genre}</Text>
+          {/* <FlatList
+          data={genre}
+          renderItem={({item}) => 
+          <View >
+          <Text numberOfLines={2}>
+            {item}
+          </Text>
+        </View>
+        }
+        keyExtractor={item => item.id}
+      /> */}
         </View>
 
        <View style={styles.textContainer}>

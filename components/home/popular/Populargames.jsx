@@ -10,18 +10,19 @@ import useFetch from '../../../hook/useFetch';
 
 
 const Populargames = () => {
+  const router = useRouter();
   const { data, isLoading, error } = useFetch(
     'popular', {page: '1', page_size: '10'}) 
 
     //Destructuring data 
   const resultsData = data.results
   
-
-
-
-
-
   const [selectedGame, setSelectedGame] = useState();
+  const handleCardPress = (item) => {
+    router.push(`/game-details/${item.id}`)
+    setSelectedGame(item.id)
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -43,7 +44,8 @@ const Populargames = () => {
             renderItem={({ item }) => (
               <PopularGameCard
                 item={item}
-                
+                selectedGame={item}
+                handleCardPress={handleCardPress}
               />
             )}
             keyExtractor={(item) => item.id}

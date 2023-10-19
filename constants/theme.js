@@ -18,7 +18,8 @@ const COLORS = {
 
 //For Cards
  blackOnyx: "#121212", 
-
+//For Other 
+blackDecent: "#121111",
 //For Inputs, and other
   blackJungleGreen: "#1A1F26",
  //For Base
@@ -27,6 +28,7 @@ const COLORS = {
  redLight: "#F33535",
  redDark: "#A51C2D",
 
+ grayThunder: "#444444"
 
 };
 

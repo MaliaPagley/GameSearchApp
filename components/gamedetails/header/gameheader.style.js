@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   backgroundImage: {
     width: 360,
     height: 200,
-    objectFit: "fill",
+    objectFit: "center",
     borderTopLeftRadius: SIZES.xLarge,
     borderTopRightRadius: SIZES.xLarge,
   },
@@ -75,9 +75,11 @@ const styles = StyleSheet.create({
     fontSize: SIZES.small,
     textAlign: "center",
     borderRadius: SIZES.large,
+    backgroundColor: COLORS.blackDecent,
   },
   gameGenresBox: {
-    padding: SIZES.small
+    padding: SIZES.small,
+    backgroundColor: COLORS.blackDecent,
   },
   pageHeaders: {
     fontSize: SIZES.xLarge,
@@ -85,6 +87,7 @@ const styles = StyleSheet.create({
     color: COLORS.white,
     marginLeft: SIZES.medium
   },
+  
   // locationBox: {
   //   flexDirection: "row",
   //   justifyContent: "center",

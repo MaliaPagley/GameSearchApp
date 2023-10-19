@@ -1,12 +1,15 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Linking } from 'react-native'
 
 import styles from './footer.style'
 
 const Footer = () => {
   return (
     <View>
-      <Text>Source: Rawg.io</Text>
+      <Text style={styles.link}
+      onPress={() => Linking.openURL('https://rawg.io/')}>
+  Source: Rawg.io
+</Text>
     </View>
   )
 }

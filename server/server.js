@@ -40,6 +40,40 @@ app.get('/game-details/:id', (req, res) => {
   });
 })
 
+app.get('/search/:name', (req, res) => {
+  const gameName = req.params.name
+  console.log(gameName)
+
+const options = {
+  method: 'GET',
+  url: 'https://api.rawg.io/api/games',
+  params: {search: `${gameName}`, key: rawgApiKey},
+  headers: {userAgent}
+};
+
+axios.request(options).then(function (response) {
+  console.log(response.data);
+  res.json(response.data)
+}).catch(function (error) {
+  console.error(error);
+});
+  // console.log(gameName)
+  // const options = {
+  //   method: 'GET',
+  //   url: `https://rawg.io/api/games/${gameName}`,
+  //   params: {key: rawgApiKey},
+  //   headers: userAgent
+  // };
+  
+  // axios.request(options).then(function (response) {
+  //   res.json(response.data)
+  //   console.log(response.data)
+    
+  // }).catch(function (error) {
+  //   console.error(error);
+  // });
+})
+
 app.get('/new', (req, res) => {
   const options = {
     method: 'GET',
