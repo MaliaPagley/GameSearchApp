@@ -7,17 +7,18 @@ import { GameHeader, GameAbout, GameFooter, GameTabs, ScreenHeaderBtn, Specifics
 import { COLORS, icons, SIZES } from '../../constants';
 import useFetch from '../../hook/useFetch';
 
-// Using useGlobalSearchParams - 
+// Using useLocalSearchParams - 
 //  instead of useSearchParams https://docs.expo.dev/router/reference/search-parameters/
 
 const GameDetails = () => {
     const params = useLocalSearchParams(); // Get specific id
-    // console.log(params.id)
+    
+    // console.log(params) - ID OF CURRENT GAME
+
     const router = useRouter();
     const { data, isLoading, error, refetch } = useFetch(`game-details/${params.id}`)
-    // console.log(data.platforms)
     
-
+    
     const [refreshing, setRefreshing] = useState(false);
     const onRefresh = () => {}
   return (
@@ -50,7 +51,7 @@ const GameDetails = () => {
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
         >
             {isLoading ? (
-                <ActivityIndicator size="large" color={COLORS.primary}/>
+                <ActivityIndicator size="large" color={COLORS.white}/>
             ) : error ? (
                 <Text>Something went wrong</Text>
             ) : data.length === 0 ? (
@@ -68,6 +69,7 @@ const GameDetails = () => {
                         released={data.released_at}
                         platform={data.platforms}
                         addImage={data.background_image_additional}
+                        
                     />
                 </View>
             )}
@@ -82,3 +84,5 @@ const GameDetails = () => {
 }
 
 export default GameDetails
+
+

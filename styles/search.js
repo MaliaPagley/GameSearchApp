@@ -9,13 +9,14 @@ const styles = StyleSheet.create({
     searchTitle: {
         fontFamily: FONT.bold,
         fontSize: SIZES.xLarge,
-        color: COLORS.primary,
+        color: COLORS.white,
     },
-    noOfSearchedJobs: {
+    noOfSearchedGame: {
         marginTop: 2,
+        marginLeft: 4,
         fontFamily: FONT.medium,
         fontSize: SIZES.small,
-        color: COLORS.primary,
+        color: COLORS.grayThunder,
     },
     loaderContainer: {
         marginTop: SIZES.medium
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: COLORS.tertiary
+        backgroundColor: COLORS.grayThunder
     },
     paginationImage: {
         width: '60%',

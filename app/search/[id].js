@@ -15,17 +15,11 @@ const GameSearch = () => {
     const router = useRouter()
 
     const [searchResult, setSearchResult] = useState([]);
-    // console.log(searchResult)
+
     const [searchLoader, setSearchLoader] = useState(false);
     const [searchError, setSearchError] = useState(null);
     const [page, setPage] = useState(1);
 
-    const gameInfo = searchResult.map(({ name, id, description, background_image }) => ({
-        name,
-        id,
-        description,
-        background_image
-      }));
     
 
      
@@ -41,9 +35,9 @@ const handleSearch = async () => {
     };
 
     const response = await axios.request(options);
-        const resOne = response.data
-        const resTwo = resOne.results
-            setSearchResult(resTwo);
+        const res = response.data.results
+            setSearchResult(res);
+            
   } catch (error) {
     setSearchError(error);
     console.log(error);
@@ -68,10 +62,10 @@ const handleSearch = async () => {
     }, [])
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.blackMirage }}>
             <Stack.Screen
                 options={{
-                    headerStyle: { backgroundColor: COLORS.lightWhite },
+                    headerStyle: { backgroundColor: COLORS.blackMirage },
                     headerShadowVisible: false,
                     headerLeft: () => (
                         <ScreenHeaderBtn
@@ -89,6 +83,8 @@ const handleSearch = async () => {
                 renderItem={({ item }) => (
                     <NewGameCard
                         game={item}
+                        genre={item.genres.map((genre) => genre.name).join(' ')}
+                        platforms={item.platforms.map(platforms => platforms.platform.name)}
                         handleNavigate={() => router.push(`/game-details/${item.id}`)}
                     />
                 )}
@@ -98,11 +94,11 @@ const handleSearch = async () => {
                     <>
                         <View style={styles.container}>
                             <Text style={styles.searchTitle}>{params.id}</Text>
-                            <Text style={styles.noOfSearchedJobs}>Search Results</Text>
+                            <Text style={styles.noOfSearchedGame}>Search Results</Text>
                         </View>
                         <View style={styles.loaderContainer}>
                             {searchLoader ? (
-                                <ActivityIndicator size='large' color={COLORS.primary} />
+                                <ActivityIndicator size='large' color={COLORS.white} />
                             ) : searchError && (
                                 <Text>Oops something went wrong</Text>
                             )}

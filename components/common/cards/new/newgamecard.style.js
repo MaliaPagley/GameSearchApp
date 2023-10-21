@@ -56,6 +56,23 @@ const styles = StyleSheet.create({
     fontSize: SIZES.medium,
    
     
+  },
+  platformsContainer: {
+    marginTop: SIZES.large,
+    backgroundColor: "#FFF",
+    borderRadius: SIZES.medium,
+    padding: SIZES.medium,
+    
+  },
+  platforms: {
+
+   flexDirection: "row",
+    justifyContent: "center",
+   
+    paddingBottom: SIZES.xsmall,
+    alignItems: "baseline",
+    gap: SIZES.xSmall,
+    marginVertical: SIZES.small / 1.25,
   }
 });
 

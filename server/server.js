@@ -12,17 +12,7 @@ const userAgent = { 'UserAgent': 'GameSearchApp (GitHub)'}
 const rawgApiKey = process.env.RAWG_KEY;
 
 
-// const optionsPopular = {
-//   method: 'GET',
-//   headers: userAgent,
-//   url: 'https://api.rawg.io/api/games/lists/main',
-//   qs: {
-//     key: rawgApiKey,
-//     ordering: '-relevance',
-//     discover: true,
-//     page_size: 10
-//   }
-// };
+//GET GAME DETAILS BY ID 
 app.get('/game-details/:id', (req, res) => {
   const gameId = req.params.id
   const options = {
@@ -37,12 +27,14 @@ app.get('/game-details/:id', (req, res) => {
     
   }).catch(function (error) {
     console.error(error);
+    res.status(500).send('Error fetching game details by id.');
   });
 })
 
+//SEARCH BY NAME ENDPOINT FOR INPUT
 app.get('/search/:name', (req, res) => {
   const gameName = req.params.name
-  console.log(gameName)
+  // console.log("TESTING SERVER PARAMS - FROM /Search/:name", gameName)
 
 const options = {
   method: 'GET',
@@ -52,48 +44,71 @@ const options = {
 };
 
 axios.request(options).then(function (response) {
-  console.log(response.data);
+  // console.log("TESTING RES FROM SERVER -  Search Endpoint", response.data);
   res.json(response.data)
 }).catch(function (error) {
   console.error(error);
+  res.status(500).send('Error fetching search by name.');
 });
-  // console.log(gameName)
-  // const options = {
-  //   method: 'GET',
-  //   url: `https://rawg.io/api/games/${gameName}`,
-  //   params: {key: rawgApiKey},
-  //   headers: userAgent
-  // };
-  
-  // axios.request(options).then(function (response) {
-  //   res.json(response.data)
-  //   console.log(response.data)
-    
-  // }).catch(function (error) {
-  //   console.error(error);
-  // });
 })
 
+// GET GAME SCREENSHOTS BY ID REQUEST
+app.get('/screenshots/:id', (req, res) => {
+  const { id } = req.params;
+// console.log("TESTING SERVER PARAMS - FROM /screenshots/:id", id )
+  const options = {
+    method: 'GET',
+    url: `https://api.rawg.io/api/games/${id}/screenshots`,
+    params: {
+      key: rawgApiKey,
+    },
+    headers: userAgent,
+  };
+
+  axios.request(options)
+    .then(function (response) {
+      res.json(response.data);
+    })
+    .catch(function (error) {
+      console.error(error);
+      res.status(500).send('Error fetching game screenshots.');
+    });
+});
+
+//NEW GAMES ENDPOINT (Last 30 days by current date)
 app.get('/new', (req, res) => {
   const options = {
     method: 'GET',
-    url: 'https://rawg.io/api/games',
-    params: {key: rawgApiKey, 
-      ordering: 'last-30-days',
-      discover: 'true',
-      },
-    headers: userAgent
+    url: 'https://api.rawg.io/api/games', 
+    params: {
+      key: rawgApiKey,
+      ordering: '-added', // Sort by release date in descending order (newest first)
+      dates: calculateDateRange(), // Calculate the date range for the last 30 days
+    },
+    headers: userAgent,
   };
-  
-  axios.request(options).then(function (response) {
-    res.json(response.data)
-    
-  }).catch(function (error) {
-    console.error(error);
-  });
-})
+
+  axios.request(options)
+    .then(function (response) {
+      res.json(response.data);
+    })
+    .catch(function (error) {
+      console.error(error);
+      res.status(500).send('Error fetching new games.');
+    });
+});
+//Function that calulates the dates for data fetching
+function calculateDateRange() {
+  const currentDate = new Date();
+  const last30Days = new Date();
+  last30Days.setDate(currentDate.getDate() - 30);
+
+  // Format the date range as 'YYYY-MM-DD,YYYY-MM-DD'
+  return `${last30Days.toISOString().split('T')[0]},${currentDate.toISOString().split('T')[0]}`;
+}
 
 
+//POPULAR GAMES ENDPOINT
 app.get('/popular', (req, res) => {
   const options = {
     method: 'GET',
@@ -107,8 +122,10 @@ app.get('/popular', (req, res) => {
     
   }).catch(function (error) {
     console.error(error);
+    res.status(500).send('Error fetching popular games.');
   });
 })
+
 
   // Start the Express server - Npm run dev
   app.listen(PORT, HOST, () => {

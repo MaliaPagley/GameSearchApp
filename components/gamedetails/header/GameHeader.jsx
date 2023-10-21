@@ -9,13 +9,21 @@ import { icons } from '../../../constants'
 import Ionicons from '@expo/vector-icons/Ionicons'
 const NoImage = require("../../../assets/noimage.png")
 
-const GameHeader = ({ image, id, name, description, developers, addImage, genres, platform , released}) => {
+const GameHeader = ({ 
+  image, 
+  id, 
+  name, 
+  description, 
+  developers, 
+  addImage, 
+  genres, 
+  platform , 
+  released,
+screenshots, }) => {
 
   //Deconstrution of data for display
   const allDevelopers = developers.map(developers => developers.name).join(' / ');
   const allPlatforms = platform.map(item => item.platform.name)
-  console.log(allPlatforms)
-
 
 
  
@@ -43,7 +51,7 @@ const GameHeader = ({ image, id, name, description, developers, addImage, genres
       <View style={styles.gameTitleBox}>
         <Text style={styles.gameTitle}>{name}</Text>
         <Text style={styles.gameDevelopers}>{allDevelopers}</Text>  
-        
+        <Text style={styles.gameDevelopers}>{released}</Text>
       </View>
       <View>
        

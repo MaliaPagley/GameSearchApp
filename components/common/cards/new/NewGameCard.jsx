@@ -1,11 +1,12 @@
 import { View, Text, TouchableOpacity, Image, FlatList, StatusBar } from "react-native";
 import styles from "./newgamecard.style";
 import { checkImageURL } from "../../../../utils";
+import Specifics from "../../../gamedetails/specifics/Specifics";
 
 const NoImage = require("../../../../assets/noimage.png")
 
-const NewGameCard = ({ game, genre, handleNavigate }) => {
- 
+const NewGameCard = ({ game, genre, handleNavigate, platforms}) => {
+
   return (
     <TouchableOpacity
       style={styles.container}
@@ -35,24 +36,17 @@ const NewGameCard = ({ game, genre, handleNavigate }) => {
       </TouchableOpacity>
         <View style={styles.genreContainer}>
           <Text style={styles.genre} numberOfLines={2}>{genre}</Text>
-          {/* <FlatList
-          data={genre}
-          renderItem={({item}) => 
-          <View >
-          <Text numberOfLines={2}>
-            {item}
-          </Text>
-        </View>
-        }
-        keyExtractor={item => item.id}
-      /> */}
+       
         </View>
 
        <View style={styles.textContainer}>
+       
         <Text style={styles.gameName} numberOfLines={2}>
           {game.name}
         </Text>
-
+      <View style={styles.platformContainer}>
+        <Specifics platforms={platforms} />
+      </View>
       </View> 
     </TouchableOpacity>
   );

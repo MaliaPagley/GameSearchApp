@@ -1,37 +1,58 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons/FontAwesome'
+
 import styles from './specifics.style';
-import { icons } from '../../../constants'
+import { icons } from '../../../constants';
 
 const Specifics = ({ platforms }) => {
-  const componentMapping = {
-    "PlayStation 5": <Ionicons name="logo-playstation" size={32} color="white" />,
-    "PlayStation 4": <Ionicons name="logo-playstation" size={32} color="white" />,
-    "Xbox 360" : <Ionicons name="logo-xbox" size={32} color="white" />,
-    "Xbox One": <Ionicons name="logo-xbox" size={32} color="white" />,
-    "MacOS": <Ionicons name="logo-apple" size={32} color="white" />,
+  
+  const platformMapping = {
+    "PlayStation": <Ionicons name="logo-playstation" size={32} color="white" />,
+    "Xbox": <Ionicons name="logo-xbox" size={32} color="white" />,
+    "macOS": <Ionicons name="logo-apple" size={32} color="white" />,
     "PC": <Ionicons name="logo-windows" size={32} color="white" />,
-    "Nintendo Switch": <Image style={styles.icon} source={icons.nintendo} />, // Replace with the actual image asset
-
-    
+    "iOS": <Ionicons name="phone-portrait" size={32} color={"white"} />,
+    "Nintendo Switch": <Image style={styles.icon} source={icons.nintendo} />,
+    "Android": <Ionicons name="logo-android" size={32} color={"white"} />
   };
 
-  function renderPlatformIcons() {
-    return platforms.map((platform, index) => {
-      const component = componentMapping[platform];
+  const renderedPlatforms = {}; // Object to track rendered platforms
 
-      if (component) {
+  // Modify platform names and ensure only one "PlayStation" and one "Xbox" are rendered
+  const modifiedPlatforms = platforms.map(platform => {
+    if (platform.startsWith('PlayStation')) {
+      if (!renderedPlatforms.PlayStation) {
+        renderedPlatforms.PlayStation = true;
+        return 'PlayStation';
+      }
+      return null; // Return null for additional "PlayStation" platforms
+    } else if (platform.startsWith('Xbox')) {
+      if (!renderedPlatforms.Xbox) {
+        renderedPlatforms.Xbox = true;
+        return 'Xbox';
+      }
+      return null; // Return null for additional "Xbox" platforms
+    }
+    return platform;
+  }).filter(platform => platform !== null);
+
+  function renderPlatformIcons() {
+    if (!modifiedPlatforms || !Array.isArray(modifiedPlatforms)) {
+      return null;
+    }
+
+    return modifiedPlatforms.map((platform, index) => {
+      const platformRender = platformMapping[platform];
+
+      if (platformRender) {
         return (
           <View key={index}>
-            {component}
+            {platformRender}
           </View>
         );
       } else {
-        return (
-          null
-        );
+        return null;
       }
     });
   }

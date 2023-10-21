@@ -11,8 +11,9 @@ const styles = StyleSheet.create({
   },
   platformContainer: {
     flexDirection: "row",
-    justifyContent: "left",
-    paddingLeft: SIZES.small,
+    justifyContent: "center",
+   
+    paddingBottom: SIZES.xsmall,
     alignItems: "baseline",
     gap: SIZES.xSmall,
     marginVertical: SIZES.small / 1.25,

@@ -48,7 +48,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
         </TouchableOpacity>
       </View>
 
-{/* FLATLIST THAT CONTAINS THE GAME PLATFORMS */}
+{/* FLATLIST THAT CONTAINS THE GAME PLATFORMS BELOW INPUT FIELD XBOX, PLAYSTATION...*/}
       <View style={styles.tabsContainer}>
         <FlatList
             data={gamePlatforms}
