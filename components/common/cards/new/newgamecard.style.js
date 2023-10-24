@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     height: 200,
     backgroundColor: COLORS.redMerlot,
     borderRadius: SIZES.medium,
-    objectFit: "fit",
+    // objectFit: "contain",
     justifyContent: "center",
     alignItems: "center",
     paddingBottom: SIZES.small,

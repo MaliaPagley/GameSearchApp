@@ -5,12 +5,12 @@ import { checkImageURL } from "../../../../utils";
 
 const NoImage = require("../../../../assets/noimage.png")
 
-const PopularGameCard = ({ item, selectedJob, handleCardPress }) => {
+const PopularGameCard = ({ item, selectedGame, handleCardPress }) => {
   // console.log(item.results)
 
   return (
     <TouchableOpacity
-      style={styles.container(selectedJob, item)}
+      style={styles.container(selectedGame, item)}
       onPress={() => handleCardPress(item)}
     >
       <TouchableOpacity

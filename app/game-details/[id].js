@@ -13,7 +13,6 @@ import useFetch from '../../hook/useFetch';
 const GameDetails = () => {
     const params = useLocalSearchParams(); // Get specific id
     
-    // console.log(params) - ID OF CURRENT GAME
 
     const router = useRouter();
     const { data, isLoading, error, refetch } = useFetch(`game-details/${params.id}`)
@@ -63,6 +62,7 @@ const GameDetails = () => {
                         name={data.name}
                         image={data.background_image}
                         developers={data.developers}
+                        publishers={data.publishers}
                         description={data.description_raw}
                         genres={data.genres.map(genre => genre.name).join(" ")}
                         tags={data.tags}
@@ -71,6 +71,7 @@ const GameDetails = () => {
                         addImage={data.background_image_additional}
                         
                     />
+
                 </View>
             )}
           

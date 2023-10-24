@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { CURRENT_HOST } from '../utils/host';
 
 const useFetch = (endpoint, query) => {
     const [ data, setData ] = useState([]);
     const [ isLoading, setIsLoading ] = useState(false);
     const [ error, setError ] = useState(null);
-    // console.log(query)
+    
+    
+
     const options = {
         method: 'GET',
-        url: `http://localhost:8000/${endpoint}`,
+        url: `http://${CURRENT_HOST}:8000/${endpoint}`,
         params: {...query}
       };
 

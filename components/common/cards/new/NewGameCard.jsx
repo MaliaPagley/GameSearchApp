@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image, FlatList, StatusBar } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import styles from "./newgamecard.style";
 import { checkImageURL } from "../../../../utils";
 import Specifics from "../../../gamedetails/specifics/Specifics";

@@ -12,21 +12,19 @@ const styles = StyleSheet.create({
     
   },
   imageBox: {
-    width: 360,
-    height: 200,
+    // width: 370,
+    // height: 250,
     // borderRadius: SIZES.large,
-    justifyContent: "center",
+    // justifyContent: "contain",
     // alignItems: "center",
-    backgroundColor: "black",
-    borderRadius: SIZES.large,
-  
-    
+
+    // borderRadius: SIZES.large,
     
   },
   backgroundImage: {
     width: 360,
     height: 200,
-    objectFit: "center",
+    objectFit: "contain",
     borderTopLeftRadius: SIZES.xLarge,
     borderTopRightRadius: SIZES.xLarge,
   },

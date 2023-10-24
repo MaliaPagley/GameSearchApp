@@ -7,22 +7,19 @@ import axios from 'axios'
 import { ScreenHeaderBtn, NearbyJobCard, NewGameCard } from '../../components'
 import { COLORS, icons, SIZES } from '../../constants'
 import styles from '../../styles/search'
+import { CURRENT_HOST } from '../../utils/host'
+
 
 const GameSearch = () => {
     const params = useLocalSearchParams();
-    
     // console.log(params.id)
-    const router = useRouter()
+    const router = useRouter();
 
     const [searchResult, setSearchResult] = useState([]);
-
     const [searchLoader, setSearchLoader] = useState(false);
     const [searchError, setSearchError] = useState(null);
     const [page, setPage] = useState(1);
 
-    
-
-     
 
 const handleSearch = async () => {
   setSearchLoader(true);
@@ -31,7 +28,7 @@ const handleSearch = async () => {
   try {
     const options = {
       method: 'GET',
-      url: `http://localhost:8000/search/${params.id}`,
+      url: `http://${CURRENT_HOST}:8000/search/${params.id}`,
     };
 
     const response = await axios.request(options);

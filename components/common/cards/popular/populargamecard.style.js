@@ -3,21 +3,21 @@ import { StyleSheet } from "react-native";
 import { COLORS, FONT, SHADOWS, SIZES } from "../../../../constants";
 
 const styles = StyleSheet.create({
-  container: (selectedJob, item) => ({
+  container: (selectedGame, item) => ({
     width: 250,
     height: 200,
     // padding: SIZES.small,
     // paddingBottom: SIZES.xxLarge,
-    backgroundColor: selectedJob === item.job_id ? COLORS.gray3 : "#FFF",
+    backgroundColor: selectedGame === item.job_id ? COLORS.gray3 : "#FFF",
     borderRadius: SIZES.medium,
     justifyContent: "space-between",
     ...SHADOWS.medium,
     // shadowColor: COLORS.white,
   }),
-  logoContainer: (selectedJob, item) => ({
+  logoContainer: (selectedGame, item) => ({
     width: 50,
     height: 50,
-    backgroundColor: selectedJob === item.job_id ? "#FFF" : COLORS.white,
+    backgroundColor: selectedGame === item.id ? "#FFF" : COLORS.white,
     borderRadius: SIZES.large,
     justifyContent: "center",
     alignItems: "center",
@@ -41,10 +41,10 @@ const styles = StyleSheet.create({
   infoContainer: {
     marginTop: SIZES.large,
   },
-  jobName: (selectedJob, item) => ({
+  jobName: (selectedGame, item) => ({
     fontSize: SIZES.large,
     fontFamily: FONT.medium,
-    color: selectedJob === item.job_id ? COLORS.white : COLORS.primary,
+    color: selectedGame === item.id ? COLORS.white : COLORS.primary,
   }),
   infoWrapper: {
     flexDirection: "row",
@@ -52,10 +52,10 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
   },
-  publisher: (selectedJob, item) => ({
+  publisher: (selectedGame, item) => ({
     fontSize: SIZES.medium - 2,
     fontFamily: FONT.regular,
-    color: selectedJob === item.job_id ? COLORS.white : COLORS.primary,
+    color: selectedGame === item.id ? COLORS.white : COLORS.primary,
   }),
   location: {
     fontSize: SIZES.medium - 2,
