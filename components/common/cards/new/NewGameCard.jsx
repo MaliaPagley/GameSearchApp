@@ -1,11 +1,14 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import styles from "./newgamecard.style";
 import { checkImageURL } from "../../../../utils";
-import Specifics from "../../../gamedetails/specifics/Specifics";
+import GameSpecifics from "../../../gamedetails/specifics/GameSpecifics";
 
 const NoImage = require("../../../../assets/noimage.png")
 
-const NewGameCard = ({ game, genre, handleNavigate, platforms}) => {
+const NewGameCard = ({ game, handleNavigate, platforms}) => {
+
+  const genresData = game.genres
+  const genreNames = genresData.map(genre => genre.name);
 
   return (
     <TouchableOpacity
@@ -34,18 +37,23 @@ const NewGameCard = ({ game, genre, handleNavigate, platforms}) => {
     
         
       </TouchableOpacity>
-        <View style={styles.genreContainer}>
-          <Text style={styles.genre} numberOfLines={2}>{genre}</Text>
-       
-        </View>
+  
+        <View style={styles.genreContainer} >
+        {genreNames.map((genre, index) => (
+          <View style={styles.genreWrapper}>
+            <Text key={index}  style={styles.genre}>
+              {genre}
+            </Text>
+          </View>
+        ))}
+      </View>
 
        <View style={styles.textContainer}>
-       
         <Text style={styles.gameName} numberOfLines={2}>
           {game.name}
         </Text>
       <View style={styles.platformContainer}>
-        <Specifics platforms={platforms} />
+        <GameSpecifics platforms={platforms} />
       </View>
       </View> 
     </TouchableOpacity>

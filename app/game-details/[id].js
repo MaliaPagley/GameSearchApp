@@ -1,9 +1,9 @@
 //Dynamic route that will be different for every game 
 import React from 'react'
 import { View, Text, SafeAreaView, ScrollView, ActivityIndicator, RefreshControl } from "react-native";
-import { Stack, useRouter, useLocalSearchParams } from 'expo-router';
+import { Stack, useRouter, useLocalSearchParams, Tabs } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { GameHeader, GameAbout, GameFooter, GameTabs, ScreenHeaderBtn, Specifics } from '../../components';
+import { GameHeader, GameAbout, GameFooter, GameTabs, ScreenHeaderBtn, GameSpecifics } from '../../components';
 import { COLORS, icons, SIZES } from '../../constants';
 import useFetch from '../../hook/useFetch';
 
@@ -12,11 +12,9 @@ import useFetch from '../../hook/useFetch';
 
 const GameDetails = () => {
     const params = useLocalSearchParams(); // Get specific id
-    
-
     const router = useRouter();
     const { data, isLoading, error, refetch } = useFetch(`game-details/${params.id}`)
-    
+
     
     const [refreshing, setRefreshing] = useState(false);
     const onRefresh = () => {}
@@ -63,15 +61,16 @@ const GameDetails = () => {
                         image={data.background_image}
                         developers={data.developers}
                         publishers={data.publishers}
-                        description={data.description_raw}
-                        genres={data.genres.map(genre => genre.name).join(" ")}
-                        tags={data.tags}
-                        released={data.released_at}
-                        platform={data.platforms}
-                        addImage={data.background_image_additional}
+                        released={data.released}
                         
                     />
-
+                    <GameSpecifics platforms={data.platforms.map(item => item.platform.name)} />
+                    <GameTabs 
+                        genres={data.genres.map(item => item.name)}
+                        id={params.id}
+                    />
+                    <GameAbout description={data.description_raw}/>
+                   <GameFooter />
                 </View>
             )}
           

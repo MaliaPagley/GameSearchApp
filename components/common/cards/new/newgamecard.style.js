@@ -40,23 +40,7 @@ const styles = StyleSheet.create({
     color: COLORS.white,
     textAlign: "center",
   },
-  jobType: {
-    fontSize: SIZES.small + 2,
-    fontFamily: "DMRegular",
-    color: COLORS.gray,
-    marginTop: 3,
-    textTransform: "capitalize",
-  },
-  genreContainer: {
-   
-  }, 
-  genre: {
-    color: COLORS.white,
-    fontFamily: FONT.regular,
-    fontSize: SIZES.medium,
-   
-    
-  },
+
   platformsContainer: {
     marginTop: SIZES.large,
     backgroundColor: "#FFF",
@@ -65,14 +49,31 @@ const styles = StyleSheet.create({
     
   },
   platforms: {
-
-   flexDirection: "row",
+    flexDirection: "row",
     justifyContent: "center",
-   
     paddingBottom: SIZES.xsmall,
     alignItems: "baseline",
     gap: SIZES.xSmall,
     marginVertical: SIZES.small / 1.25,
+  },
+  genreContainer: {
+    flex: 1,
+    flexDirection: "row",
+    marginTop: SIZES.xsmall,
+    flexWrap: "wrap",
+    borderRadius: SIZES.large,
+  },
+  genreWrapper: {
+      borderRadius: 5, 
+      overflow: 'hidden', 
+      margin: 5, 
+  },
+  genre: {
+    color: COLORS.white,
+    fontSize: SIZES.small,
+    fontFamily: FONT.bold,
+    backgroundColor: "black",
+    padding: 5,
   }
 });
 

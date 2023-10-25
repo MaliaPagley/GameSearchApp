@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, Text, Linking } from 'react-native'
 
-import styles from './footer.style'
+import styles from './gamefooter.style'
 
-const Footer = () => {
+const GameFooter = () => {
   return (
     <View>
       <Text style={styles.link}
@@ -14,4 +14,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default GameFooter

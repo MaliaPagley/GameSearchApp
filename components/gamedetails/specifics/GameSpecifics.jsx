@@ -2,10 +2,10 @@ import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-import styles from './specifics.style';
+import styles from './gamespecifics.style';
 import { icons } from '../../../constants';
 
-const Specifics = ({ platforms }) => {
+const GameSpecifics = ({ platforms }) => {
   
   const platformMapping = {
     "PlayStation": <Ionicons name="logo-playstation" size={32} color="white" />,
@@ -64,4 +64,4 @@ const Specifics = ({ platforms }) => {
   );
 };
 
-export default Specifics;
+export default GameSpecifics;

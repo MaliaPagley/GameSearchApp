@@ -1,15 +1,10 @@
 import { StyleSheet } from "react-native";
 
-import { COLORS, FONT, SIZES } from "../../../constants";
-
+import { COLORS, SHADOWS, SIZES, FONT } from "../../../constants";
 
 const styles = StyleSheet.create({
-  container: {
-    marginVertical: SIZES.medium,
-    justifyContent: "center",
-  },
   imageBox: {
-  
+   
     
   },
   backgroundImage: {
@@ -25,25 +20,31 @@ const styles = StyleSheet.create({
     objectFit: "fill",
     borderRadius: SIZES.large,
   },
-  gameTitleBox: {
-    padding: SIZES.large,
-    
+  genreContainer: {
+    flex: 1,
+    flexDirection: "row",
+    marginTop: SIZES.large,
+    flexWrap: "wrap",
+    borderRadius: SIZES.large,
   },
-  gameTitle: {
-    fontSize: SIZES.large,
+  genreWrapper: {
+      borderRadius: 5, 
+      overflow: 'hidden', 
+      margin: 5, 
+  },
+  genre: {
     color: COLORS.white,
+    fontSize: SIZES.small,
+    textAlign: "center",
     fontFamily: FONT.bold,
-    textAlign: "left",
+    backgroundColor: "black",
+    padding: 5,
   },
-  gameDevelopers: {
-    fontSize: SIZES.medium - 2,
-    color: COLORS.gray,
-    fontFamily: FONT.small,
-  },
-  date: {
-    color: COLORS.grayThunder,
-    fontFamily: FONT.bold
-  }
+  
+ slide: {
+  padding: SIZES.xSmall,
+  borderRadius: 30, 
+ },
 
 });
 

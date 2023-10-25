@@ -7,10 +7,10 @@ import Newgames from "./home/new/Newgames";
 
 // game details screen
 import GameHeader from "./gamedetails/header/GameHeader";
-import { default as GameTabs } from "./gamedetails/tabs/Tabs";
-import { default as GameAbout } from "./gamedetails/about/About";
-import { default as GameFooter } from "./gamedetails/footer/Footer";
-import Specifics from "./gamedetails/specifics/Specifics";
+import GameTabs from "./gamedetails/tabs/GameTabs";
+import GameAbout from "./gamedetails/about/GameAbout";
+import GameFooter from "./gamedetails/footer/GameFooter";
+import GameSpecifics from "./gamedetails/specifics/GameSpecifics";
 
 // common
 import NewGameCard from "./common/cards/new/NewGameCard";
@@ -24,6 +24,6 @@ export {
   GameTabs,
   GameAbout,
   GameFooter,
-  Specifics,
+  GameSpecifics,
   NewGameCard
 };

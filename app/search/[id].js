@@ -4,7 +4,7 @@ import { Stack, useRouter, useLocalSearchParams } from 'expo-router'
 import { Text, SafeAreaView } from 'react-native'
 import axios from 'axios'
 
-import { ScreenHeaderBtn, NearbyJobCard, NewGameCard } from '../../components'
+import { ScreenHeaderBtn, NewGameCard } from '../../components'
 import { COLORS, icons, SIZES } from '../../constants'
 import styles from '../../styles/search'
 import { CURRENT_HOST } from '../../utils/host'
@@ -80,7 +80,7 @@ const handleSearch = async () => {
                 renderItem={({ item }) => (
                     <NewGameCard
                         game={item}
-                        genre={item.genres.map((genre) => genre.name).join(' ')}
+                        genre={item.genres}
                         platforms={item.platforms.map(platforms => platforms.platform.name)}
                         handleNavigate={() => router.push(`/game-details/${item.id}`)}
                     />
