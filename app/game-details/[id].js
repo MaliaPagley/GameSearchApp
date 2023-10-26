@@ -1,8 +1,8 @@
 //Dynamic route that will be different for every game 
 import React from 'react'
 import { View, Text, SafeAreaView, ScrollView, ActivityIndicator, RefreshControl } from "react-native";
-import { Stack, useRouter, useLocalSearchParams, Tabs } from 'expo-router';
-import { useCallback, useState } from 'react';
+import { Stack, useRouter, useLocalSearchParams} from 'expo-router';
+import { useState } from 'react';
 import { GameHeader, GameAbout, GameFooter, GameTabs, ScreenHeaderBtn, GameSpecifics } from '../../components';
 import { COLORS, icons, SIZES } from '../../constants';
 import useFetch from '../../hook/useFetch';
@@ -32,13 +32,6 @@ const GameDetails = () => {
                         handlePress={() => router.back()}
                     />
                 ), 
-                // headerRight: () => (
-                //     <ScreenHeaderBtn 
-                //         iconUrl={icons.share}
-                //         dimension="60%"
-                //         handlePress={() => router.back()}
-                //     />
-                // ),
                 headerTitle: ""
             }}
         />
@@ -60,11 +53,13 @@ const GameDetails = () => {
                         name={data.name}
                         image={data.background_image}
                         developers={data.developers}
-                        publishers={data.publishers}
                         released={data.released}
-                        
                     />
-                    <GameSpecifics platforms={data.platforms.map(item => item.platform.name)} />
+                    <GameSpecifics 
+                        platforms={data.platforms.map(item => item.platform.name)} 
+                        tags={data.tags.map(tag => tag.name)}
+                    
+                    />
                     <GameTabs 
                         genres={data.genres.map(item => item.name)}
                         id={params.id}
@@ -75,10 +70,7 @@ const GameDetails = () => {
             )}
           
         </ScrollView>
-       
-        </>
-
-        
+        </>  
     </SafeAreaView>
   )
 }

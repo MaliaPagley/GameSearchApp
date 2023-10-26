@@ -9,16 +9,17 @@ const GameHeader = ({
   image, 
   name, 
   developers, 
-  released
+  released,
    }) => {
 
   //Deconstrution of data for display
   const allDevelopers = developers.map(developers => developers.name).join(' / ');
- 
+
+
   return (
-    // Main Image / Game Title / Publisher
+    // Main Image / Game Title / Developers
     <View style={styles.container}>
-      <View style={styles.imageBox}>
+      <View>
       {checkImageURL(image) ?  
         <Image
           source={{

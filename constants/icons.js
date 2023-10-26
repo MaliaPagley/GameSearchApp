@@ -14,7 +14,5 @@ export default {
   share,
   chevronLeft,
   chevronRight,
-
   nintendo,
-
 };

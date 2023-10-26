@@ -12,12 +12,24 @@ const styles = StyleSheet.create({
   platformContainer: {
     flexDirection: "row",
     justifyContent: "center",
-   
     paddingBottom: SIZES.xsmall,
     alignItems: "baseline",
     gap: SIZES.xSmall,
     marginVertical: SIZES.small / 1.25,
   },
+  tagContainer: {
+    paddingLeft: SIZES.medium,
+    gap: SIZES.xSmall,
+    marginBottom: SIZES.medium
+  },
+  tagText: {
+    color: COLORS.white,
+    marginLeft: SIZES.small,
+  },
+  tag: {
+    alignItems: "baseline",
+    flexDirection: "row",
+  }
 
 });
 

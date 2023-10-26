@@ -8,11 +8,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "column",
-    padding: SIZES.medium,
-    borderRadius: SIZES.large,
+    padding: SIZES.large,
+    borderRadius: SIZES.xLarge,
     backgroundColor: COLORS.blackJungleGreen,
-    ...SHADOWS.medium,
-    shadowColor: COLORS.black2,
+    shadowColor: COLORS.redLight,
     gap: SIZES.small
   },
   logoContainer: {

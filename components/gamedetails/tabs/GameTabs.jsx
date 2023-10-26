@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, FlatList } from 'react-native'; // Import FlatList
+import { View, Text, Image, FlatList, ActivityIndicator } from 'react-native'; // Import FlatList
 import { checkImageURL } from '../../../utils';
 import styles from './gametabs.style';
 
@@ -37,14 +37,18 @@ const GameTabs = ({ addImage, genres, id }) => {
   return (
     // ADDITIONAL IMAGES (SCREENSHOTS) / GENRE'S
     <>
-      <View style={styles.imageBox}>
-        <FlatList
-          data={resultsData}
-          keyExtractor={(item) => item.id.toString()} 
-          horizontal
-          renderItem={renderScreenshot}
-        />
-      </View>
+      {isLoading ? ( // Show Activity Indicator while loading
+        <ActivityIndicator size="large" color="white" style={styles.loadingIndicator} />
+      ) : (
+        <View style={styles.imageBox}>
+          <FlatList
+            data={resultsData}
+            keyExtractor={(item) => item.id.toString()} 
+            horizontal
+            renderItem={renderScreenshot}
+          />
+        </View>
+      )}
 
       <View style={styles.genreContainer}>
         {genres.map((genre, index) => (

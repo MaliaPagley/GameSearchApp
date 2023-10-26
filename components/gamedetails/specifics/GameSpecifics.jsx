@@ -5,8 +5,72 @@ import { Ionicons } from '@expo/vector-icons';
 import styles from './gamespecifics.style';
 import { icons } from '../../../constants';
 
-const GameSpecifics = ({ platforms }) => {
-  
+const GameSpecifics = ({ platforms, tags }) => {
+
+  // TAG HANDLING SECTION 
+  const tagMapping = {
+    "Singleplayer": {
+      icon: <Ionicons name="person-circle-outline" size={20} color="white" />,
+      text: "Singleplayer"
+    },
+    "Multiplayer": {
+      icon: <Ionicons name="people-circle-outline" size={20} color="white" />,
+      text: "Multiplayer"
+    },
+    "Open World": {
+      icon: <Ionicons name="earth-outline" size={20} color="white" />,
+      text: "Open World"
+    },
+    "open-world": {
+      icon: <Ionicons name="earth-outline" size={20} color="white" />,
+      text: "Open World"
+    },
+    "Online Co-Op": {
+      icon: <Ionicons name="globe-outline" size={20} color="white" />,
+      text: "Online Co-Op"
+    },
+    "Local Co-Op": {
+      icon: <Ionicons name="people-outline" size={20} color="white" />,
+      text: "Local Co-Op"
+    } ,
+    "Moddable" : {
+      icon: <Ionicons name="settings-outline" size={20} color="white" />,
+      text: "Moddable"
+    },
+    "modding" : {
+      icon: <Ionicons name="settings-outline" size={20} color="white" />,
+      text: "Moddable"
+    },
+    "Sandbox" : {
+      icon: <Ionicons name="expand-outline" size={20} color="white" />,
+      text: "Sandbox"
+    },
+  };
+
+  let tagArray = [];
+
+  if (typeof tags === 'string') {
+    // Split the comma-separated tags into an array
+    tagArray = tags.split(',').map(tag => tag.trim());
+  } else if (Array.isArray(tags)) {
+    tagArray = tags;
+  }
+
+  // Create an array to store the rendered tag icons with text
+  const renderedTags = tagArray.map(tag => {
+    const tagData = tagMapping[tag];
+    if (tagData) {
+      return (
+        <View style={styles.tag} key={tag}>
+          {tagData.icon}
+          <Text style={styles.tagText}>{tagData.text}</Text>
+        </View>
+      );
+    }
+    return null;
+  });
+
+  // PLATFORM HANDLING SECTION
   const platformMapping = {
     "PlayStation": <Ionicons name="logo-playstation" size={32} color="white" />,
     "Xbox": <Ionicons name="logo-xbox" size={32} color="white" />,
@@ -16,6 +80,7 @@ const GameSpecifics = ({ platforms }) => {
     "Nintendo Switch": <Image style={styles.icon} source={icons.nintendo} />,
     "Android": <Ionicons name="logo-android" size={32} color={"white"} />
   };
+
 
   const renderedPlatforms = {}; // Object to track rendered platforms
 
@@ -58,9 +123,15 @@ const GameSpecifics = ({ platforms }) => {
   }
 
   return (
+    <>
+    <View style={styles.tagContainer}>
+      {renderedTags}
+    </View>
+
     <View style={styles.platformContainer}>
       {renderPlatformIcons()}
     </View>
+    </>
   );
 };
 

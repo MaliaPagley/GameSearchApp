@@ -1,12 +1,8 @@
 import { StyleSheet } from "react-native";
 
-import { COLORS, SHADOWS, SIZES, FONT } from "../../../constants";
+import { COLORS, SIZES, FONT } from "../../../constants";
 
 const styles = StyleSheet.create({
-  imageBox: {
-   
-    
-  },
   backgroundImage: {
     width: 360,
     height: 200,
@@ -28,9 +24,9 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.large,
   },
   genreWrapper: {
-      borderRadius: 5, 
-      overflow: 'hidden', 
-      margin: 5, 
+    borderRadius: 5, 
+    overflow: 'hidden', 
+    margin: 5, 
   },
   genre: {
     color: COLORS.white,
@@ -40,10 +36,9 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     padding: 5,
   },
-  
  slide: {
-  padding: SIZES.xSmall,
-  borderRadius: 30, 
+    padding: SIZES.xSmall,
+    borderRadius: 30, 
  },
 
 });
