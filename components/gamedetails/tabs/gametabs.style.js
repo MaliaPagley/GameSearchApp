@@ -4,9 +4,10 @@ import { COLORS, SIZES, FONT } from "../../../constants";
 
 const styles = StyleSheet.create({
   backgroundImage: {
-    width: 360,
+    width: 400,
     height: 200,
     objectFit: "contain",
+    
     borderTopLeftRadius: SIZES.xLarge,
     borderTopRightRadius: SIZES.xLarge,
   },

@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   }),
   tabText: (activeGamePlatform, item) => ({
     fontFamily: FONT.medium,
-    color: activeGamePlatform === item ? COLORS.secondary : COLORS.gray2,
+    color: activeGamePlatform === item ? COLORS.grayThunder : COLORS.lightWhite,
   }),
 });
 

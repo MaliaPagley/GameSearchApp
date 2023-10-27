@@ -11,17 +11,14 @@ import useFetch from '../../../hook/useFetch';
 
 const Populargames = () => {
   const router = useRouter();
-  const { data, isLoading, error } = useFetch(
-    'popular', {page: '1', page_size: '10'}) 
 
-    //Destructuring data 
-  const resultsData = data.results
+  const { data, isLoading, error } = useFetch(
+    'popular', {page: '1', page_size: '15'}) 
   
-  const [selectedGame, setSelectedGame] = useState();
   const handleCardPress = (item) => {
     router.push(`/game-details/${item.id}`)
-    setSelectedGame(item.id)
   }
+
 
   return (
     <View style={styles.container}>
@@ -40,17 +37,17 @@ const Populargames = () => {
       ) : (
         
         <FlatList
-            data={resultsData}
+            data={data.results}
             renderItem={({ item }) => (
               <PopularGameCard
                 item={item}
-                selectedGame={item}
                 handleCardPress={handleCardPress}
               />
             )}
             keyExtractor={(item) => item.id}
             contentContainerStyle={{ columnGap: SIZES.medium}}
             horizontal
+            showsHorizontalScrollIndicator={false}
           />
        
       )}

@@ -40,8 +40,8 @@ const NewGameCard = ({ game, handleNavigate, platforms}) => {
   
         <View style={styles.genreContainer} >
         {genreNames.map((genre, index) => (
-          <View style={styles.genreWrapper}>
-            <Text key={index}  style={styles.genre}>
+          <View key={index} style={styles.genreWrapper}>
+            <Text style={styles.genre}>
               {genre}
             </Text>
           </View>

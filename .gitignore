@@ -11,5 +11,10 @@ npm-debug.*
 *.orig.*
 web-build/
 
+# Hosts for local development
+utils/host.js
+
 # macOS
 .DS_Store
+
+

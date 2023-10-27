@@ -5,52 +5,40 @@ import { checkImageURL } from "../../../../utils";
 
 const NoImage = require("../../../../assets/noimage.png")
 
-const PopularGameCard = ({ item, selectedGame, handleCardPress }) => {
-  // console.log(item.results)
+const PopularGameCard = ({ item, handleCardPress }) => {
+  // console.log(item.name)
 
   return (
     <TouchableOpacity
-      style={styles.container(selectedGame, item)}
+      style={styles.container}
       onPress={() => handleCardPress(item)}
     >
       <TouchableOpacity
         onPress={() => handleCardPress(item)}
       >
-      {checkImageURL(item.background_image) ?  
-          <Image
-            source={{
-              uri: item.background_image,
-            }}
-            resizeMode='center'
-            style={styles.logoImage}
-            
-          /> 
-      :
+      {checkImageURL(item.background_image) 
+      ?
         <Image
-            source={NoImage}
-            resizeMode='contain'
-            style={styles.logoImage}
+          source={{
+            uri: item.background_image,
+          }}
+          resizeMode='center'
+          style={styles.backgroundImage}
             
         /> 
+      :
+        <Image
+          source={NoImage}
+          resizeMode='contain'
+          style={styles.backgroundImage}
+        /> 
       }
-    
-        
       </TouchableOpacity>
-      {/* <Text style={styles.gameName} numberOfLines={2}>
-        {item.name}
-      </Text> */}
-
-       {/* <View style={styles.infoContainer}>
-        <Text style={styles.jobName(selectedJob, item)} numberOfLines={1}>
+      <View style={styles.gameNameContainer}>
+       <Text style={styles.gameName} numberOfLines={2}>
           {item.name}
         </Text>
-        <View style={styles.infoWrapper}>
-          <Text style={styles.publisher(selectedJob, item)}>
-            {item?.job_publisher} -
-          </Text>
-          <Text>Name</Text>
-        </View>
-      </View>  */}
+      </View>
     </TouchableOpacity>
   );
 };

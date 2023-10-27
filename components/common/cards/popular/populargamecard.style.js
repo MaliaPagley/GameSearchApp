@@ -3,65 +3,49 @@ import { StyleSheet } from "react-native";
 import { COLORS, FONT, SHADOWS, SIZES } from "../../../../constants";
 
 const styles = StyleSheet.create({
-  container: (selectedGame, item) => ({
+  container: {
     width: 250,
     height: 200,
-    // padding: SIZES.small,
-    // paddingBottom: SIZES.xxLarge,
-    backgroundColor: selectedGame === item.job_id ? COLORS.gray3 : "#FFF",
+    backgroundColor: "#FFF",
     borderRadius: SIZES.medium,
     justifyContent: "space-between",
-    ...SHADOWS.medium,
-    // shadowColor: COLORS.white,
-  }),
-  logoContainer: (selectedGame, item) => ({
-    width: 50,
-    height: 50,
-    backgroundColor: selectedGame === item.id ? "#FFF" : COLORS.white,
-    borderRadius: SIZES.large,
-    justifyContent: "center",
-    alignItems: "center",
-  }),
-  logoImage: {
+    
+  },
+  backgroundImage: {
     width: "100%",
     height: "100%",
     objectFit: "cover",
-    borderRadius: SIZES.small
+    borderRadius: SIZES.small,
+    borderTopLeftRadius: 10, 
+    borderTopRightRadius: 10,
   },
   gameName: {
+    fontFamily: FONT.bold,
     fontSize: SIZES.large,
-    fontFamily: FONT.regular,
-    color: "white",
-    // marginTop: SIZES.xSmall,
-    marginBottom: SIZES.large,
-    paddingLeft: SIZES.small,
-    paddingRight: SIZES.small,
+    color: COLORS.white,
     textAlign: "center",
   },
+  gameNameContainer: {
+    position: "absolute",
+    bottom: 8,
+    left: 0,
+    right: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.4)", 
+    padding: 10, 
+  },  
+
   infoContainer: {
     marginTop: SIZES.large,
   },
-  jobName: (selectedGame, item) => ({
-    fontSize: SIZES.large,
-    fontFamily: FONT.medium,
-    color: selectedGame === item.id ? COLORS.white : COLORS.primary,
-  }),
+
   infoWrapper: {
     flexDirection: "row",
     marginTop: 5,
     justifyContent: "flex-start",
     alignItems: "center",
   },
-  publisher: (selectedGame, item) => ({
-    fontSize: SIZES.medium - 2,
-    fontFamily: FONT.regular,
-    color: selectedGame === item.id ? COLORS.white : COLORS.primary,
-  }),
-  location: {
-    fontSize: SIZES.medium - 2,
-    fontFamily: FONT.regular,
-    color: "#B3AEC6",
-  },
+ 
+
 });
 
 export default styles;

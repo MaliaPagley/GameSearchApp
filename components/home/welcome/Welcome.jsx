@@ -35,6 +35,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
             value={searchTerm}
             onChangeText={(text) => setSearchTerm(text)}
             placeholder="Search for a game"
+            clearTextOnFocus={true}
           />
         </View> 
 

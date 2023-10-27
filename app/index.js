@@ -14,6 +14,7 @@ const Home = () => {
             <Stack.Screen options={{ 
                 headerStyle: { backgroundColor: COLORS.blackOnyx },
                 headerShadowVisible: false,
+                contentStyle: {backgroundColor: COLORS.blackOnyx},
                 // headerLeft: () => (
                 //     <ScreenHeaderBtn iconUrl={ icons.menu } dimension="60%" />
                 // ),

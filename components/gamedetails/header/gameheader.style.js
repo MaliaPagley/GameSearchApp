@@ -9,8 +9,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   backgroundImage: {
-    width: 360,
+    width: 390,
     height: 200,
+    alignSelf: "center",
     borderTopLeftRadius: SIZES.xLarge,
     borderTopRightRadius: SIZES.xLarge,
   },
@@ -18,13 +19,13 @@ const styles = StyleSheet.create({
     padding: SIZES.large,
   },
   gameTitle: {
-    fontSize: SIZES.large,
+    fontSize: SIZES.xLarge,
     color: COLORS.white,
     fontFamily: FONT.bold,
     textAlign: "left",
   },
   gameDevelopers: {
-    fontSize: SIZES.medium - 2,
+    fontSize: SIZES.large - 2,
     color: COLORS.gray,
     fontFamily: FONT.small,
     marginLeft: SIZES.xSmall,

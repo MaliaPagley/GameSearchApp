@@ -4,7 +4,7 @@ require('dotenv').config()
 
 const app = express();
 const PORT = 8000;
-const HOST = "localhost";
+const HOST = "192.168.68.112";
 
 
 const userAgent = { 'UserAgent': 'GameSearchApp (GitHub)'}
@@ -109,21 +109,56 @@ function calculateDateRange() {
 
 //POPULAR GAMES ENDPOINT
 app.get('/popular', (req, res) => {
+  const { page, page_size } = req.query;
+  
   const options = {
     method: 'GET',
-    url: 'https://rawg.io/api/games/lists/popular',
-    params: {key: rawgApiKey},
-    headers: userAgent
+    url: 'https://api.rawg.io/api/games',
+    params: {
+      key: rawgApiKey,
+      page,
+      page_size,
+    },
+    headers: userAgent,
   };
   
-  axios.request(options).then(function (response) {
-    res.json(response.data)
-    
-  }).catch(function (error) {
-    console.error(error);
-    res.status(500).send('Error fetching popular games.');
-  });
-})
+  axios
+    .request(options)
+    .then(function (response) {
+      res.json(response.data);
+    })
+    .catch(function (error) {
+      console.error(error);
+      res.status(500).send('Error fetching popular games.');
+    });
+});
+
+app.get('/platform-games/:id', async (req, res) => {
+  const platformSearch = req.params.id; // Use req.params.id to match the parameter name
+  console.log(platformSearch);
+
+  const options = {
+    method: 'GET',
+    url: 'https://api.rawg.io/api/platforms',
+    params: {
+      key: rawgApiKey,
+      ordering: '-rating',
+      page_size: 20,
+      platforms: platformSearch, // Use the platformSearch to specify the platform parameter
+    },
+    headers: userAgent,
+  };
+
+  axios
+    .request(options)
+    .then(function (response) {
+      res.json(response.data.results);
+    })
+    .catch(function (error) {
+      console.log(error);
+      res.status(500).send('Error fetching platform games.');
+    });
+});
 
 
   // Start the Express server - Npm run dev
