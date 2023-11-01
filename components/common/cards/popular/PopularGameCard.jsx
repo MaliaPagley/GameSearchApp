@@ -5,26 +5,24 @@ import { checkImageURL } from "../../../../utils";
 
 const NoImage = require("../../../../assets/noimage.png")
 
-const PopularGameCard = ({ item, handleCardPress }) => {
-  // console.log(item.name)
+const PopularGameCard = ({ game, handleCardPress }) => {
 
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => handleCardPress(item)}
+      onPress={() => handleCardPress(game)}
     >
       <TouchableOpacity
-        onPress={() => handleCardPress(item)}
+        onPress={() => handleCardPress(game)}
       >
-      {checkImageURL(item.background_image) 
+      {checkImageURL(game.background_image) 
       ?
         <Image
           source={{
-            uri: item.background_image,
+            uri: game.background_image,
           }}
           resizeMode='center'
           style={styles.backgroundImage}
-            
         /> 
       :
         <Image
@@ -36,7 +34,7 @@ const PopularGameCard = ({ item, handleCardPress }) => {
       </TouchableOpacity>
       <View style={styles.gameNameContainer}>
        <Text style={styles.gameName} numberOfLines={2}>
-          {item.name}
+          {game.name}
         </Text>
       </View>
     </TouchableOpacity>

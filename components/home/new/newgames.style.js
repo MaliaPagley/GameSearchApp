@@ -5,6 +5,7 @@ import { COLORS, FONT, SIZES } from "../../../constants";
 const styles = StyleSheet.create({
   container: {
     marginTop: SIZES.xLarge,
+    
   },
   header: {
     flexDirection: "row",
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
   },
   cardsContainer: {
     marginTop: SIZES.medium,
-    gap: SIZES.small,
+    
   },
 });
 

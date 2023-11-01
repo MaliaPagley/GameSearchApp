@@ -12,14 +12,15 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.xLarge,
     backgroundColor: COLORS.blackJungleGreen,
     shadowColor: COLORS.redLight,
-    gap: SIZES.small
+    marginTop: SIZES.medium,
+    marginBottom: SIZES.medium,
+    
   },
   logoContainer: {
     width: 360,
     height: 200,
     backgroundColor: COLORS.redMerlot,
     borderRadius: SIZES.medium,
-    // objectFit: "contain",
     justifyContent: "center",
     alignItems: "center",
     paddingBottom: SIZES.small,
@@ -31,26 +32,22 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     flex: 1,
+    marginTop: SIZES.small,
     marginHorizontal: SIZES.medium,
   },
   gameName: {
-    fontSize: SIZES.large,
+    fontSize: SIZES.xLarge,
     fontFamily: FONT.bold,
     color: COLORS.white,
     textAlign: "center",
   },
-
   platformsContainer: {
-    marginTop: SIZES.large,
     backgroundColor: "#FFF",
     borderRadius: SIZES.medium,
-    padding: SIZES.medium,
-    
   },
   platforms: {
     flexDirection: "row",
     justifyContent: "center",
-    paddingBottom: SIZES.xsmall,
     alignItems: "baseline",
     gap: SIZES.xSmall,
     marginVertical: SIZES.small / 1.25,

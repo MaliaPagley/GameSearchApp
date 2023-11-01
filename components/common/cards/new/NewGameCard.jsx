@@ -5,10 +5,10 @@ import GameSpecifics from "../../../gamedetails/specifics/GameSpecifics";
 
 const NoImage = require("../../../../assets/noimage.png")
 
-const NewGameCard = ({ game, handleNavigate, platforms}) => {
+const NewGameCard = ({ game, handleNavigate }) => {
+  const platformNames = game.platforms ? game.platforms.map(platform => platform.platform.name) : [];
+  const genreNames = game.genres ? game.genres.map(genre => genre.name) : [];
 
-  const genresData = game.genres
-  const genreNames = genresData.map(genre => genre.name);
 
   return (
     <TouchableOpacity
@@ -50,10 +50,10 @@ const NewGameCard = ({ game, handleNavigate, platforms}) => {
 
        <View style={styles.textContainer}>
         <Text style={styles.gameName} numberOfLines={2}>
-          {game.name}
+          {game.name} 
         </Text>
       <View style={styles.platformContainer}>
-        <GameSpecifics platforms={platforms} />
+        <GameSpecifics platforms={platformNames} />
       </View>
       </View> 
     </TouchableOpacity>

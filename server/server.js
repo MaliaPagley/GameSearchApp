@@ -4,7 +4,7 @@ require('dotenv').config()
 
 const app = express();
 const PORT = 8000;
-const HOST = "192.168.68.112";
+const HOST = '192.168.68.112';
 
 
 const userAgent = { 'UserAgent': 'GameSearchApp (GitHub)'}
@@ -76,6 +76,8 @@ app.get('/screenshots/:id', (req, res) => {
 
 //NEW GAMES ENDPOINT (Last 30 days by current date)
 app.get('/new', (req, res) => {
+  const { page, page_size } = req.query;
+  console.log(req.query)
   const options = {
     method: 'GET',
     url: 'https://api.rawg.io/api/games', 
@@ -83,6 +85,7 @@ app.get('/new', (req, res) => {
       key: rawgApiKey,
       ordering: '-added', // Sort by release date in descending order (newest first)
       dates: calculateDateRange(), // Calculate the date range for the last 30 days
+      page: page, page_size: page_size 
     },
     headers: userAgent,
   };
@@ -96,34 +99,30 @@ app.get('/new', (req, res) => {
       res.status(500).send('Error fetching new games.');
     });
 });
+
 //Function that calulates the dates for data fetching
 function calculateDateRange() {
   const currentDate = new Date();
-  const last30Days = new Date();
-  last30Days.setDate(currentDate.getDate() - 30);
+  const Days = new Date(); 
+  Days.setDate(currentDate.getDate() - 180); // Set to last -110 days from current date
 
   // Format the date range as 'YYYY-MM-DD,YYYY-MM-DD'
-  return `${last30Days.toISOString().split('T')[0]},${currentDate.toISOString().split('T')[0]}`;
+  return `${Days.toISOString().split('T')[0]},${currentDate.toISOString().split('T')[0]}`;
 }
 
-
-//POPULAR GAMES ENDPOINT
+// GET POPULAR GAMES 
 app.get('/popular', (req, res) => {
-  const { page, page_size } = req.query;
-  
+  const { page, page_size } = req.query; // Get page and page_size from query parameters
+  console.log(req.query)
   const options = {
     method: 'GET',
     url: 'https://api.rawg.io/api/games',
-    params: {
-      key: rawgApiKey,
-      page,
-      page_size,
-    },
+    params: {key: rawgApiKey, 
+         page: page, page_size: page_size},
     headers: userAgent,
   };
-  
-  axios
-    .request(options)
+
+  axios.request(options)
     .then(function (response) {
       res.json(response.data);
     })
@@ -132,34 +131,6 @@ app.get('/popular', (req, res) => {
       res.status(500).send('Error fetching popular games.');
     });
 });
-
-app.get('/platform-games/:id', async (req, res) => {
-  const platformSearch = req.params.id; // Use req.params.id to match the parameter name
-  console.log(platformSearch);
-
-  const options = {
-    method: 'GET',
-    url: 'https://api.rawg.io/api/platforms',
-    params: {
-      key: rawgApiKey,
-      ordering: '-rating',
-      page_size: 20,
-      platforms: platformSearch, // Use the platformSearch to specify the platform parameter
-    },
-    headers: userAgent,
-  };
-
-  axios
-    .request(options)
-    .then(function (response) {
-      res.json(response.data.results);
-    })
-    .catch(function (error) {
-      console.log(error);
-      res.status(500).send('Error fetching platform games.');
-    });
-});
-
 
   // Start the Express server - Npm run dev
   app.listen(PORT, HOST, () => {

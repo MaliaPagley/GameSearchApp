@@ -20,15 +20,20 @@ const styles = StyleSheet.create({
   tagContainer: {
     paddingLeft: SIZES.medium,
     gap: SIZES.xSmall,
-    marginBottom: SIZES.medium
+    marginBottom: SIZES.medium,
+   
   },
   tagText: {
     color: COLORS.white,
     marginLeft: SIZES.small,
+    fontSize: SIZES.medium,
+    paddingBottom: 5,
+    
   },
   tag: {
     alignItems: "baseline",
     flexDirection: "row",
+    
   }
 
 });

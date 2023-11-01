@@ -10,39 +10,39 @@ const GameSpecifics = ({ platforms, tags }) => {
   // TAG HANDLING SECTION 
   const tagMapping = {
     "Singleplayer": {
-      icon: <Ionicons name="person-circle-outline" size={20} color="white" />,
+      icon: <Ionicons name="person-circle-outline" size={30} color="white" />,
       text: "Singleplayer"
     },
     "Multiplayer": {
-      icon: <Ionicons name="people-circle-outline" size={20} color="white" />,
+      icon: <Ionicons name="people-circle-outline" size={30} color="white" />,
       text: "Multiplayer"
     },
     "Open World": {
-      icon: <Ionicons name="earth-outline" size={20} color="white" />,
+      icon: <Ionicons name="earth-outline" size={30} color="white" />,
       text: "Open World"
     },
     "open-world": {
-      icon: <Ionicons name="earth-outline" size={20} color="white" />,
+      icon: <Ionicons name="earth-outline" size={30} color="white" />,
       text: "Open World"
     },
     "Online Co-Op": {
-      icon: <Ionicons name="globe-outline" size={20} color="white" />,
+      icon: <Ionicons name="globe-outline" size={30} color="white" />,
       text: "Online Co-Op"
     },
     "Local Co-Op": {
-      icon: <Ionicons name="people-outline" size={20} color="white" />,
+      icon: <Ionicons name="people-outline" size={30} color="white" />,
       text: "Local Co-Op"
     } ,
     "Moddable" : {
-      icon: <Ionicons name="settings-outline" size={20} color="white" />,
+      icon: <Ionicons name="settings-outline" size={30} color="white" />,
       text: "Moddable"
     },
     "modding" : {
-      icon: <Ionicons name="settings-outline" size={20} color="white" />,
+      icon: <Ionicons name="settings-outline" size={30} color="white" />,
       text: "Moddable"
     },
     "Sandbox" : {
-      icon: <Ionicons name="expand-outline" size={20} color="white" />,
+      icon: <Ionicons name="expand-outline" size={30} color="white" />,
       text: "Sandbox"
     },
   };

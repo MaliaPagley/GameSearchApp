@@ -1,43 +1,54 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, ActivityIndicator, FlatList } from 'react-native';
 import { useRouter } from 'expo-router';
-import { COLORS } from '../../../constants';
+import { COLORS, SIZES } from '../../../constants';
 import styles from './newgames.style';
 import NewGameCard from '../../common/cards/new/NewGameCard';
-import useFetch from '../../../hook/useFetch';
+import useInfiniteList from '../../../hook/useInfiniteList';
+import { FlashList } from "@shopify/flash-list";
 
 const Newgames = () => {
   const router = useRouter();
-  const { data, isLoading, error } = useFetch('new', { page: '1', page_size: '5' });
+  const { games, loadingList, listError, loadMoreGames } = useInfiniteList('new');
 
-  // Destructuring data
-  const resultsData = data.results;
+  const handleEndReached = () => {
+    // Check if the user has reached the end of the list, and then call loadMoreGames.
+    if (!loadingList && games.length > 0) {
+      const lastGame = games[games.length - 1];
+      if (lastGame.id) {
+        loadMoreGames();
+        console.log("Last Game in list - new:", lastGame.id)
+      }
+    }
+  };
+
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>New Games</Text>
-        <TouchableOpacity>
-          <Text style={styles.headerBtn}>Show all</Text>
-        </TouchableOpacity>
       </View>
 
-      <View style={styles.cardsContainer}>
-        {isLoading ? (
+      <View style={{ minHeight: 2 }}>
+        {loadingList ? (
           <ActivityIndicator size="large" colors={COLORS.primary} />
-        ) : error ? (
+        ) : listError ? (
           <Text>Something went wrong</Text>
         ) : (
-          resultsData?.map((game) => (
-            <NewGameCard
-              game={game}
-              genre={game.genres.map((genre) => genre.name).join(' ')}
-              platforms={game.platforms.map(platforms => platforms.platform.name)}
-
-              key={`new-game-${game?.id}`}
-              handleNavigate={() => router.push(`/game-details/${game.id}`)}
-            />
-          ))
+          <FlashList
+            data={games}
+            renderItem={({ item }) => (
+              <NewGameCard
+                game={item}
+                handleNavigate={() => router.push(`/game-details/${item.id}`)}
+              />
+            )}
+            estimatedItemSize={5}
+            keyExtractor={(item, index) => `new-game-${item.id}-${index}`}
+            onEndReached={handleEndReached} // Call handleEndReached when the end is reached
+            onEndReachedThreshold={0.1} // Adjust this threshold as needed
+            ListFooterComponent={loadingList ? <ActivityIndicator size="large" color="white" /> : null}
+          />
         )}
       </View>
     </View>
@@ -45,3 +56,5 @@ const Newgames = () => {
 };
 
 export default Newgames;
+
+
