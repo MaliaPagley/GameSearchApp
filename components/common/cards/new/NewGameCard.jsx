@@ -34,8 +34,6 @@ const NewGameCard = ({ game, handleNavigate }) => {
           style={styles.logoImage}
       />
       }
-    
-        
       </TouchableOpacity>
   
         <View style={styles.genreContainer} >
@@ -54,6 +52,7 @@ const NewGameCard = ({ game, handleNavigate }) => {
         </Text>
       <View style={styles.platformContainer}>
         <GameSpecifics platforms={platformNames} />
+        
       </View>
       </View> 
     </TouchableOpacity>

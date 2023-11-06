@@ -7,8 +7,8 @@ const PORT = 8000;
 const HOST = '192.168.68.112';
 
 
-const userAgent = { 'UserAgent': 'GameSearchApp (GitHub)'}
-const rawgApiKey = process.env.RAWG_KEY;
+const userAgent = { 'UserAgent': ''}
+const rawgApiKey = process.env.RAWG_KEY_TESTER;
 
 
 //GET GAME DETAILS BY ID 
@@ -74,17 +74,17 @@ app.get('/screenshots/:id', (req, res) => {
     });
 });
 
-//NEW GAMES ENDPOINT (Last 30 days by current date)
+//NEW GAMES ENDPOINT
 app.get('/new', (req, res) => {
   const { page, page_size } = req.query;
-  console.log(req.query)
+  console.log("/new: ", req.query)
   const options = {
     method: 'GET',
     url: 'https://api.rawg.io/api/games', 
     params: {
       key: rawgApiKey,
       ordering: '-added', // Sort by release date in descending order (newest first)
-      dates: calculateDateRange(), // Calculate the date range for the last 30 days
+      dates: calculateDateRange(), // Calculate the date range 
       page: page, page_size: page_size 
     },
     headers: userAgent,
@@ -104,7 +104,7 @@ app.get('/new', (req, res) => {
 function calculateDateRange() {
   const currentDate = new Date();
   const Days = new Date(); 
-  Days.setDate(currentDate.getDate() - 180); // Set to last -110 days from current date
+  Days.setDate(currentDate.getDate() - 180); // Set to last -180 days from current date
 
   // Format the date range as 'YYYY-MM-DD,YYYY-MM-DD'
   return `${Days.toISOString().split('T')[0]},${currentDate.toISOString().split('T')[0]}`;
@@ -113,7 +113,7 @@ function calculateDateRange() {
 // GET POPULAR GAMES 
 app.get('/popular', (req, res) => {
   const { page, page_size } = req.query; // Get page and page_size from query parameters
-  console.log(req.query)
+  console.log("/popular: ", req.query)
   const options = {
     method: 'GET',
     url: 'https://api.rawg.io/api/games',
@@ -131,6 +131,7 @@ app.get('/popular', (req, res) => {
       res.status(500).send('Error fetching popular games.');
     });
 });
+
 
   // Start the Express server - Npm run dev
   app.listen(PORT, HOST, () => {

@@ -17,7 +17,7 @@ const gamePlatforms = ['Xbox', 'PlayStation', 'Mac', 'PC (Microsoft Windows)', '
 
 const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
   const router = useRouter();
-  const [ activeGamePlatform, setGamePlatform ] = useState('PlayStation') 
+  const [ activeGamePlatform, setGamePlatform ] = useState('') 
 
   return (
     <View>

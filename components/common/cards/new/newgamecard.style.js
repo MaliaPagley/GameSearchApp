@@ -14,7 +14,15 @@ const styles = StyleSheet.create({
     shadowColor: COLORS.redLight,
     marginTop: SIZES.medium,
     marginBottom: SIZES.medium,
-    
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
   },
   logoContainer: {
     width: 360,
@@ -24,6 +32,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingBottom: SIZES.small,
+
   },
   logoImage: {
     width: 350,

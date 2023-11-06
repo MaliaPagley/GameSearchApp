@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     borderRadius: SIZES.medium,
     justifyContent: "space-between",
-    marginLeft: SIZES.large,
+    marginRight: SIZES.large,
   },
   backgroundImage: {
     width: "100%",
