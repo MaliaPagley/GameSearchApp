@@ -48,6 +48,8 @@ export default function SignUp() {
                 placeholder="******"
                 value={password}
                 onChangeText={setPassword}
+                autoCapitalize="none"
+                secureTextEntry={true}
             />
             <Button 
                 title="Sign Up"

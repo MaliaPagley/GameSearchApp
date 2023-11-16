@@ -28,6 +28,7 @@ export default function SignIn() {
     const router = useRouter();
     const { setUser } = useAuth();
 
+
     const onHandlerSignIn = async () => {
         const response = await signInWithEmailAndPassword(auth, email, password);
 
@@ -46,10 +47,13 @@ export default function SignIn() {
                 onChangeText={setEmail}
             />
             <TextInput 
-             style={styles.input}
-             placeholder="******"
-             value={password}
-             onChangeText={setPassword}
+                style={styles.input}
+                placeholder="******"
+                value={password}
+                onChangeText={setPassword}
+                autoCapitalize="none"
+                secureTextEntry={true}
+                
             />
             <Button 
                 title="Sign In"
