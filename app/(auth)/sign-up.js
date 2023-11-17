@@ -3,6 +3,7 @@ import { useRouter } from 'expo-router';
 import { useState } from 'react'
 import { app } from '../../firebase'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 const styles = StyleSheet.create({
     container: {
@@ -26,17 +27,27 @@ export default function SignUp() {
     const [password, setPassword] = useState('');
 
     const auth = getAuth(app);
+    const db = getFirestore(app);
     const router = useRouter();
 
     const onHandlerSignup = async () => {
-        const response = await createUserWithEmailAndPassword(auth, email, password);
-        console.warn({ response });
-    }
-
+        try {
+          const response = await createUserWithEmailAndPassword(auth, email, password);
+          const user = response.user;
+          // Create a Firestore collection for the user
+          await addDoc(collection(db, 'users'), {
+            uid: user.uid,
+            favorites: [] 
+          });
     
+          console.warn({ response });
+        } catch (error) {
+          console.error('Error signing up:', error.message);
+        }
+      }
+
     return (
         <View style={styles.container}>
-            {/* <Text>Sign In</Text> */}
             <TextInput 
                 style={styles.input}
                 placeholder="x@domain.com"
