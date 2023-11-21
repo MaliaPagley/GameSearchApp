@@ -24,6 +24,9 @@ blackDecent: "#121111",
   blackJungleGreen: "#1A1F26",
  //For Base
   blackMirage: "#15191F",
+  //Screens
+  blackNavy: "#222831",
+  
 
  redLight: "#F33535",
  redDark: "#A51C2D",

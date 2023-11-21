@@ -1,7 +1,7 @@
 import { View, Text, SafeAreaView, StyleSheet, Button, FlatList } from 'react-native'
 import React, { useState, useEffect } from 'react'
-import { useAuth } from '../../context/auth'
-import { COLORS, FONT } from '../../constants'
+import { useAuth } from '../context/auth'
+import { COLORS, FONT } from '../constants'
 import { Ionicons } from '@expo/vector-icons';
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 

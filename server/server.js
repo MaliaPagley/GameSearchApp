@@ -4,7 +4,7 @@ require('dotenv').config()
 
 const app = express();
 const PORT = 8000;
-const HOST = '192.168.68.112';
+const HOST = 'localhost';
 
 
 const userAgent = { 'UserAgent': ''}
