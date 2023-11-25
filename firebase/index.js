@@ -22,5 +22,4 @@ initializeAuth(app, {
   persistence: getReactNativePersistence(ReactNativeAsyncStorage)
 });
 
-
-export {app, getApp, getAuth };
+export {app, getApp, getAuth};

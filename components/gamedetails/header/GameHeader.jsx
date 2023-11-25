@@ -1,72 +1,85 @@
-import React from 'react'
-import { View, Text, Image, TouchableOpacity, Button } from 'react-native'
+import { useState } from 'react'
+import { View, Text, Image, Pressable} from 'react-native'
 import styles from './gameheader.style'
 import { checkImageURL } from '../../../utils'
 import { useAuth } from '../../../context/auth';
-import { getFirestore, doc, updateDoc, arrayUnion, setDoc, getDoc } from 'firebase/firestore';
-import { COLORS } from '../../../constants';
+import { getFirestore, doc, updateDoc, setDoc, getDoc } from 'firebase/firestore';
+import { Ionicons } from '@expo/vector-icons';
 
 const NoImage = require("../../../assets/noimage.png");
 
-const GameHeader = ({ image, name, developers, released }) => {
+const GameHeader = ({ image, name, developers, released, id }) => {
+  const [isPressed, setIsPressed] = useState(false);
   const { user } = useAuth();
   const allDevelopers = developers.map(developer => developer.name).join(' / ');
 
-  const addToFavorites = async () => {
+
+  const addToFavorites = async (id, name) => {
     const db = getFirestore();
     const userDocRef = doc(db, 'users', user.uid);
   
     try {
-      // Check if the user's document already exists
       const userDocSnap = await getDoc(userDocRef);
-  
       if (userDocSnap.exists()) {
-        // If the document exists, update it to add the game to favorites
+        const userData = userDocSnap.data();
+        const updatedFavorites = [...userData.favorites, { id, name }];
         await updateDoc(userDocRef, {
-          favorites: arrayUnion(name),
+          favorites: updatedFavorites,
         });
+  
         console.log('Game added to favorites successfully!');
       } else {
-        // If the document doesn't exist, create it and add the game to favorites
         await setDoc(userDocRef, {
           uid: user.uid,
-          favorites: [name],
+          favorites: [{ id, name }],
         });
+  
         console.log('User document created, and game added to favorites successfully!');
       }
     } catch (error) {
       console.error('Error adding game to favorites:', error.message);
     }
   };
+
+  const handlePressIn = () => {
+    setIsPressed(true);
+  };
+
+  const handlePressOut = () => {
+    setIsPressed(false);
+  };
   
 
   return (
     // Main Image / Game Title / Developers
     <View style={styles.container}>
-      <View>
-        {checkImageURL(image) ? (
-          <Image
-            source={{
-              uri: image,
-            }}
-            style={styles.backgroundImage}
-          />
-        ) : (
-          // No Image
-          <Image
-            source={NoImage}
-            resizeMode='contain'
-            style={styles.backgroundImage}
-          />
-        )}
-      </View>
+    <View>
+      {checkImageURL(image) ? (
+        <Image source={{ uri: image }} style={styles.backgroundImage} />
+      ) : (
+        // No Image
+        <Image source={NoImage} resizeMode="contain" style={styles.backgroundImage} />
+      )}
+    </View>
+    <View style={styles.gameInfoContainer}>
       <View style={styles.gameTitleBox}>
         <Text style={styles.gameTitle}>{name}</Text>
         <Text style={styles.gameDevelopers}>{allDevelopers}</Text>
         <Text style={styles.date}>Release Date: {released}</Text>
-        <Button onPress={addToFavorites} title="Add to Favorites" color={COLORS.white}/>
       </View>
+      <Pressable 
+        onPress={() => addToFavorites(id, name)}
+        style={({ pressed }) => [
+          ,{
+          opacity: pressed || isPressed ? 0.7 : 1,
+          },]}
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
+        >
+        <Ionicons name="add-circle-outline" size={30} color={'white'} />
+      </Pressable>
     </View>
+  </View>
   );
 };
 

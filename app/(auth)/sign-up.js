@@ -1,52 +1,41 @@
 import { useState } from 'react'
-import { View, TextInput, Pressable, Text, Alert } from 'react-native'
+import { View, TextInput, Pressable, Text } from 'react-native'
 import { useRouter, Stack } from 'expo-router';
-import { app, getAuth } from '../../firebase'
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
-import styles from '../../styles/signup.style'
+import { useAuth } from '../../context/auth';
 import { COLORS } from '../../constants';
+import styles from '../../styles/signup.style'
+import useSignUp from '../../hook/useSignup';
 
 export default function SignUp() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    const auth = getAuth(app);
-    const db = getFirestore(app);
+    const [isPressed, setIsPressed] = useState(false);
+    const { setUser } = useAuth();
+    const { signUp } = useSignUp();
     const router = useRouter();
 
-    const onHandlerSignup = async () => {
-        try {
-            const response = await createUserWithEmailAndPassword(auth, email, password);
-            const user = response.user;
-    
-            // Create a Firestore collection for the user
-            await addDoc(collection(db, 'users'), {
-                uid: user.uid,
-                favorites: []
-            });
-        } catch (error) {
-            console.error('Error signing up:', error.message);
-    
-            if (error.code === "auth/email-already-in-use") {
-                Alert.alert("Error", "This email is already in use. Please use a different email address or signin.");
-            } else {
-                Alert.alert("Error", "An unexpected error occurred. Please try again later.");
-            }
-        }
+    const handlePressIn = () => {
+        setIsPressed(true)
+    }
+    const handlePressOut = () => {
+        setIsPressed(false)
+    }
+
+    const onHandlerSignUp = async () => {
+        signUp(email, password, setUser);
     };
-    
+   
 
     return (
         <View style={styles.container}>
-               <Stack.Screen 
-            options={{
-                headerStyle: { backgroundColor: COLORS.blackOnyx },
-                headerShadowVisible: false,
-                contentStyle: {backgroundColor: COLORS.white},
-                title: '',
-                headerShown: false,
-            }}
+            <Stack.Screen 
+                options={{
+                    headerStyle: { backgroundColor: COLORS.blackOnyx },
+                    headerShadowVisible: false,
+                    contentStyle: {backgroundColor: COLORS.white},
+                    title: '',
+                    headerShown: false,
+                }}
             />
             <View style={styles.headerContainer}>
                 <Text style={styles.headerTextOne}>Welcome!</Text>
@@ -76,7 +65,15 @@ export default function SignUp() {
             </View>
 
             <View style={styles.actionContainer}>
-                <Pressable style={styles.signupBtn} onPress={onHandlerSignup}>
+                <Pressable 
+                    style={({ pressed }) => [
+                        styles.signupBtn,{
+                            opacity: pressed || isPressed ? 0.7 : 1,
+                        },]} 
+                    onPress={onHandlerSignUp}
+                    onPressIn={handlePressIn}
+                    onPressOut={handlePressOut}
+                >
                     <Text style={styles.signupText}>Sign up</Text>
                 </Pressable>
 
@@ -87,4 +84,4 @@ export default function SignUp() {
 
         </View>
     )
-}
+};

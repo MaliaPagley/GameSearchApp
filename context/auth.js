@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useSegments, useRootNavigationState, useRouter } from "expo-router";
 
+
+const router = useRouter()
 const AuthContext = createContext(null);
 
 export function useAuth() {
@@ -9,7 +11,6 @@ export function useAuth() {
 
 function useProtectedRoute(user) {
     const segments = useSegments();
-    const router = useRouter();
     const navigationState = useRootNavigationState();
 
     useEffect(() => {
@@ -28,17 +29,15 @@ function useProtectedRoute(user) {
 
 export function Provider({ children }) {
     const [user, setUser ] = useState(null);
-
     useProtectedRoute(user);
 
-    const signIn = () => {};
-
-    const signUp = () => {};
-
-    const signOut = () => {};
+    const signOut = () => {
+        setUser(null);
+        router.replace('/sign-in');
+    };
 
     return (
-        <AuthContext.Provider value={{ setUser, user, signIn, signUp, signOut}}>
+        <AuthContext.Provider value={{ setUser, user, signOut}}>
             {children}
         </AuthContext.Provider>
     )

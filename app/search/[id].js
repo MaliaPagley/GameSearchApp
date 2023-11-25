@@ -3,7 +3,6 @@ import { ActivityIndicator, FlatList, Image, TouchableOpacity, View } from 'reac
 import { Stack, useRouter, useLocalSearchParams } from 'expo-router'
 import { Text, SafeAreaView } from 'react-native'
 import axios from 'axios'
-
 import { ScreenHeaderBtn, NewGameCard } from '../../components'
 import { COLORS, icons, SIZES } from '../../constants'
 import styles from '../../styles/search'
@@ -12,7 +11,6 @@ import { CURRENT_HOST } from '../../utils/host'
 
 const GameSearch = () => {
     const params = useLocalSearchParams();
-    // console.log(params.id)
     const router = useRouter();
 
     const [searchResult, setSearchResult] = useState([]);

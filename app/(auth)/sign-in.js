@@ -1,54 +1,43 @@
-import { View, TextInput, Pressable, Text, Alert} from 'react-native'
+import { View, TextInput, Pressable, Text } from 'react-native'
 import { useState } from 'react'
 import { useRouter, Stack } from 'expo-router';
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import { app, getAuth } from '../../firebase'
 import { useAuth } from '../../context/auth';
 import { COLORS } from '../../constants';
 import styles from '../../styles/signin.style'
-
+import useSignIn from '../../hook/useSignin';
 
 
 export default function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    const auth = getAuth(app);
-    const router = useRouter();
+    const [isPressed, setIsPressed] = useState(false);
     const { setUser } = useAuth();
+    const { signIn } = useSignIn();
+    const router = useRouter();
 
-
-    const onHandlerSignIn = async () => {
-        try {
-            const response = await signInWithEmailAndPassword(auth, email, password);
+    const handlePressIn = () => {
+        setIsPressed(true);
+      };
     
-            if (response.user) {
-                setUser(response.user);
-            } else {
-                Alert.alert("Error", "Authentication failed. Please check your credentials and try again.");
-            }
-        } catch (error) {
-            console.error("Sign-in error:", error.message);
+      const handlePressOut = () => {
+        setIsPressed(false);
+      };
 
-            if (error.code === "auth/invalid-login-credentials") {
-                Alert.alert("Error", "Invalid login credentials. Please check your email and password.");
-            } else {
-                Alert.alert("Error", "An unexpected error occurred. Please try again later.");
-            }
-        }
-    };
+      const onHandlerSignIn = async () => {
+        signIn(email, password, setUser);
+      };
       
 
     return (
         <View style={styles.container}>
             <Stack.Screen 
-            options={{
-                headerStyle: { backgroundColor: COLORS.blackOnyx },
-                headerShadowVisible: false,
-                contentStyle: {backgroundColor: COLORS.blackNavy},
-                title: '',
-                headerShown: false,
-            }}
+                options={{
+                    headerStyle: { backgroundColor: COLORS.blackOnyx },
+                    headerShadowVisible: false,
+                    contentStyle: {backgroundColor: COLORS.blackNavy},
+                    title: '',
+                    headerShown: false,
+                }}
             />
             <View style={styles.headerContainer}>
                 <Text style={styles.headerTextOne}>Welcome!</Text>
@@ -78,7 +67,15 @@ export default function SignIn() {
             </View>
 
             <View style={styles.actionContainer}>
-                <Pressable style={styles.signinBtn} onPress={onHandlerSignIn}>
+                <Pressable 
+                    style={({ pressed }) => [
+                        styles.signinBtn,{
+                        opacity: pressed || isPressed ? 0.7 : 1,
+                        },]}
+                    onPress={onHandlerSignIn}
+                    onPressIn={handlePressIn}
+                    onPressOut={handlePressOut}
+                >
                     <Text style={styles.signinText}>Sign in</Text>
                 </Pressable>
 
@@ -88,4 +85,4 @@ export default function SignIn() {
             </View>
         </View>
     )
-}
+};

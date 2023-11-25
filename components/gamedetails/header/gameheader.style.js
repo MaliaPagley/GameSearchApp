@@ -34,8 +34,12 @@ const styles = StyleSheet.create({
     color: COLORS.grayThunder,
     fontFamily: FONT.bold,
     marginLeft: SIZES.xSmall,
-  }
-
+  },
+  gameInfoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between', // Aligns items along the main axis (horizontal) with space between them
+    alignItems: 'center',
+  },
 });
 
 export default styles;

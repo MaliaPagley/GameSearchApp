@@ -1,4 +1,5 @@
 import { View, Text, ActivityIndicator, Pressable } from 'react-native';
+import { useState } from 'react';
 import { useRouter } from 'expo-router';
 import { COLORS } from '../../../constants';
 import styles from './newgames.style';
@@ -9,6 +10,15 @@ import { FlashList } from "@shopify/flash-list";
 const Newgames = () => {
   const router = useRouter();
   const { games, loadingList, listError, loadMoreGames } = useInfiniteList('new');
+  const [isPressed, setIsPressed] = useState(false);
+
+  const handlePressIn = () => {
+    setIsPressed(true);
+  };
+
+  const handlePressOut = () => {
+    setIsPressed(false);
+  };
 
   return (
     <View style={styles.container}>
@@ -35,7 +45,15 @@ const Newgames = () => {
             keyExtractor={(item, index) => `new-game-${item.id}-${index}`}
           />
           
-          <Pressable style={styles.loadMoreBtn} onPress={loadMoreGames}>
+          <Pressable 
+            style={({ pressed }) => [
+              styles.loadMoreBtn,{
+              opacity: pressed || isPressed ? 0.7 : 1,
+            },]}
+            onPress={loadMoreGames}
+            onPressIn={handlePressIn}
+            onPressOut={handlePressOut}
+          >
               <Text style={styles.btnText}>{'Load More Games'}</Text>
           </Pressable>
           </>

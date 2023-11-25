@@ -1,13 +1,14 @@
-import { Stack, Link } from 'expo-router' 
+import { Stack, Link, useRouter } from 'expo-router' 
 
 import { useFonts } from 'expo-font'
-
+import { ScreenHeaderBtn } from '../components'
 import { Provider } from '../context/auth'
-import { COLORS } from '../constants'
+import { COLORS, icons } from '../constants'
 import { Ionicons } from '@expo/vector-icons';
 
 
 const Layout = () => {
+  const router = useRouter()
   const [fontsLoaded] = useFonts({
     "dm-bold": require("../assets/fonts/DMSans-Bold.ttf"),
     "dm-medium": require("../assets/fonts/DMSans-Medium.ttf"),
@@ -43,9 +44,14 @@ const Layout = () => {
                 headerShadowVisible: false,
                 contentStyle: {backgroundColor: COLORS.blackOnyx},
                 headerLeft: () => (
-                    <Link href="/"><Ionicons name={'chevron-back-circle-sharp'} size={40} color={COLORS.white}/></Link>
+                    // <Link href="/"><Ionicons name={'chevron-back-circle-sharp'} size={40} color={COLORS.white}/></Link>
+                    <ScreenHeaderBtn 
+                    iconUrl={icons.left}
+                    dimension="60%"
+                    handlePress={() => router.back()}
+                />
                 ),
-                title: ''
+                title: 'Profile'
             }}
             />
         </Stack>
