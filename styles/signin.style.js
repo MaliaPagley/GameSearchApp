@@ -6,37 +6,21 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
+        gap: 50,
+        padding: 10,
+    },
+    inputContainer: {
         alignItems: 'center',
     },
     input: {
-        borderBottomColor: COLORS.redLight,
+        borderBottomColor: COLORS.white,
         color: COLORS.white,
         borderBottomWidth: 1,
-        width: 230,
+        width: 300,
         paddingVertical: 10,
-        fontSize: 20,
+        fontSize: 25,
         marginVertical: 10,
     },
-    title: {
-        textAlign: "left",
-        fontSize: 15,
-        color: COLORS.white,
-    },
-    signinBtn: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingVertical: 15,
-        paddingHorizontal: 100,
-        borderRadius: 10,
-        elevation: 3,
-        backgroundColor: COLORS.white,
-      },
-      signinText: {
-        fontSize: 16,
-        lineHeight: 21,
-        letterSpacing: 0.25,
-        color: COLORS.blackNavy,
-      },
       actionContainer: {
         marginTop: 50,
         gap: 15,
@@ -46,21 +30,38 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
       }, 
       signUpLinkText: {
-        color: "#39A7FF",
+        color: COLORS.link,
         fontSize: 15,
       },
+      signinBtn: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 15,
+        paddingHorizontal: 100,
+        borderRadius: 10,
+        elevation: 3,
+        backgroundColor: COLORS.white,
+        marginLeft: 20,
+        marginRight: 20,
+      },
+      signinText: {
+        fontSize: 16,
+        lineHeight: 21,
+        letterSpacing: 0.25,
+        color: COLORS.blackNavy,
+      },
       headerContainer: {
-        textAlign: 'center',
-        marginBottom: 30, 
+        marginBottom: 50, 
+        alignItems: 'center'
       },
       headerTextOne: {
         fontSize: 40,
-        textAlign: 'center',
-        color: COLORS.white
+        color: COLORS.white,
+        fontFamily: FONT.extraBold,
       },
       headerTextTwo: {
         color: COLORS.white,
-        fontSize: 15
+        fontSize: 15,
       },
 })
 export default styles;

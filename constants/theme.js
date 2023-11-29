@@ -26,12 +26,16 @@ blackDecent: "#121111",
   blackMirage: "#15191F",
   //Screens
   blackNavy: "#222831",
+  grayNavy: "#383d45",
   
 
- redLight: "#F33535",
- redDark: "#A51C2D",
+ redLight: "#f05454",
+ redDark: "#481919",
 
- grayThunder: "#444444"
+ grayThunder: "#444444",
+
+ placeHolder: "#4e525a",
+ link: "#39A7FF",
 
 };
 
@@ -39,6 +43,7 @@ const FONT = {
   regular: "dm-regular",
   medium: "dm-medium",
   bold: "dm-bold",
+  extraBold: "dm-extraBold",
 };
 
 const SIZES = {

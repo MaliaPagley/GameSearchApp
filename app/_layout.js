@@ -13,6 +13,7 @@ const Layout = () => {
     "dm-bold": require("../assets/fonts/DMSans-Bold.ttf"),
     "dm-medium": require("../assets/fonts/DMSans-Medium.ttf"),
     "dm-regular": require("../assets/fonts/DMSans-Regular.ttf"),
+    "dm-extraBold": require("../assets/fonts/DMSans-ExtraBold.ttf")
   });
 
   if (!fontsLoaded) {
@@ -44,7 +45,6 @@ const Layout = () => {
                 headerShadowVisible: false,
                 contentStyle: {backgroundColor: COLORS.blackOnyx},
                 headerLeft: () => (
-                    // <Link href="/"><Ionicons name={'chevron-back-circle-sharp'} size={40} color={COLORS.white}/></Link>
                     <ScreenHeaderBtn 
                     iconUrl={icons.left}
                     dimension="60%"

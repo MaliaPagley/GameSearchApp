@@ -1,80 +1,66 @@
 import { StyleSheet } from "react-native";
-
 import { COLORS, FONT, SIZES } from "../constants";
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+      flex: 1,
+      justifyContent: 'center',
+      gap: 50,
+      padding: 10,
+    },
+    inputContainer: {
+      alignItems: 'center',
     },
     input: {
-        borderBottomColor: COLORS.redLight,
-        color: COLORS.blackNavy,
+        borderBottomColor: COLORS.white,
+        color: COLORS.white,
         borderBottomWidth: 1,
-        width: 230,
+        width: 300,
         paddingVertical: 10,
-        fontSize: 20,
+        fontSize: 25,
         marginVertical: 10,
     },
-    title: {
-        textAlign: "left",
+    actionContainer: {
+        marginTop: 50,
+        gap: 15,
+    },  
+      signinLinkBtn: {
+        alignItems: 'center',
+        justifyContent: 'center',
+      }, 
+      signinLinkText: {
+        color: COLORS.link,
         fontSize: 15,
-        color: COLORS.white,
-    },
-    signupBtn: {
+      },
+      signupBtn: {
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 15,
         paddingHorizontal: 100,
         borderRadius: 10,
         elevation: 3,
-        backgroundColor: COLORS.blackNavy,
+        backgroundColor: COLORS.white,
+        marginLeft: 20,
+        marginRight: 20,
       },
       signupText: {
         fontSize: 16,
         lineHeight: 21,
         letterSpacing: 0.25,
-        color: COLORS.white,
-      },
-      actionContainer: {
-        marginTop: 50,
-        gap: 15,
-      },  
-      signinLinkBtn: {
-        alignItems: 'center',
-        justifyContent: 'center',
-      }, 
-      signinLinkText: {
-        color: "#39A7FF",
-        fontSize: 15,
+        color: COLORS.blackNavy,
       },
       headerContainer: {
-        textAlign: 'center',
-        marginBottom: 30, 
+        marginBottom: 50, 
+        alignItems: 'center'
       },
       headerTextOne: {
         fontSize: 40,
-        textAlign: 'center',
-        color: COLORS.blackNavy
+        color: COLORS.white,
+        fontFamily: FONT.extraBold
       },
       headerTextTwo: {
-        color: COLORS.blackNavy,
-        textAlign: 'center',
+        color: COLORS.white,
         fontSize: 15
       },
-      logo: {
-        height: 170,
-        width: 170
-      },
-      logoContainer: {
-        marginBottom: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-      logoText: {
-        color: COLORS.white,
-        fontSize: 20,
-      }
 })
 export default styles;
