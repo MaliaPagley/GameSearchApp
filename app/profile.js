@@ -1,61 +1,18 @@
-import { View, Text, ScrollView, SafeAreaView, StyleSheet, Button, FlatList, Pressable } from 'react-native'
+import { View, Text, Button, FlatList, Pressable, ActivityIndicator } from 'react-native'
 import { useRouter } from 'expo-router'
 import React, { useState, useEffect } from 'react'
 import { useAuth } from '../context/auth'
-import { COLORS, FONT, SIZES } from '../constants'
 import { Ionicons } from '@expo/vector-icons';
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
-import { NewGameCard } from '../components';
+import styles from '../styles/profile.style'
+import { COLORS } from '../constants';
 
 const router = useRouter()
-const styles = StyleSheet.create({
-  container: {
-   flex: 1,
-   padding: SIZES.small,
-  },
-  profileContainer: {
-    color: COLORS.white,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: COLORS.blackJungleGreen,
-    width: "100%",
-    borderRadius: 20,
-   
-  },
-  email: {
-    color: COLORS.white,
-    fontFamily: FONT.bold,
-  },
-  signOut: {
-    color: COLORS.actionBlue
-  },
-  favoritesHeader: {
-    color: COLORS.white,
-    fontFamily: FONT.bold,
-    fontSize: 20, 
-    justifyContent: "center",
-    padding: 10,
-  },
-  favoritesContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between', 
-    marginBottom: 15,
-    backgroundColor: COLORS.blackMirage,
-    padding: 10,
-    borderRadius: 15,
-  },
-  favoritesText: {
-    color: COLORS.white,
-    fontSize: 15,
-    fontFamily: FONT.regular,
-    marginLeft: 15,
-  },
-})
 
 const Profile = () => {
   const { signOut, user } = useAuth();
-  const [ favorites, setFavorites ] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+  const [loading, setLoading] = useState(true);
   const db = getFirestore();
 
   useEffect(() => {
@@ -68,8 +25,11 @@ const Profile = () => {
           const userFavorites = doc.data().favorites || [];
           setFavorites(userFavorites);
         });
+
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching favorites:', error.message);
+        setLoading(false);
       }
     };
 
@@ -77,7 +37,6 @@ const Profile = () => {
   }, [user.uid, db]);
 
   const handleSignOut = () => {
-    // Call the signOut function
     signOut();
   };
 
@@ -95,7 +54,10 @@ const Profile = () => {
     </View>
       <Text style={styles.favoritesHeader}>My Favorites:</Text>
     <View style={styles.container}>
-      <FlatList
+      { loading ? (
+      <ActivityIndicator size="large" color={COLORS.white} /> 
+      ) : (
+        <FlatList
         data={favorites}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
@@ -107,15 +69,15 @@ const Profile = () => {
                 size={30} 
                 color="white" 
               />
-            
           </View>
           </Pressable>
         )}
       />
+      )}
     </View>
   </View>
 
-  )
-}
+  );
+};
 
 export default Profile;
