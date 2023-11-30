@@ -26,15 +26,11 @@ const GameHeader = ({ image, name, developers, released, id }) => {
         await updateDoc(userDocRef, {
           favorites: updatedFavorites,
         });
-  
-        console.log('Game added to favorites successfully!');
       } else {
         await setDoc(userDocRef, {
           uid: user.uid,
           favorites: [{ id, name }],
         });
-  
-        console.log('User document created, and game added to favorites successfully!');
       }
     } catch (error) {
       console.error('Error adding game to favorites:', error.message);

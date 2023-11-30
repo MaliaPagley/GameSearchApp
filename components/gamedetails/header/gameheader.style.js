@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   gameInfoContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between', // Aligns items along the main axis (horizontal) with space between them
+    justifyContent: 'space-between', 
     alignItems: 'center',
   },
 });
