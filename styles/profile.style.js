@@ -47,5 +47,10 @@ const styles = StyleSheet.create({
       fontFamily: FONT.regular,
       marginLeft: 15,
     },
+    loadingContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    }
   })
   export default styles;
