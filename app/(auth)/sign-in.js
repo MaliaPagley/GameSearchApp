@@ -40,25 +40,23 @@ export default function SignIn() {
                 }}
             />
             <View style={styles.headerContainer}>
-                <Text style={styles.headerTextOne}>Welcome!</Text>
+                <Text style={styles.headerTextOne}>Welcome Back</Text>
                 <Text style={styles.headerTextTwo}>Please Sign in to your account.</Text>
             </View>
 
-            <View style={styles.emailContainer}>
+            <View style={styles.inputContainer}>
                 <TextInput 
                     style={styles.input}
                     placeholder="Email"
-                    placeholderTextColor={COLORS.redDark}
+                    placeholderTextColor={COLORS.placeHolder}
                     value={email}
                     onChangeText={setEmail}
+                    autoCapitalize="none"
                 />
-            </View>
-
-            <View style={styles.passwordContainer}>
                 <TextInput 
                     style={styles.input}
                     placeholder="Password"
-                    placeholderTextColor={COLORS.redDark}
+                    placeholderTextColor={COLORS.placeHolder}
                     value={password}
                     onChangeText={setPassword}
                     autoCapitalize="none"

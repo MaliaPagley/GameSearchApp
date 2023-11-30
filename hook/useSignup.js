@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Alert } from 'react-native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { getAuth,app } from '../firebase';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, setDoc, doc } from 'firebase/firestore';
 import useSignIn from './useSignin';
 
 
@@ -12,16 +12,20 @@ const useSignup = () => {
   const db = getFirestore(app);
   const { signIn } = useSignIn();
 
-  const signUp = async (email, password, setUser) => {
+  const signUp = async (email, password, setUser, fullName) => {
     try {
         const response = await createUserWithEmailAndPassword(auth, email, password);
         const user = response.user;
-        if (response.user) {
-          signIn(email, password, setUser);
-          await addDoc(collection(db, 'users'), {
-              uid: user.uid,
-              favorites: []
-          });
+        if (user) {
+          await signIn(email, password, setUser);
+
+          const userDocRef = doc(db, 'users', user.uid);
+
+          await setDoc(userDocRef, {
+            favorites: [],
+            fullName: fullName,
+            uid: user.uid
+          })
         } else {
           setError("Sign-up Authentication failed. Please check your credentials and try again.")
         }
