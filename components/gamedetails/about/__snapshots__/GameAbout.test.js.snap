@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GameAbout Component component renders 1`] = `
+<View>
+  <Text
+    style={
+      {
+        "color": "#F3F4F8",
+        "fontFamily": "dm-bold",
+        "fontSize": 24,
+        "marginLeft": 12,
+        "marginTop": 16,
+      }
+    }
+  >
+    About:
+  </Text>
+  <View
+    horizontal={true}
+    style={
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "marginLeft": 12,
+        "marginTop": 6,
+        "paddingTop": 6,
+      }
+    }
+  >
+    <Text
+      style={
+        {
+          "color": "#F3F4F8",
+        }
+      }
+    >
+      No description available.
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`GameAbout Component renders component with provided description 1`] = `
+<View>
+  <Text
+    style={
+      {
+        "color": "#F3F4F8",
+        "fontFamily": "dm-bold",
+        "fontSize": 24,
+        "marginLeft": 12,
+        "marginTop": 16,
+      }
+    }
+  >
+    About:
+  </Text>
+  <View
+    horizontal={true}
+    style={
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "marginLeft": 12,
+        "marginTop": 6,
+        "paddingTop": 6,
+      }
+    }
+  >
+    <Text
+      style={
+        {
+          "color": "#F3F4F8",
+        }
+      }
+    >
+      This is a test description.
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`GameAbout Component renders component without description 1`] = `
+<View>
+  <Text
+    style={
+      {
+        "color": "#F3F4F8",
+        "fontFamily": "dm-bold",
+        "fontSize": 24,
+        "marginLeft": 12,
+        "marginTop": 16,
+      }
+    }
+  >
+    About:
+  </Text>
+  <View
+    horizontal={true}
+    style={
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "marginLeft": 12,
+        "marginTop": 6,
+        "paddingTop": 6,
+      }
+    }
+  >
+    <Text
+      style={
+        {
+          "color": "#F3F4F8",
+        }
+      }
+    >
+      No description available.
+    </Text>
+  </View>
+</View>
+`;
