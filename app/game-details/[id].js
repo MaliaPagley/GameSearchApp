@@ -3,7 +3,7 @@ import React from 'react'
 import { View, Text, SafeAreaView, ScrollView, ActivityIndicator, RefreshControl } from "react-native";
 import { Stack, useRouter, useLocalSearchParams} from 'expo-router';
 import { useState } from 'react';
-import { GameHeader, GameAbout, GameFooter, GameTabs, ScreenHeaderBtn, GameSpecifics } from '../../components';
+import { GameHeader, GameAbout, GameFooter, GameTabs, ScreenHeaderBtn, GamePlatforms, GameTags } from '../../components';
 import { COLORS, icons, SIZES } from '../../constants';
 import useFetch from '../../hook/useFetch';
 
@@ -53,13 +53,16 @@ const GameDetails = () => {
                         name={data.name}
                         image={data.background_image}
                         developers={data.developers}
-                        released={data.released}
+                        releaseDate={data.released}
                     />
-                    <GameSpecifics 
+                    {/* <GameSpecifics 
                         platforms={data.platforms.map(item => item.platform.name)} 
                         tags={data.tags.map(tag => tag.name)}
                     
-                    />
+                    /> */}
+                    <GameTags tags={data.tags}/>
+                    <GamePlatforms platforms={data.platforms}/>
+                    
                     <GameTabs 
                         genres={data.genres.map(item => item.name)}
                         id={params.id}
