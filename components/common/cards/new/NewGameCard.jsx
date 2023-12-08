@@ -1,14 +1,12 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import styles from "./newgamecard.style";
 import { checkImageURL } from "../../../../utils";
-import GameSpecifics from "../../../gamedetails/specifics/GameSpecifics";
+import GamePlatforms from "../../../gamedetails/specifics/GamePlatforms";
 
 const NoImage = require("../../../../assets/noimage.png")
 
 const NewGameCard = ({ game, handleNavigate }) => {
-  const platformNames = game.platforms ? game.platforms.map(platform => platform.platform.name) : [];
   const genreNames = game.genres ? game.genres.map(genre => genre.name) : [];
-
 
   return (
     <TouchableOpacity
@@ -51,8 +49,7 @@ const NewGameCard = ({ game, handleNavigate }) => {
           {game.name} 
         </Text>
       <View style={styles.platformContainer}>
-        <GameSpecifics platforms={platformNames} />
-        
+        <GamePlatforms platforms={game.platforms} />
       </View>
       </View> 
     </TouchableOpacity>

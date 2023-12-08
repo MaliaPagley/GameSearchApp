@@ -3,7 +3,7 @@ import React from 'react'
 import { View, Text, SafeAreaView, ScrollView, ActivityIndicator, RefreshControl } from "react-native";
 import { Stack, useRouter, useLocalSearchParams} from 'expo-router';
 import { useState } from 'react';
-import { GameHeader, GameAbout, GameFooter, GameTabs, ScreenHeaderBtn, GamePlatforms, GameTags } from '../../components';
+import { GameHeader, GameAbout, GameFooter, GameTabOptions, ScreenHeaderBtn, GamePlatforms, GameTags} from '../../components';
 import { COLORS, icons, SIZES } from '../../constants';
 import useFetch from '../../hook/useFetch';
 
@@ -15,6 +15,7 @@ const GameDetails = () => {
     const router = useRouter();
     const { data, isLoading, error, refetch } = useFetch(`game-details/${params.id}`)
 
+// console.log(data.tags)
     
     const [refreshing, setRefreshing] = useState(false);
     const onRefresh = () => {}
@@ -55,17 +56,11 @@ const GameDetails = () => {
                         developers={data.developers}
                         releaseDate={data.released}
                     />
-                    {/* <GameSpecifics 
-                        platforms={data.platforms.map(item => item.platform.name)} 
-                        tags={data.tags.map(tag => tag.name)}
-                    
-                    /> */}
-                    <GameTags tags={data.tags}/>
+                    <GameTags tags={data.tags} />
                     <GamePlatforms platforms={data.platforms}/>
-                    
-                    <GameTabs 
+                    <GameTabOptions 
                         genres={data.genres.map(item => item.name)}
-                        id={params.id}
+                        id={params.id} 
                     />
                     <GameAbout description={data.description_raw}/>
                    <GameFooter />

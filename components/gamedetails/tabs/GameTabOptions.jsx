@@ -6,7 +6,7 @@ import styles from './gametabs.style';
 const NoImage = require('../../../assets/noimage.png');
 import useFetch from '../../../hook/useFetch';
 
-const GameTabs = ({ addImage, genres, id }) => {
+const GameTabOptions = ({ addImage, genres, id }) => {
   const { data, isLoading, error, refetch } = useFetch(`screenshots/${id}`);
   const resultsData = data.results;
 
@@ -61,4 +61,4 @@ const GameTabs = ({ addImage, genres, id }) => {
   );
 };
 
-export default GameTabs;
+export default GameTabOptions;

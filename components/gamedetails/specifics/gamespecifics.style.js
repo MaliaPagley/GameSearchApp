@@ -8,14 +8,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     borderRadius: SIZES.medium,
     padding: SIZES.medium,
+    display: "flex",
   },
   platformContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    paddingBottom: SIZES.xsmall,
+    padding: SIZES.xsmall,
     alignItems: "baseline",
-    gap: SIZES.xSmall,
-    marginVertical: SIZES.small / 1.25,
+    gap: 5,
+    padding: 5,
+
   },
   tagContainer: {
     paddingLeft: SIZES.medium,
