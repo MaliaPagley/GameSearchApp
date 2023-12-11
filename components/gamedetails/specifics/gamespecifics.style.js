@@ -17,27 +17,49 @@ const styles = StyleSheet.create({
     alignItems: "baseline",
     gap: 5,
     padding: 5,
-
   },
   tagContainer: {
-    paddingLeft: SIZES.medium,
-    gap: SIZES.xSmall,
-    marginBottom: SIZES.medium,
-   
+    paddingLeft: SIZES.large,
+    gap: 15,
+    paddingBottom: SIZES.medium,
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'left'
   },
   tagText: {
     color: COLORS.white,
-    marginLeft: SIZES.small,
-    fontSize: SIZES.medium,
-    paddingBottom: 5,
-    
+    fontFamily: FONT.bold,
+    marginLeft: 8,
+    fontSize: 15,
   },
   tag: {
-    alignItems: "baseline",
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: '33.33%', 
+    boxSizing: 'border-box',
+    marginRight: SIZES.large, 
+  },
+  genreContainer: {
+    flex: 1,
     flexDirection: "row",
-    
-  }
-
+   
+    flexWrap: "wrap",
+    borderRadius: SIZES.large,
+  },
+  genreWrapper: {
+    borderRadius: 5, 
+    overflow: 'hidden', 
+    margin: 5, 
+  },
+  genre: {
+    color: COLORS.white,
+    fontSize: SIZES.small,
+    textAlign: "center",
+    fontFamily: FONT.bold,
+    backgroundColor: "black",
+    padding: 5,
+  },
 });
 
 export default styles;

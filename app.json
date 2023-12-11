@@ -1,8 +1,14 @@
 {
   "expo": {
     "scheme": "acme",
+    "icon": "./assets/icon.png",
     "web": {
       "bundler": "metro"
+    },
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1A1F26"
     },
     "plugins": [
       "expo-router"

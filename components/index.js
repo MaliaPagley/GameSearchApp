@@ -12,6 +12,7 @@ import GameAbout from "./gamedetails/about/GameAbout";
 import GameFooter from "./gamedetails/footer/GameFooter";
 import GamePlatforms from "./gamedetails/specifics/GamePlatforms";
 import GameTags from "./gamedetails//specifics/GameTags";
+import GameGenres from "./gamedetails/specifics/GameGenres";
 
 // common
 import NewGameCard from "./common/cards/new/NewGameCard";
@@ -27,5 +28,6 @@ export {
   GameFooter,
   GamePlatforms,
   GameTags,
+  GameGenres,
   NewGameCard
 };

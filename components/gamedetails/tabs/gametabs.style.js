@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-
 import { COLORS, SIZES, FONT } from "../../../constants";
 
 const styles = StyleSheet.create({
@@ -7,7 +6,6 @@ const styles = StyleSheet.create({
     width: 400,
     height: 200,
     objectFit: "contain",
-    
     borderTopLeftRadius: SIZES.xLarge,
     borderTopRightRadius: SIZES.xLarge,
   },
@@ -17,30 +15,18 @@ const styles = StyleSheet.create({
     objectFit: "fill",
     borderRadius: SIZES.large,
   },
-  genreContainer: {
-    flex: 1,
-    flexDirection: "row",
-    marginTop: SIZES.large,
-    flexWrap: "wrap",
-    borderRadius: SIZES.large,
-  },
-  genreWrapper: {
-    borderRadius: 5, 
-    overflow: 'hidden', 
-    margin: 5, 
-  },
-  genre: {
-    color: COLORS.white,
-    fontSize: SIZES.small,
-    textAlign: "center",
-    fontFamily: FONT.bold,
-    backgroundColor: "black",
-    padding: 5,
-  },
  slide: {
     padding: SIZES.xSmall,
     borderRadius: 30, 
  },
+ loadingContainer: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+},
+loadingIndicator: {
+  // Add any additional styles for the loading indicator if needed
+},
 
 });
 

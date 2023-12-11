@@ -1,4 +1,4 @@
-import { View, Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import React from 'react';
 import styles from './gamespecifics.style';
 import { Ionicons } from '@expo/vector-icons';
@@ -37,8 +37,8 @@ const GamePlatforms = ({ platforms }) => {
   }).filter(platform => platform !== null);
 
   function renderPlatformIcons() {
-    if (!modifiedPlatforms || !Array.isArray(modifiedPlatforms)) {
-      return null;
+    if (!Array.isArray(modifiedPlatforms) || modifiedPlatforms.length === 0) {
+      return <View testID='default-icon'><Ionicons name='game-controller-outline' color={'white'} size={32}/></View>;
     }
 
     return modifiedPlatforms.map((platform, index) => {
@@ -46,7 +46,7 @@ const GamePlatforms = ({ platforms }) => {
 
       if (platformRender) {
         return (
-          <View key={index}>
+          <View testID={`${platform.toLowerCase()}-icon`} key={index}>
             {platformRender}
           </View>
         );
@@ -64,4 +64,3 @@ const GamePlatforms = ({ platforms }) => {
 };
 
 export default GamePlatforms;
-
