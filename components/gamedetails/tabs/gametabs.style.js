@@ -1,32 +1,41 @@
 import { StyleSheet } from "react-native";
 import { COLORS, SIZES, FONT } from "../../../constants";
+import { Dimensions } from 'react-native';
+
+const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
+
 
 const styles = StyleSheet.create({
-  backgroundImage: {
-    width: 400,
-    height: 200,
-    objectFit: "contain",
-    borderTopLeftRadius: SIZES.xLarge,
-    borderTopRightRadius: SIZES.xLarge,
+  container: {
+    marginTop: 20,
   },
   addBackgroundImage: {
-    width: 360,
-    height: 200,
-    objectFit: "fill",
-    borderRadius: SIZES.large,
+    width: screenWidth * 0.89, 
+    height: screenHeight * 0.25, 
+    resizeMode: 'cover',
+    borderRadius: SIZES.xSmall
   },
- slide: {
-    padding: SIZES.xSmall,
-    borderRadius: 30, 
- },
- loadingContainer: {
-  flex: 1,
-  justifyContent: 'center',
-  alignItems: 'center',
-},
-loadingIndicator: {
-  // Add any additional styles for the loading indicator if needed
-},
+  slide: {
+    width: screenWidth * 0.9,
+    borderRadius: SIZES.xSmall
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  indicatorContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  indicatorText: {
+    color: 'gray',
+    margin: 5,
+    fontSize: 20,
+  },
+  activeIndicatorText: {
+    color: 'white',
+  },
 
 });
 

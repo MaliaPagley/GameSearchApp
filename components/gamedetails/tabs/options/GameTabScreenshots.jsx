@@ -1,57 +1,115 @@
-import React from 'react';
-import { View, Image, ActivityIndicator, Text, FlatList } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { View, Image, ActivityIndicator, FlatList } from 'react-native';
 import { checkImageURL } from '../../../../utils';
 import styles from '../gametabs.style';
-const NoImage = require('../../../../assets/noimage.png');
 import useFetch from '../../../../hook/useFetch';
-
+import { Ionicons } from '@expo/vector-icons';
 
 const GameTabScreenshots = ({ id }) => {
   const { data, isLoading } = useFetch(`screenshots/${id}`);
+  const screenshots = data?.results || [];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollViewRef = useRef();
 
-  const renderScreenshot = ({ item }) => {
+  const renderScreenshot = ({ item, index }) => {
+    const isActive = index === activeIndex;
+
     return (
-      <View style={styles.slide}>
+      <View style={styles.slide} key={index}>
         {checkImageURL(item.image) ? (
           <Image
-            source={{
-              uri: item.image,
-            }}
+            source={{ uri: item.image }}
             resizeMode="cover"
-            style={styles.addBackgroundImage}
+            style={[styles.addBackgroundImage, isActive && styles.activeBackgroundImage]}
+            testID={`screenshot-${index}`}
           />
         ) : (
           <Image
-            source={NoImage}
+            source={require('../../../../assets/noimage.png')}
             resizeMode="contain"
-            style={styles.backgroundImage}
+            style={[styles.addBackgroundImage, isActive && styles.activeBackgroundImage]}
+            testID={`screenshot-default-${index}`}
           />
         )}
       </View>
     );
   };
 
+  const handleScroll = (event) => {
+    const xOffset = event.nativeEvent.contentOffset.x;
+    const index = Math.round(xOffset / styles.slide.width);
+    setActiveIndex(index);
+  };
+
+  const scrollToIndex = (index) => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollToIndex({ index, animated: true });
+    }
+  };
+
   if (isLoading) {
-    // Render the ActivityIndicator centered in the middle of the screen
     return (
-      <View style={styles.loadingContainer}>
+      <View testID="loading-indicator" style={styles.loadingContainer}>
         <ActivityIndicator size="large" color="white" />
       </View>
     );
   }
 
-  // Render the component only when data is available
   return (
     <View style={{ flex: 1 }}>
-      {data ? (
-        <FlatList
-          data={data.results}
-          keyExtractor={(item) => item.id.toString()}
-          horizontal
-          renderItem={renderScreenshot}
-        />
+      {screenshots.length > 0 ? (
+        <>
+          <FlatList
+            ref={scrollViewRef}
+            data={screenshots}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={renderScreenshot}
+            contentContainerStyle={styles.indicatorContainer}
+            ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
+            showsHorizontalScrollIndicator={false}
+            scrollEventThrottle={16}
+            onScroll={handleScroll}
+            horizontal
+            pagingEnabled
+          />
+
+          {screenshots.length > 1 && (
+            <View style={styles.indicatorContainer}>
+              {screenshots.map((_, index) => (
+                <Ionicons
+                  key={index}
+                  name="remove-outline"
+                  size={32}
+                  color="white"
+                  style={[
+                    styles.indicatorText,
+                    index === activeIndex && styles.activeIndicatorText,
+                  ]}
+                  onPress={() => scrollToIndex(index)}
+                  testID={`indicator-${index}`}
+                />
+              ))}
+            </View>
+          )}
+        </>
       ) : (
-        <Text>No data available</Text>
+        <View style={styles.slide}>
+          <Image
+            source={require('../../../../assets/noimage.png')}
+            resizeMode="contain"
+            style={styles.addBackgroundImage}
+            testID="screenshot-default"
+          />
+          <View style={styles.indicatorContainer}>
+            <Ionicons
+              name="remove-outline"
+              size={32}
+              color="white"
+              style={[styles.indicatorText, styles.activeIndicatorText]}
+              testID={`indicator-1`}
+            />
+          </View>
+        </View>
       )}
     </View>
   );
