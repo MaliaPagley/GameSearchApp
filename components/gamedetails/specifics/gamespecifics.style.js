@@ -13,10 +13,9 @@ const styles = StyleSheet.create({
   platformContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    padding: SIZES.xsmall,
+    padding: SIZES.large,
     alignItems: "baseline",
     gap: 5,
-    padding: 5,
   },
   tagContainer: {
     paddingLeft: SIZES.large,
