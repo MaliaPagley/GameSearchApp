@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     color: COLORS.white,
     textAlign: "center",
   },
-  gameNameContainer: {
+  nameContainer: {
     position: "absolute",
     bottom: 8,
     left: 0,
