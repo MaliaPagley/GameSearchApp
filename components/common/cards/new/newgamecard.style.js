@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     shadowRadius: 2.62,
     elevation: 4,
   },
-  logoContainer: {
+  imageContainer: {
     width: 360,
     height: 200,
     backgroundColor: COLORS.redMerlot,
@@ -34,12 +34,12 @@ const styles = StyleSheet.create({
     paddingBottom: SIZES.small,
 
   },
-  logoImage: {
+  mainImage: {
     width: 350,
     height: 200,
     borderRadius: SIZES.medium,
   },
-  textContainer: {
+  nameContainer: {
     flex: 1,
     marginTop: SIZES.small,
     marginHorizontal: SIZES.medium,
@@ -54,32 +54,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     borderRadius: SIZES.medium,
   },
-  platforms: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "baseline",
-    gap: SIZES.xSmall,
-    marginVertical: SIZES.small / 1.25,
-  },
   genreContainer: {
     flex: 1,
     flexDirection: "row",
     marginTop: SIZES.xsmall,
     flexWrap: "wrap",
     borderRadius: SIZES.large,
+
   },
-  genreWrapper: {
-      borderRadius: 5, 
-      overflow: 'hidden', 
-      margin: 5, 
-  },
-  genre: {
-    color: COLORS.white,
-    fontSize: SIZES.small,
-    fontFamily: FONT.bold,
-    backgroundColor: "black",
-    padding: 5,
-  }
 });
 
 export default styles;

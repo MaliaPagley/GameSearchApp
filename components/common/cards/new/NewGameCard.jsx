@@ -1,57 +1,51 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
-import styles from "./newgamecard.style";
-import { checkImageURL } from "../../../../utils";
-import GamePlatforms from "../../../gamedetails/specifics/GamePlatforms";
+import React from 'react';
+import { View, Text, TouchableOpacity, Image, Pressable } from 'react-native';
+import styles from './newgamecard.style';
+import { checkImageURL } from '../../../../utils';
+import GamePlatforms from '../../../gamedetails/specifics/GamePlatforms';
+import GameGenres from '../../../gamedetails/specifics/GameGenres';
 
-const NoImage = require("../../../../assets/noimage.png")
-
-const NewGameCard = ({ game, handleNavigate }) => {
-  const genreNames = game.genres ? game.genres.map(genre => genre.name) : [];
-
+const NewGameCard = ({ game, handleCardPress }) => {
   return (
-    <TouchableOpacity
-      style={styles.container}
-      onPress={handleNavigate}
-    >
-      <TouchableOpacity 
-        style={styles.logoContainer}
-        onPress={handleNavigate}
-      >
-        {checkImageURL(game.background_image) ?  
-        <Image
-          source={{
-            uri: game.background_image,
-          }}
-          resizeMode='cover'
-          style={styles.logoImage}
-      /> 
-      :
-      <Image
-          source={NoImage}
-          resizeMode='contain'
-          style={styles.logoImage}
-      />
-      }
-      </TouchableOpacity>
-  
-        <View style={styles.genreContainer} >
-        {genreNames.map((genre, index) => (
-          <View key={index} style={styles.genreWrapper}>
-            <Text style={styles.genre}>
-              {genre}
-            </Text>
-          </View>
-        ))}
+    <TouchableOpacity style={styles.container} 
+      testID='touchable-id'
+      onPress={() => handleCardPress(game)}>
+        <Pressable 
+          style={styles.imageContainer} 
+          onPress={() => handleCardPress(game)}
+          testID="pressable-id"
+        >
+          {checkImageURL(game.background_image) ? (
+            <Image
+              source={{
+                uri: game.background_image,
+              }}
+              resizeMode="cover"
+              style={styles.mainImage}
+              testID='main-image'
+            />
+          ) : (
+            <Image
+              source={require('../../../../assets/noimage.png')}
+              resizeMode="contain"
+              style={styles.mainImage}
+              testID='default-image'
+            />
+          )}
+        </Pressable>
+
+      <View style={styles.genreContainer}>
+        <GameGenres genres={game.genres} />
       </View>
 
-       <View style={styles.textContainer}>
+      <View style={styles.nameContainer}>
         <Text style={styles.gameName} numberOfLines={2}>
-          {game.name} 
+          {game.name}
         </Text>
-      <View style={styles.platformContainer}>
-        <GamePlatforms platforms={game.platforms} />
+        <View style={styles.platformContainer}>
+          <GamePlatforms  platforms={game.platforms} />
+        </View>
       </View>
-      </View> 
     </TouchableOpacity>
   );
 };
