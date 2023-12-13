@@ -12,8 +12,8 @@ describe('GameGenres Component: ',() => {
     it('renders genres correctly', () => {
         const { getByText } = render(<GameGenres genres={mockGenres}/>);
 
-        expect(getByText('Action')).toBeDefined;
-        expect(getByText('Adventure')).toBeDefined;
-        expect(getByText('RPG')).toBeDefined;
+        expect(getByText('Action')).toBeDefined();
+        expect(getByText('Adventure')).toBeDefined();
+        expect(getByText('RPG')).toBeDefined();
     })
 })

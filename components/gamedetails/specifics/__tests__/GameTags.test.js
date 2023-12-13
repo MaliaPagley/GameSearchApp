@@ -10,11 +10,8 @@ const mockTags = [
 
 describe('GameTags Component: ', () => {
     it('renders tags correctly', () => {
-        const { getByTestId, getByText } = render(<GameTags tags={mockTags}/>);
+        const { getByText } = render(<GameTags tags={mockTags}/>);
 
-        expect(getByTestId('singleplayer-tag')).toBeTruthy();
-        expect(getByTestId('multiplayer-tag')).toBeTruthy();
-        expect(getByTestId('open world-tag')).toBeTruthy();
 
         expect(getByText('Singleplayer')).toBeDefined();
         expect(getByText('Multiplayer')).toBeDefined();

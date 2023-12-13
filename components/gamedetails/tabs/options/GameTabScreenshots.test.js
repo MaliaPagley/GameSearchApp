@@ -25,45 +25,45 @@ describe('GameTabScreenshots Component: ', () => {
 
   it('renders loading indicator while fetching data', async () => {
     useFetch.mockReturnValue({ data: undefined, isLoading: true });
-    render(<GameTabScreenshots id={123} />);
+    const { getByTestId } = render(<GameTabScreenshots id={123} />);
 
-    const loadingIndicator = screen.getByTestId('loading-indicator');
-    expect(loadingIndicator).toBeDefined();
+    const loadingIndicator = getByTestId('loading-indicator');
+    expect(loadingIndicator).toBeTruthy();
   });
 
   it('renders screenshots when data is available', async () => {
     useFetch.mockReturnValue({ data: mockData, isLoading: false });
-    render(<GameTabScreenshots id={123} />);
+    const { getByTestId } = render(<GameTabScreenshots id={123} />);
 
     await waitFor(() => {
-      const screenshot1 = screen.getByTestId('screenshot-0');
-      const screenshot2 = screen.getByTestId('screenshot-1');
+      const screenshot1 = getByTestId('screenshot-0');
+      const screenshot2 = getByTestId('screenshot-1');
 
-      expect(screenshot1).toBeDefined();
-      expect(screenshot2).toBeDefined();
+      expect(screenshot1).toBeTruthy();
+      expect(screenshot2).toBeTruthy();
     });
   });
   
   it('renders default image when there is an invalid URL', async () => {
     useFetch.mockReturnValue({ data: mockDataInvalidURL, isLoading: false });
-    render(<GameTabScreenshots id={123} />);
+    const { getByTestId } = render(<GameTabScreenshots id={123} />);
   
     await waitFor(() => {
-      const noImage = screen.getByTestId('screenshot-default-0');
-      expect(noImage).toBeDefined();
+      const noImage = getByTestId('screenshot-default-0');
+      expect(noImage).toBeTruthy();
     });
   });
 
   it('renders no image and indicator when no screenshots are available', async () => {
     useFetch.mockReturnValue({ data: { results: [] }, isLoading: false });
-    render(<GameTabScreenshots id={123} />);
+    const { getByTestId } = render(<GameTabScreenshots id={123} />);
 
     await waitFor(() => {
-      const noImage = screen.getByTestId('screenshot-default');
-      const indicator = screen.getByTestId('indicator-1');
+      const noImage = getByTestId('screenshot-default');
+      const indicator = getByTestId('indicator-1');
 
-      expect(noImage).toBeDefined();
-      expect(indicator).toBeDefined();
+      expect(noImage).toBeTruthy();
+      expect(indicator).toBeTruthy();
     });
   });
 });
