@@ -7,8 +7,7 @@ const GameGenres = ({ genres }) => {
 
     const renderGenres = genreNames.map((genre, index) => (
         <View style={styles.genreWrapper} key={index}>
-          <Text testID={`${genre}-genre`.toLowerCase()}
-                style={styles.genre}>
+          <Text style={styles.genre}>
             {genre}
           </Text>
         </View>

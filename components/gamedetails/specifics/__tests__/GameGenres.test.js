@@ -5,15 +5,15 @@ import GameGenres from '../GameGenres';
 const mockGenres = [
     { name: 'Action' },
     { name: 'Adventure' },
-    { name: 'Role-playing' },
+    { name: 'RPG' },
 ];
 
 describe('GameGenres Component: ',() => {
     it('renders genres correctly', () => {
-        const { getByTestId } = render(<GameGenres genres={mockGenres}/>);
+        const { getByText } = render(<GameGenres genres={mockGenres}/>);
 
-        expect(getByTestId('action-genre')).toBeTruthy;
-        expect(getByTestId('adventure-genre')).toBeTruthy;
-        expect(getByTestId('role-playing-genre')).toBeTruthy;
+        expect(getByText('Action')).toBeDefined;
+        expect(getByText('Adventure')).toBeDefined;
+        expect(getByText('RPG')).toBeDefined;
     })
 })

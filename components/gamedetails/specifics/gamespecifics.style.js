@@ -42,9 +42,9 @@ const styles = StyleSheet.create({
   genreContainer: {
     flex: 1,
     flexDirection: "row",
-   
     flexWrap: "wrap",
     borderRadius: SIZES.large,
+    justifyContent: "center",
   },
   genreWrapper: {
     borderRadius: 5, 
