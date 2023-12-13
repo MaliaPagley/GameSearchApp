@@ -12,6 +12,9 @@ const Newgames = () => {
   const { games, loadingList, listError, loadMoreGames } = useInfiniteList('new');
   const [isPressed, setIsPressed] = useState(false);
 
+  const handleCardPress = (item) => {
+    router.push(`/game-details/${item.id}`);
+  };
   const handlePressIn = () => {
     setIsPressed(true);
   };
@@ -38,7 +41,7 @@ const Newgames = () => {
             renderItem={({ item }) => (
               <NewGameCard
                 game={item}
-                handleNavigate={() => router.push(`/game-details/${item.id}`)}
+                handleCardPress={() => handleCardPress(item)}
               />
             )}
             estimatedItemSize={300}
