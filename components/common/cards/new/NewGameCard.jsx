@@ -6,6 +6,8 @@ import GamePlatforms from '../../../gamedetails/specifics/GamePlatforms';
 import GameGenres from '../../../gamedetails/specifics/GameGenres';
 
 const NewGameCard = ({ game, handleCardPress }) => {
+
+ 
   return (
     <TouchableOpacity style={styles.container} 
       testID='touchable-id'

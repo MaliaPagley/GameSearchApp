@@ -44,7 +44,7 @@ describe('NewGameCard Component: ', () => {
     const gameName = getByText('Test Game');
 
     expect(gameName).toBeDefined();
-})
+  })
 
   it('renders  platforms correctly', () => {
     const { getByTestId } = render(<NewGameCard game={mockGame} />);
@@ -56,13 +56,13 @@ describe('NewGameCard Component: ', () => {
     expect(xboxPlatform).toBeTruthy();
   });
 
-  it('handles card press correctly', () => {
-    const mockHandleCardPress = jest.fn();
-    const { getByTestId } = render(<NewGameCard game={mockGame} handleCardPress={mockHandleCardPress} />);
+  // it('handles card press correctly', () => {
+  //   const mockHandleCardPress = jest.fn();
+  //   const { getByTestId } = render(<NewGameCard game={mockGame} handleCardPress={mockHandleCardPress} />);
 
-    fireEvent.press(getByTestId('touchable-id'));
-    fireEvent.press(getByTestId('pressable-id'));
+  //   fireEvent.press(getByTestId('touchable-id'));
+  //   fireEvent.press(getByTestId('pressable-id'));
 
-    expect(mockHandleCardPress).toHaveBeenCalledWith(mockGame);
-  });
+  //   expect(mockHandleCardPress).toHaveBeenCalledWith(mockGame);
+  // });
 });

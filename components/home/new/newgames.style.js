@@ -22,25 +22,28 @@ const styles = StyleSheet.create({
     fontFamily: FONT.medium,
     color: COLORS.grayThunder,
   },
-  cardsContainer: {
-    marginTop: SIZES.medium,
-  },
-  loadMoreBtn: {
+  button: {
+    backgroundColor: COLORS.grayNavy,
+    padding: 10,
+    borderRadius: 5,
+    width: 200,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 4,
-    elevation: 3,
-    backgroundColor: COLORS.grayThunder,
+    alignSelf: 'center', 
   },
-  btnText: {
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
+  buttonText: {
     color: 'white',
+    fontWeight: 'bold',
   },
+  error: {
+    color: COLORS.grayThunder,
+    fontSize: 15,
+    padding: 10,
+    alignSelf: 'center', 
+  },
+  loading: {
+    color: COLORS.white
+  }
 });
 
 export default styles;

@@ -1,26 +1,17 @@
-import { View, Text, ActivityIndicator, Pressable } from 'react-native';
-import { useState } from 'react';
+import React from 'react';
+import { View, Text, ActivityIndicator, TouchableOpacity} from 'react-native';
 import { useRouter } from 'expo-router';
 import { COLORS } from '../../../constants';
 import styles from './newgames.style';
 import NewGameCard from '../../common/cards/new/NewGameCard';
 import useInfiniteList from '../../../hook/useInfiniteList';
-import { FlashList } from "@shopify/flash-list";
+import { FlashList } from '@shopify/flash-list';
 
 const Newgames = () => {
-  const router = useRouter();
   const { games, loadingList, listError, loadMoreGames } = useInfiniteList('new');
-  const [isPressed, setIsPressed] = useState(false);
-
+  const router = useRouter();
   const handleCardPress = (item) => {
     router.push(`/game-details/${item.id}`);
-  };
-  const handlePressIn = () => {
-    setIsPressed(true);
-  };
-
-  const handlePressOut = () => {
-    setIsPressed(false);
   };
 
   return (
@@ -28,39 +19,27 @@ const Newgames = () => {
       <View style={styles.header}>
         <Text style={styles.headerTitle}>New Games</Text>
       </View>
-
-      <View style={{ minHeight: 100 }}>
+      <View>
         {loadingList ? (
-          <ActivityIndicator size="large" colors={COLORS.white} />
+          <ActivityIndicator style={styles.loading} testID={'loading-indicator'} size="large"  />
         ) : listError ? (
-          <Text>Something went wrong</Text>
+          <Text style={styles.error}>Data Unavailable</Text>
         ) : (
-          <>
-          <FlashList
-            data={games}
-            renderItem={({ item }) => (
-              <NewGameCard
-                game={item}
-                handleCardPress={() => handleCardPress(item)}
+          <View style={{flex: 2, minHeight: 200}}> 
+            <FlashList
+              testID='list-id'
+                data={games}
+                renderItem={({ item }) => (
+                  <NewGameCard game={item} handleCardPress={() => handleCardPress(item)} />
+                )}
+                estimatedItemSize={400}
+                keyExtractor={(item, index) => `new-game-${item.id}-${index}`}
               />
-            )}
-            estimatedItemSize={300}
-            keyExtractor={(item, index) => `new-game-${item.id}-${index}`}
-          />
-          
-          <Pressable 
-            style={({ pressed }) => [
-              styles.loadMoreBtn,{
-              opacity: pressed || isPressed ? 0.7 : 1,
-            },]}
-            onPress={loadMoreGames}
-            onPressIn={handlePressIn}
-            onPressOut={handlePressOut}
-          >
-              <Text style={styles.btnText}>{'Load More Games'}</Text>
-          </Pressable>
-          </>
-        )}
+              <TouchableOpacity style={styles.button} onPress={loadMoreGames}>
+                <Text style={styles.buttonText}>Load More Games</Text>
+              </TouchableOpacity>
+          </View>
+          )}
       </View>
     </View>
   );
