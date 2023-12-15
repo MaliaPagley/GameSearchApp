@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     fontSize: SIZES.large,
     fontFamily: FONT.medium,
     color: COLORS.white,
-    paddingBottom: SIZES.large,
+    paddingBottom: 10,
   },
   headerBtn: {
     fontSize: SIZES.medium,
@@ -24,6 +24,15 @@ const styles = StyleSheet.create({
   },
   cardsContainer: {
     marginTop: SIZES.medium,
+  },
+  error: {
+    color: COLORS.grayThunder,
+    fontSize: 15,
+    padding: 10,
+    alignSelf: 'center', 
+  },
+  loading: {
+    color: COLORS.white
   },
 });
 
