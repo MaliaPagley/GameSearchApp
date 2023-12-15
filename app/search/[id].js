@@ -78,9 +78,7 @@ const handleSearch = async () => {
                 renderItem={({ item }) => (
                     <NewGameCard
                         game={item}
-                        genre={item.genres}
-                        platforms={item.platforms.map(platforms => platforms.platform.name)}
-                        handleNavigate={() => router.push(`/game-details/${item.id}`)}
+                       handleCardPress={() => router.push(`/game-details/${item.id}`)}
                     />
                 )}
                 keyExtractor={(item) => item.id}
