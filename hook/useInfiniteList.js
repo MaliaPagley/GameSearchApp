@@ -22,7 +22,7 @@ const useInfiniteList = (endpoint) => {
     } catch (error) {
       console.error('Error fetching games:', error);
       setListError(true);
-      setLoadingList(true);
+      setLoadingList(false);
     } finally {
       setLoadingList(false);
     }
