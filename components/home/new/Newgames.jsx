@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, ActivityIndicator, TouchableOpacity} from 'react-native';
 import { useRouter } from 'expo-router';
-import { COLORS } from '../../../constants';
 import styles from './newgames.style';
 import NewGameCard from '../../common/cards/new/NewGameCard';
 import useInfiniteList from '../../../hook/useInfiniteList';
@@ -10,6 +9,7 @@ import { FlashList } from '@shopify/flash-list';
 const Newgames = () => {
   const { games, loadingList, listError, loadMoreGames } = useInfiniteList('new');
   const router = useRouter();
+
   const handleCardPress = (item) => {
     router.push(`/game-details/${item.id}`);
   };
@@ -21,7 +21,7 @@ const Newgames = () => {
       </View>
       <View>
         {loadingList ? (
-          <ActivityIndicator style={styles.loading} testID={'loading-indicator'} size="large"  />
+          <ActivityIndicator style={styles.loading} testID='loading-indicator' size='large'  />
         ) : listError ? (
           <Text style={styles.error}>Data Unavailable</Text>
         ) : (
@@ -30,7 +30,9 @@ const Newgames = () => {
               testID='list-id'
                 data={games}
                 renderItem={({ item }) => (
-                  <NewGameCard game={item} handleCardPress={() => handleCardPress(item)} />
+                  <NewGameCard 
+                    game={item}
+                    handleCardPress={() => handleCardPress(item)} />
                 )}
                 estimatedItemSize={400}
                 keyExtractor={(item, index) => `new-game-${item.id}-${index}`}
