@@ -14,12 +14,10 @@ jest.mock('../../../hook/useInfiniteList', () => ({
 }));
 
 describe('Newgames Component: ', () => {
-
   it('renders header title correctly', () => {
-    const { getByText, debug } = render(<Newgames />);
+    const { getByText } = render(<Newgames />);
 
     expect(getByText('New Games')).toBeDefined();
-    debug()
   })
 
   it('renders loading indicator while fetching data', () => {
