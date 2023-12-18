@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
   searchWrapper: {
     flex: 1,
-    backgroundColor: COLORS.blackJungleGreen,
+    backgroundColor: COLORS.blackOnyxLight,
     marginRight: SIZES.small,
     justifyContent: "center",
     alignItems: "center",
@@ -41,10 +41,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: SIZES.medium,
   },
   searchBtn: {
-    width: 50,
+    width: 40,
     height: "100%",
-    backgroundColor: COLORS.grayThunder,
-    borderRadius: SIZES.medium,
+    backgroundColor: COLORS.blackOnyx,
+    borderRadius: 30,
     justifyContent: "center",
     alignItems: "center",
   },

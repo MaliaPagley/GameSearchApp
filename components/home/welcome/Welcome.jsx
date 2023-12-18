@@ -1,77 +1,43 @@
-import { useState } from 'react'
-
-import { 
-  View, 
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  FlatList
-} from 'react-native'
+import { useState } from 'react';
+import { View, TextInput, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
-import styles from './welcome.style'
-import { icons, SIZES } from '../../../constants'
+import styles from './welcome.style';
+import { Ionicons } from '@expo/vector-icons';
 
-// All availble platforms for Flatlist scroll 
-const gamePlatforms = ['Xbox', 'PlayStation', 'Mac', 'PC (Microsoft Windows)', 'Nintendo Switch']
-
-const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
+const Welcome = () => {
+  const [searchTerm, setSearchTerm] = useState('');
   const router = useRouter();
-  const [ activeGamePlatform, setGamePlatform ] = useState('') 
+
+  const handlePress = (searchTerm) => {
+    router.push(`/search/${searchTerm}`);
+  };
 
   return (
     <View>
-      <View style={styles.container}>
-        {/* <Text style={styles.userName}>Hello Gamers!</Text>
-        <Text style={styles.welcomeMessage}>Find games to play</Text> */}
-      </View>
-      
-
-{/* MAIN SEARCH INPUT */}
       <View style={styles.searchContainer}>
         <View style={styles.searchWrapper}>
-          <TextInput 
+          <TextInput
             style={styles.searchInput}
             value={searchTerm}
             onChangeText={(text) => setSearchTerm(text)}
             placeholder="Search for a game"
             clearTextOnFocus={true}
+            placeholderTextColor='white'
           />
-        </View> 
+        </View>
 
-{/* SEARCH ICON FOR INPUT */}
-        <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
-          <Image 
-            source={icons.search}
-            resizeMode="contain"
-            style={styles.searchBtnImage}
-          />
+        <TouchableOpacity
+          style={styles.searchBtn}
+          onPress={() => {
+            if (searchTerm.trim().length > 0) {
+              handlePress(searchTerm);
+            }
+          }}>
+          <Ionicons name="search-sharp" size={25} color="white" />
         </TouchableOpacity>
       </View>
-
-{/* FLATLIST THAT CONTAINS THE GAME PLATFORMS BELOW INPUT FIELD XBOX, PLAYSTATION...*/}
-      <View style={styles.tabsContainer}>
-        <FlatList
-            data={gamePlatforms}
-            renderItem={({item}) => (
-              <TouchableOpacity 
-                style={styles.tab(activeGamePlatform, item)}
-                onPress = {() => {
-                  setGamePlatform(item);
-                  router.push(`/search/${item}`)
-                }}
-              >
-                <Text style={styles.tabText(activeGamePlatform, item)}>{item}</Text>
-              </TouchableOpacity>
-            )}
-            keyExtractor={item => item}
-            contentContainerStyle={{ columnGap: SIZES.small }}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-        />
-      </View>
     </View>
-  )
-}
+  );
+};
 
-export default Welcome
+export default Welcome;
