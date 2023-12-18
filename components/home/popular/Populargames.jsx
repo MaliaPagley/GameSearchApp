@@ -8,8 +8,8 @@ import { FlashList } from "@shopify/flash-list";
 
 const Populargames = () => {
   const { games, loadingList, listError, loadMoreGames } = useInfiniteList('popular'); 
+
   const router = useRouter();
-  
   const handleCardPress = (item) => {
     router.push(`/game-details/${item.id}`);
   };
@@ -50,4 +50,3 @@ const Populargames = () => {
 };
 
 export default Populargames;
-

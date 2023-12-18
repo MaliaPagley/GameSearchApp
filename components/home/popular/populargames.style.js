@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     fontSize: SIZES.large,
     fontFamily: FONT.medium,
     color: COLORS.white,
-    paddingBottom: 10,
+    
   },
   headerBtn: {
     fontSize: SIZES.medium,
@@ -34,6 +34,24 @@ const styles = StyleSheet.create({
   loading: {
     color: COLORS.white
   },
+  sliderContainer: {
+    paddingBottom: 15,
+  },
+  tabsContainer: {
+    width: "100%",
+    marginTop: SIZES.medium,
+  },
+  tab: (activeGamePlatform, item) => ({
+    paddingVertical: SIZES.small / 2,
+    paddingHorizontal: SIZES.small,
+    borderRadius: SIZES.medium,
+    borderWidth: 1,
+    borderColor: activeGamePlatform === item.name ? COLORS.blackDecent : COLORS.grayThunder,
+  }),
+  tabText: (activeGamePlatform, item) => ({
+    fontFamily: FONT.medium,
+    color: activeGamePlatform === item.name ? COLORS.grayThunder : COLORS.lightWhite,
+  }),
 });
 
 export default styles;
