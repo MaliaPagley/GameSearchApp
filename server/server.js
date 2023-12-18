@@ -83,7 +83,7 @@ app.get('/new', (req, res) => {
     url: 'https://api.rawg.io/api/games', 
     params: {
       key: rawgApiKey,
-      ordering: '-added', // Sort by release date in descending order (newest first)
+      ordering: '-relevance', // Sort by release date in descending order (newest first)
       dates: calculateDateRange(), // Calculate the date range 
       page: page, page_size: page_size 
     },

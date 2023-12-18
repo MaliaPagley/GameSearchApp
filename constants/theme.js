@@ -1,42 +1,17 @@
 const COLORS = {
-  primary: "#312651",
-  secondary: "#444262",
-  tertiary: "#FF7754",
-
-  gray: "#83829A",
-  gray2: "#C1C0C8",
-
-  gray3: "#15191F",
-  
-
-  white: "#F3F4F8",
-  lightWhite: "#FAFAFC",
-
-  black2: "#121212",
-  black: "1B262C",
-  red: 'F33535',
-
-//For Cards
- blackOnyx: "#121212", 
-//For Other 
+primary: "#312651",
+white: "#F3F4F8",
+blackOnyx: "#121212", 
+blackOnyxLight: "#1f1f1f",
 blackDecent: "#121111",
-//For Inputs, and other
-  blackJungleGreen: "#1A1F26",
- //For Base
-  blackMirage: "#15191F",
-  //Screens
-  blackNavy: "#222831",
-  grayNavy: "#383d45",
-  
+blackJungleGreen: "#1A1F26",
+blackMirage: "#15191F",
+blackNavy: "#222831",
+grayNavy: "#383d45",
+grayThunder: "#444444",
 
- redLight: "#f05454",
- redDark: "#481919",
-
- grayThunder: "#444444",
-
- placeHolder: "#4e525a",
- link: "#39A7FF",
-
+placeHolder: "#4e525a",
+link: "#39A7FF",
 };
 
 const FONT = {
