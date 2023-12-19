@@ -1,5 +1,5 @@
 const COLORS = {
-primary: "#312651",
+primary: "#968bb5",
 white: "#F3F4F8",
 blackOnyx: "#121212", 
 blackOnyxLight: "#1f1f1f",
