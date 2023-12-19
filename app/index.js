@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView, SafeAreaView, StatusBar } from 'react-native';
+import { View, ScrollView, SafeAreaView } from 'react-native';
 import { Newgames, Populargames, Welcome } from '../components';
 
 const Home = () => {
