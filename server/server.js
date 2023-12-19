@@ -4,11 +4,12 @@ require('dotenv').config()
 
 const app = express();
 const PORT = 8000;
-const HOST = 'localhost';
+const HOST = '192.168.68.116';
 
 
 const userAgent = { 'UserAgent': ''}
 const rawgApiKey = process.env.RAWG_KEY_TESTER;
+const youtubeApiKey = process.env.YOUTUBE_KEY;
 
 
 //GET GAME DETAILS BY ID 
@@ -74,6 +75,32 @@ app.get('/screenshots/:id', (req, res) => {
     });
 });
 
+app.get('/youtube-search/:name', async (req, res) => {
+  try {
+    const gameName = req.params.name;
+    console.log(gameName)
+
+    const youtubeOptions = {
+      method: 'GET',
+      url: 'https://www.googleapis.com/youtube/v3/search',
+      params: {
+        q: gameName + ' Trailer', // You can adjust the query as needed
+        key: youtubeApiKey,
+        part: 'snippet',
+        type: 'video',
+        maxResults: '1'
+      },
+    };
+
+    const youtubeResponse = await axios.request(youtubeOptions);
+
+    res.json(youtubeResponse.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error searching YouTube for videos.');
+  }
+});
+
 //NEW GAMES ENDPOINT
 app.get('/new', (req, res) => {
   const { page, page_size } = req.query;
@@ -83,7 +110,7 @@ app.get('/new', (req, res) => {
     url: 'https://api.rawg.io/api/games', 
     params: {
       key: rawgApiKey,
-      ordering: '-relevance', // Sort by release date in descending order (newest first)
+      ordering: '-added', // Sort by release date in descending order (newest first)
       dates: calculateDateRange(), // Calculate the date range 
       page: page, page_size: page_size 
     },

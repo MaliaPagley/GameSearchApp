@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 const GameTabScreenshots = ({ id }) => {
   const { data, isLoading } = useFetch(`screenshots/${id}`);
+  // console.log(data)
   const screenshots = data?.results || [];
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollViewRef = useRef();
