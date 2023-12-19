@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useSegments, useRootNavigationState, useRouter } from "expo-router";
-import { StatusBar } from 'react-native';
 
 
 const router = useRouter();
