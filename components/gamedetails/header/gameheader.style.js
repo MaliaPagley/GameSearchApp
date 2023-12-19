@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
   gameDevelopers: {
     fontSize: SIZES.large - 2,
-    color: COLORS.gray,
+    color: COLORS.primary,
     fontFamily: FONT.small,
     marginLeft: SIZES.xSmall,
   },
