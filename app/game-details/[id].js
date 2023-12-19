@@ -58,19 +58,19 @@ const GameDetails = () => {
             <Text>Something went wrong</Text>
           ) : (
             <View style={{ padding: SIZES.medium, paddingBottom: 100 }}>
-                       <GameHeader 
-                        id={params.id}
-                        name={data.name}
-                        image={data.background_image}
-                        developers={data.developers}
-                        releaseDate={data.released}
-                    />
-                    <GameTags tags={data.tags} />
-                    <GamePlatforms platforms={data.platforms}/>
-                    <GameTabOptions id={params.id} />
-                    <GameGenres genres={data.genres} />
-                    <GameAbout description={data.description_raw}/>
-                    <GameFooter />
+              <GameHeader 
+                id={params.id}
+                name={data.name}
+                image={data.background_image}
+                developers={data.developers}
+                releaseDate={data.released}
+              />
+              <GameTags tags={data.tags} />
+              <GamePlatforms platforms={data.platforms}/>
+              <GameTabOptions id={params.id} name={data.name}/>
+              <GameGenres genres={data.genres} />
+              <GameAbout description={data.description_raw}/>
+              <GameFooter />
             </View>
           )}
         </ScrollView>
