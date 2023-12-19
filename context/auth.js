@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useSegments, useRootNavigationState, useRouter } from "expo-router";
+import { StatusBar } from 'react-native';
 
 
-const router = useRouter()
+const router = useRouter();
 const AuthContext = createContext(null);
 
 export function useAuth() {
