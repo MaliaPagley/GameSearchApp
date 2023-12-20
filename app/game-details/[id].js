@@ -11,6 +11,7 @@ import {
   GamePlatforms,
   GameTags,
   GameGenres,
+  GameFavoritesButton
 } from '../../components';
 import { COLORS, icons, SIZES } from '../../constants';
 import useFetch from '../../hook/useFetch';
@@ -65,7 +66,9 @@ const GameDetails = () => {
                 developers={data.developers}
                 releaseDate={data.released}
               />
+             
               <GameTags tags={data.tags} />
+              <GameFavoritesButton name={data.name} id={params.id}/>
               <GamePlatforms platforms={data.platforms}/>
               <GameTabOptions id={params.id} name={data.name}/>
               <GameGenres genres={data.genres} />
