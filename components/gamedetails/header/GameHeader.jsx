@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native'
-import styles from './gameheader.style'
-import { checkImageURL } from '../../../utils'
+import { View, Text, Image } from 'react-native';
+import styles from './gameheader.style';
+import { checkImageURL } from '../../../utils';
 
 
 const GameHeader = ({ image, name, developers, releaseDate }) => {
   const developersName = developers ? developers.map(developer => developer.name).join(' / ') : '';
-  
+ 
   return (
     <View style={styles.container}>
     <View>
@@ -14,7 +14,7 @@ const GameHeader = ({ image, name, developers, releaseDate }) => {
       (
         <Image testID='ImageID' source={{ uri: image }} style={styles.backgroundImage} />
       ) : (
-        <Image testID='NoimageID' source={require("../../../assets/noimage.png")} resizeMode="contain" style={styles.backgroundImage} />
+        <Image testID='NoImageID' source={require("../../../assets/noimage.png")} resizeMode="contain" style={styles.backgroundImage} />
       )}
     </View>
     <View style={styles.gameInfoContainer}>

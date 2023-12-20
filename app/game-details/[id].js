@@ -60,13 +60,11 @@ const GameDetails = () => {
           ) : (
             <View style={{ padding: SIZES.medium, paddingBottom: 100 }}>
               <GameHeader 
-                id={params.id}
                 name={data.name}
                 image={data.background_image}
                 developers={data.developers}
                 releaseDate={data.released}
               />
-             
               <GameTags tags={data.tags} />
               <GameFavoritesButton name={data.name} id={params.id}/>
               <GamePlatforms platforms={data.platforms}/>

@@ -2,46 +2,51 @@ import React from 'react';
 import { render } from '@testing-library/react-native';
 import GameHeader from './GameHeader';
 
-describe('GameHeader Component:', () => {
-  describe('prop handling:', () => {
-    it('renders without props', () => {
-      const { getByTestId } = render(<GameHeader />);
+describe('GameHeader Component: ', () => {
+  const mockGame = {
+    id: 1,
+    name: 'Test Game',
+    developers: [{ name: 'Test Developer' }],
+    releaseDate: '2023-12-19',
+    image: 'https://test.com/test-image.jpg',
+  };
 
-      expect(getByTestId('NameID').props.children).toBe('Unavailable');
-      expect(getByTestId('DeveloperID').props.children).toBe('Unavailable');
-      expect(getByTestId('DateID').props.children[1]).toBe('Unavailable');
+  it('renders correctly with game data', () => {
+    const { getByTestId, getByText } = render(<GameHeader {...mockGame}/>);
 
-    })
- 
-    it('renders with props', () => {
-        const mockProps = {
-          image: 'https://test.com/background-image.jpg',
-          name: 'Game Name',
-          developers: [{ name: 'Developer' }],
-          releasedDate: '2023-12-05',
-          id: '123456',
-        };
-        render(<GameHeader {...mockProps} />);
-      });
-      
-    it('renders background image with a valid image URL', () => {
-       const urlMockProp = {
-        image: 'https://test.com/background-image.jpg',
-       };
-       const { getByTestId } = render(<GameHeader {...urlMockProp} />)
-       const backgroundImage = getByTestId('ImageID');
+    expect(getByTestId('ImageID')).toBeTruthy();
 
-       expect(backgroundImage).toBeDefined();
-    });
-
-    it('renders default background image with an invalid image URL (No Image)', () => {
-      const urlMockProp = {
-        image: 'invalid-url',
-      }
-      const { getByTestId } = render(<GameHeader {...urlMockProp}/>);
-      const noBackgroundImage = getByTestId('NoimageID');
-
-      expect(noBackgroundImage).toBeDefined();
-    });
+    expect(getByText('Test Game')).toBeDefined();
+    expect(getByText('Test Developer')).toBeDefined();
+    expect(getByText('Release Date: 2023-12-19')).toBeDefined();
   });
+
+  it('renders default image', () => {
+    const InvalidImage = 'invalid_image_url';
+    const { getByTestId } = render(<GameHeader image={InvalidImage}/>)
+
+    expect(getByTestId('NoImageID')).toBeTruthy();
+  })
+
+  it('renders default text when data is unavailable', () => {
+    const { getByTestId } = render(<GameHeader />);
+  
+    const nameTest = getByTestId('NameID');
+    const developerTest = getByTestId('DeveloperID');
+    const dateTest = getByTestId('DateID');
+  
+    expect(nameTest).toBeTruthy();
+    expect(developerTest).toBeTruthy();
+    expect(dateTest).toBeTruthy();
+
+    expect(nameTest.props.children).toBe('Unavailable');
+    expect(developerTest.props.children).toBe('Unavailable');
+    expect(dateTest.props.children).toContain('Unavailable');
+  });
+ 
 });
+
+
+
+
+
