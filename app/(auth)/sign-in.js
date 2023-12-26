@@ -1,18 +1,24 @@
+import React from 'react';
 import { View, TextInput, Pressable, Text } from 'react-native'
 import { useState } from 'react'
 import { useRouter, Stack } from 'expo-router';
-import { useAuth } from '../../context/auth';
+import { useAuthContext } from '../../context/auth';
 import { COLORS } from '../../constants';
-import styles from '../../styles/signin.style'
-import useSignIn from '../../hook/useSignin';
+import styles from '../../styles/signin.style';
+
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
+import { Alert } from 'react-native';
 
 
-export default function SignIn() {
+
+ function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isPressed, setIsPressed] = useState(false);
-    const { setUser } = useAuth();
-    const { signIn } = useSignIn();
+    const [error, setError] = useState(null);
+    const { setUser } = useAuthContext();
+
     const router = useRouter();
 
     const handlePressIn = () => {
@@ -23,9 +29,41 @@ export default function SignIn() {
         setIsPressed(false);
       };
 
-      const onHandlerSignIn = async () => {
-        signIn(email, password, setUser);
-      };
+  
+
+
+  const handleSignIn = async (email, password, setUser) => {
+    try {
+      const auth = getAuth();
+      const response = await signInWithEmailAndPassword(auth, email, password);
+
+      if (response.user) {
+        setUser(response.user)
+      } else {
+        setError("Sign-in Authentication failed. Please check your credentials and try again.");
+      }
+    } catch (error) {
+      console.error("Sign-in error:", error.message);
+
+      switch (error.code) {
+        case 'auth/invalid-login-credentials':
+          setError('Invalid login credentials. Please check your email and password.');
+          break;
+        default:
+          setError('An unexepected error occurred. Please try again later.')
+      }
+    }
+  };
+
+  const clearError = () => {
+    setError(null);
+  };
+
+  if (error) {
+    Alert.alert('Error', error);
+    clearError()
+  }
+
       
 
     return (
@@ -70,7 +108,7 @@ export default function SignIn() {
                         styles.signinBtn,{
                         opacity: pressed || isPressed ? 0.7 : 1,
                         },]}
-                    onPress={onHandlerSignIn}
+                    onPress={() => handleSignIn(email,password,setUser)}
                     onPressIn={handlePressIn}
                     onPressOut={handlePressOut}
                 >
@@ -84,3 +122,4 @@ export default function SignIn() {
         </View>
     )
 };
+export default SignIn;
