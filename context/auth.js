@@ -5,8 +5,8 @@ import { useSegments, useRootNavigationState, useRouter } from "expo-router";
 const router = useRouter();
 const AuthContext = createContext(null);
 
-export function useAuth() {
-    return useContext(AuthContext);
+export function useAuthContext() {
+    return useContext(AuthContext) || {};
 }
 
 function useProtectedRoute(user) {
@@ -29,6 +29,7 @@ function useProtectedRoute(user) {
 
 export function Provider({ children }) {
     const [user, setUser ] = useState(null);
+    console.log(user)
     useProtectedRoute(user);
 
     const signOut = () => {
