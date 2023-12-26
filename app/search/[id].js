@@ -8,7 +8,7 @@ import useSearch from '../../hook/useSearch';
 
 const GameSearch = () => {
   const params = useLocalSearchParams();
-  const { searchLoader, searchError, searchResult } = useSearch(`${params.id}`)
+  const { searchLoader, searchError, searchResult } = useSearch(`${params.id}`);
   const router = useRouter();
 
   const handleCardPress = (item) => {
@@ -31,33 +31,34 @@ const GameSearch = () => {
           headerTitle: "",
         }}
       />
-       <View>
-       <View style={styles.container}>
-              <Text style={styles.searchTitle}>{params.id}</Text>
-              <Text style={styles.noOfSearchedGame}>Search Results:</Text>
-            </View>
-           
-        {searchLoader ? (
-          <ActivityIndicator style={styles.loading} testID='loading-indicator' size='large'  />
-        ) : searchError ? (
-          <Text style={styles.error}>Data Unavailable</Text>
-        ) : (
-          <View > 
-            <FlatList
-              testID='list-id'
-                data={searchResult}
-                renderItem={({ item }) => (
-                  <NewGameCard 
-                    game={item}
-                    handleCardPress={() => handleCardPress(item)} />
-                )}
-                contentContainerStyle={{ padding: SIZES.small }}
-                keyExtractor={(item, index) => `search-game-${item.id}-${index}`}
+      {searchLoader ? (
+        <View style={styles.loaderContainer}>
+          <ActivityIndicator style={styles.loading} testID='loading-indicator' size='large' />
+        </View>
+      ) : searchError ? (
+        <Text style={styles.error}>Data Unavailable</Text>
+      ) : (
+        <View style={{ flex: 1 }}>
+          <FlatList
+            testID='list-id'
+            data={searchResult}
+            renderItem={({ item }) => (
+              <NewGameCard
+                game={item}
+                handleCardPress={() => handleCardPress(item)}
               />
-             
-          </View>
-          )}
-      </View>
+            )}
+            contentContainerStyle={{ padding: SIZES.small }}
+            keyExtractor={(item, index) => `search-game-${item.id}-${index}`}
+            ListHeaderComponent={() => (
+              <View style={styles.container}>
+                <Text style={styles.searchTitle}>{params.id}</Text>
+                <Text style={styles.noOfSearchedGame}>Search Results:</Text>
+              </View>
+            )}
+          />
+        </View>
+      )}
     </SafeAreaView>
   );
 };

@@ -3,18 +3,17 @@ import { COLORS, FONT, SIZES } from "../constants";
 
 const styles = StyleSheet.create({
     container: {
-        width: "100%",
-        alignItems: 'center',
-        padding: 10,
+        alignItems: 'center'
     },
     searchTitle: {
         fontFamily: FONT.bold,
-        fontSize: 20,
+        fontSize: 23,
         color: COLORS.white,
+        marginLeft: 10,
     },
     noOfSearchedGame: {
         marginTop: 2,
-        marginLeft: 4,
+        marginLeft: 20,
         fontFamily: FONT.medium,
         fontSize: SIZES.medium,
         color: COLORS.grayThunder,
@@ -22,6 +21,9 @@ const styles = StyleSheet.create({
     loaderContainer: {
         marginTop: SIZES.small,
     },
+    header: {
+        padding: 10,
+    }
 });
 
 export default styles;
