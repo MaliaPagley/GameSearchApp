@@ -3,7 +3,7 @@ import { query, collection, where, getDocs } from 'firebase/firestore';
 import { useAuthContext } from '../context/auth';
 
 const useUserData = (db) => {
-  const { user, signOut } = useAuthContext();
+  const { user, signOut, setUser } = useAuthContext();
   const [favorites, setFavorites] = useState([]);
   const [fullName, setFullName] = useState('');
   const [loading, setLoading] = useState(true);
