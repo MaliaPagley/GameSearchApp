@@ -2,11 +2,15 @@ import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { getAuth } from '../firebase';
 import { Alert } from 'react-native';
+import { useAuthContext } from '../context/auth';
 
 const useSignIn = () => {
   const [error, setError] = useState(null);
+ const { setUser } = useAuthContext()
 
-  const signIn = async (email, password, setUser) => {
+
+  const signIn = async (email, password) => {
+    
     try {
       const auth = getAuth();
       const response = await signInWithEmailAndPassword(auth, email, password);
