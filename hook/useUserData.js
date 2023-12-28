@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { query, collection, where, getDocs } from 'firebase/firestore';
 import { useAuthContext } from '../context/auth';
+import { db } from '../firebase/index';
 
-const useUserData = (db) => {
-  const { user, signOut, setUser } = useAuthContext();
+const useUserData = () => {
+  const { user, signOut } = useAuthContext();
   const [favorites, setFavorites] = useState([]);
   const [fullName, setFullName] = useState('');
   const [loading, setLoading] = useState(true);
