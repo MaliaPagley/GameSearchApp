@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { View, TextInput, Pressable, Text } from 'react-native'
 import { useRouter, Stack } from 'expo-router';
-import { useAuth } from '../../context/auth';
+import { useAuthContext } from '../../context/auth';
 import { COLORS } from '../../constants';
 import styles from '../../styles/signup.style'
 import useSignUp from '../../hook/useSignup';
@@ -11,7 +11,7 @@ export default function SignUp() {
     const [password, setPassword] = useState('');
     const [fullName, setFullName] = useState('');
     const [isPressed, setIsPressed] = useState(false);
-    const { setUser } = useAuth();
+    const { setUser } = useAuthContext();
     const { signUp } = useSignUp();
     const router = useRouter();
 
