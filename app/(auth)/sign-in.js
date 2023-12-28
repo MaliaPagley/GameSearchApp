@@ -1,82 +1,27 @@
 import React from 'react';
-import { View, TextInput, Pressable, Text } from 'react-native'
+import { View, TextInput, Pressable, Text, TouchableOpacity } from 'react-native'
 import { useState } from 'react'
-import { useRouter, Stack } from 'expo-router';
-import { useAuthContext } from '../../context/auth';
+import { useRouter } from 'expo-router';
 import { COLORS } from '../../constants';
 import styles from '../../styles/signin.style';
+import useSignIn from '../../hook/useSignin';
 
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { getAuth } from 'firebase/auth';
-import { Alert } from 'react-native';
 
 
 
  function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isPressed, setIsPressed] = useState(false);
-    const [error, setError] = useState(null);
-    const { setUser } = useAuthContext();
-
     const router = useRouter();
+    const { signIn } = useSignIn()
 
-    const handlePressIn = () => {
-        setIsPressed(true);
-      };
-    
-      const handlePressOut = () => {
-        setIsPressed(false);
-      };
-
-  
-
-
-  const handleSignIn = async (email, password, setUser) => {
-    try {
-      const auth = getAuth();
-      const response = await signInWithEmailAndPassword(auth, email, password);
-
-      if (response.user) {
-        setUser(response.user)
-      } else {
-        setError("Sign-in Authentication failed. Please check your credentials and try again.");
-      }
-    } catch (error) {
-      console.error("Sign-in error:", error.message);
-
-      switch (error.code) {
-        case 'auth/invalid-login-credentials':
-          setError('Invalid login credentials. Please check your email and password.');
-          break;
-        default:
-          setError('An unexepected error occurred. Please try again later.')
-      }
+    const handleSignIn = () => {
+      signIn(email, password);
     }
-  };
-
-  const clearError = () => {
-    setError(null);
-  };
-
-  if (error) {
-    Alert.alert('Error', error);
-    clearError()
-  }
-
-      
 
     return (
         <View style={styles.container}>
-            <Stack.Screen 
-                options={{
-                    headerStyle: { backgroundColor: COLORS.blackOnyx },
-                    headerShadowVisible: false,
-                    contentStyle: {backgroundColor: COLORS.blackNavy},
-                    title: '',
-                    headerShown: false,
-                }}
-            />
+          
             <View style={styles.headerContainer}>
                 <Text style={styles.headerTextOne}>Welcome Back</Text>
                 <Text style={styles.headerTextTwo}>Please Sign in to your account.</Text>
@@ -103,21 +48,13 @@ import { Alert } from 'react-native';
             </View>
 
             <View style={styles.actionContainer}>
-                <Pressable 
-                    style={({ pressed }) => [
-                        styles.signinBtn,{
-                        opacity: pressed || isPressed ? 0.7 : 1,
-                        },]}
-                    onPress={() => handleSignIn(email,password,setUser)}
-                    onPressIn={handlePressIn}
-                    onPressOut={handlePressOut}
-                >
-                    <Text style={styles.signinText}>Sign in</Text>
-                </Pressable>
+              <TouchableOpacity style={styles.signinBtn} testID='signinID' onPress={() => handleSignIn(email,password)}>
+                <Text style={styles.signinText}>Sign in</Text>
+              </TouchableOpacity>
 
-                <Pressable style={styles.signupLinkBtn}onPress={() => router.replace("sign-up")}>
-                    <Text style={styles.signUpLinkText}>Create an account</Text>
-                </Pressable>
+              <Pressable style={styles.signupLinkBtn}onPress={() => router.replace("sign-up")}>
+                <Text style={styles.signUpLinkText}>Create an account</Text>
+              </Pressable>
             </View>
         </View>
     )
