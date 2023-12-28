@@ -1,11 +1,11 @@
-import { getFirestore, doc, updateDoc, setDoc, getDoc } from 'firebase/firestore';
-import { useAuth, useAuthContext } from '../context/auth';
+import { doc, updateDoc, setDoc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase/index';
+import { useAuthContext } from '../context/auth';
 
 const useAddToFavorites = () => {
   const { user } = useAuthContext();
 
   const addToFavorites = async (id, name) => {
-    const db = getFirestore();
     const userDocRef = doc(db, 'users', user.uid);
 
     try {
