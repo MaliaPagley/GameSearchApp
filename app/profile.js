@@ -2,16 +2,13 @@ import { View, Text, Button, FlatList, Pressable, ActivityIndicator } from 'reac
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import { getFirestore } from 'firebase/firestore';
 import useUserData from '../hook/useUserData'; 
 import styles from '../styles/profile.style';
 import { COLORS } from '../constants';
 
-
-
 const Profile = () => {
   const router = useRouter();
-  const { favorites, fullName, loading, handleSignOut, user } = useUserData(getFirestore());
+  const { favorites, fullName, loading, handleSignOut, user } = useUserData();
 
   return (
     <View style={styles.container}>
