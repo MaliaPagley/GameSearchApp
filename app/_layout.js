@@ -13,7 +13,7 @@ const Layout = () => {
     'dm-bold': require('../assets/fonts/DMSans-Bold.ttf'),
     'dm-medium': require('../assets/fonts/DMSans-Medium.ttf'),
     'dm-regular': require('../assets/fonts/DMSans-Regular.ttf'),
-    'dm-extraBold': require('../assets/fonts/DMSans-ExtraBold.ttf')
+    'dm-extraBold': require('../assets/fonts/DMSans-ExtraBold.ttf'),
   });
 
   if (!fontsLoaded) {
@@ -23,7 +23,7 @@ const Layout = () => {
   return (
     <Provider>
       <Stack>
-        <Stack.Screen 
+        <Stack.Screen
           name='index'
           options={{
             headerStyle: { backgroundColor: COLORS.blackOnyx },
@@ -34,24 +34,46 @@ const Layout = () => {
                 <Ionicons name={'person-sharp'} size={20} color='white' />
               </Link>
             ),
-            title: "GameSearch",
+            title: 'GameSearch',
           }}
         />
         
-        <Stack.Screen 
+        <Stack.Screen
           name='profile'
           options={{
             headerStyle: { backgroundColor: COLORS.blackOnyx },
             headerShadowVisible: false,
             contentStyle: { backgroundColor: COLORS.blackOnyx },
             headerLeft: () => (
-              <ScreenHeaderBtn 
+              <ScreenHeaderBtn
                 iconUrl={icons.left}
                 dimension='60%'
                 handlePress={() => router.back()}
               />
             ),
-            title: 'Profile'
+            title: 'Profile',
+          }}
+        />
+
+        <Stack.Screen
+          name='(auth)/sign-in'
+          options={{
+            headerStyle: { backgroundColor: COLORS.blackOnyx },
+            headerShadowVisible: false,
+            contentStyle: { backgroundColor: COLORS.blackNavy },
+            title: '',
+            headerShown: false,
+          }}
+        />
+        
+        <Stack.Screen
+          name='(auth)/sign-up'
+          options={{
+            headerStyle: { backgroundColor: COLORS.blackOnyx },
+            headerShadowVisible: false,
+            contentStyle: { backgroundColor: COLORS.blackNavy },
+            title: '',
+            headerShown: false,
           }}
         />
       </Stack>
