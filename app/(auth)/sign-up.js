@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, TextInput, Pressable, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
-import { useRouter, Stack } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { COLORS } from '../../constants';
 import styles from '../../styles/signup.style';
 import useSignUp from '../../hook/useSignup';
@@ -24,15 +24,6 @@ const SignUp = () => {
 
   return (
     <View style={styles.container}>
-      <Stack.Screen
-        options={{
-          headerStyle: { backgroundColor: COLORS.blackOnyx },
-          headerShadowVisible: false,
-          contentStyle: { backgroundColor: COLORS.blackNavy },
-          title: '',
-          headerShown: false,
-        }}
-      />
       <View style={styles.headerContainer}>
         <Text style={styles.headerTextOne}>Create Account</Text>
         <Text style={styles.headerTextTwo}>Please fill in the fields.</Text>
@@ -68,11 +59,11 @@ const SignUp = () => {
       <View style={styles.actionContainer}>
         <TouchableOpacity
           style={styles.signupBtn}
-          testID="signinID"
+          testID="buttonID"
           onPress={() => onHandlerSignUp()}
         >
           {loading ? (
-            <ActivityIndicator color={COLORS.blackNavy} />
+            <ActivityIndicator testID='loadingID' color={COLORS.blackNavy} />
           ) : (
             <Text style={styles.signupText}>Sign Up</Text>
           )}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, TextInput, Pressable, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
-import { useRouter, Stack } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { COLORS } from '../../constants';
 import styles from '../../styles/signin.style';
 import useSignIn from '../../hook/useSignin';
@@ -24,16 +24,6 @@ const SignIn = () => {
 
   return (
     <View style={styles.container}>
-      <Stack.Screen
-        options={{
-          headerStyle: { backgroundColor: COLORS.blackOnyx },
-          headerShadowVisible: false,
-          contentStyle: { backgroundColor: COLORS.blackNavy },
-          title: '',
-          headerShown: false,
-        }}
-      />
-
       <View style={styles.headerContainer}>
         <Text style={styles.headerTextOne}>Welcome Back</Text>
         <Text style={styles.headerTextTwo}>Please Sign in to your account.</Text>
@@ -62,12 +52,12 @@ const SignIn = () => {
       <View style={styles.actionContainer}>
         <TouchableOpacity
           style={styles.signinBtn}
-          testID="signinID"
+          testID="buttonID"
           onPress={() => onHandlerSignIn()}
           disabled={loading}
         >
           {loading ? (
-            <ActivityIndicator color={COLORS.blackNavy} />
+            <ActivityIndicator testID='loadingID' color={COLORS.blackNavy} />
           ) : (
             <Text style={styles.signinText}>Sign in</Text>
           )}
@@ -75,6 +65,7 @@ const SignIn = () => {
 
         <Pressable
           style={styles.signupLinkBtn}
+          testID='routeID'
           onPress={() => router.replace('sign-up')}
         >
           <Text style={styles.signUpLinkText}>Create an account</Text>

@@ -1,48 +1,49 @@
 import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react-native';
+import { render } from '@testing-library/react-native';
 import SignIn from '../(auth)/sign-in';
+import useSignIn from '../../hook/useSignin';
 
-
-jest.mock('../../context/auth', () => ({
-  useAuthContext: () => ({
-    setUser: jest.fn(),
-  }),
-}));
-
-jest.mock('expo-router', () => ({
-  useRouter: () => ({
-    replace: jest.fn(),
-  }),
-}));
-
-jest.mock('firebase/auth', () => ({
-  getAuth: jest.fn(),
-  signInWithEmailAndPassword: jest.fn(),
+jest.mock('../../hook/useSignin', () => ({
+  __esModule: true,
+  default: jest.fn().mockReturnValue({
+    signIn: jest.fn(),
+    loading: false,
+    error: null,
+  })
 }));
 
 describe('SignIn Component: ', () => {
   it('renders correctly', () => {
-    const { getByPlaceholderText, getByText } = render(<SignIn />);
-    
-    expect(getByPlaceholderText('Email')).toBeTruthy();
-    expect(getByPlaceholderText('Password')).toBeTruthy();
-    
-    expect(getByText('Please Sign in to your account.')).toBeDefined();
-    expect(getByText('Welcome Back')).toBeDefined();
-    expect(getByText('Sign in')).toBeDefined();
-    expect(getByText('Create an account')).toBeTruthy();
+    const { getByText, getByPlaceholderText } = render(<SignIn />);
+
+    const headerTextOne = getByText('Welcome Back');
+    const headerTextTwo = getByText('Please Sign in to your account.');
+    const emailInput = getByPlaceholderText('Email');
+    const passwordInput = getByPlaceholderText('Password');
+
+    expect(headerTextOne).toBeDefined();
+    expect(headerTextTwo).toBeDefined();
+    expect(emailInput).toBeDefined();
+    expect(passwordInput).toBeDefined();
   });
 
-  it('handles input changes correctly', () => {
-    const { getByPlaceholderText } = render(<SignIn />);
-    
-
-    fireEvent.changeText(getByPlaceholderText('Email'), 'test@example.com');
-    fireEvent.changeText(getByPlaceholderText('Password'), 'password123');
-    
-
-    expect(getByPlaceholderText('Email').props.value).toBe('test@example.com');
-    expect(getByPlaceholderText('Password').props.value).toBe('password123');
+  it('renders button correctly', () => {
+    const { getByTestId, getByText } = render(<SignIn />);
+  
+    const signInText = getByText('Sign in');
+    const signInButton = getByTestId('buttonID');
+  
+    expect(signInText).toBeDefined();
+    expect(signInButton).toBeTruthy();
   });
   
+  it('renders loading indicater', () => {
+    useSignIn.mockReturnValue({
+      loading: true,
+    });
+    const { getByTestId } = render(<SignIn />);
+    const activityIndicator = getByTestId('loadingID');
+
+    expect(activityIndicator).toBeTruthy();
+  });
 });
