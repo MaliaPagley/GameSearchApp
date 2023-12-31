@@ -29,7 +29,6 @@ function useProtectedRoute(user) {
 
 export function Provider({ children }) {
     const [user, setUser ] = useState(null);
-    console.log(user)
     useProtectedRoute(user);
 
     const signOut = () => {
