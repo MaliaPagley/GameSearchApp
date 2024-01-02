@@ -8,7 +8,7 @@ import useSearch from '../../hook/useSearch';
 
 const GameSearch = () => {
   const params = useLocalSearchParams();
-  const { searchLoader, searchError, searchResult } = useSearch(`${params.id}`);
+  const { searchLoader, searchResult, searchError } = useSearch(`${params.id}`);
   const router = useRouter();
 
   const handleCardPress = (item) => {
@@ -32,11 +32,13 @@ const GameSearch = () => {
         }}
       />
       {searchLoader ? (
-        <View style={styles.loaderContainer}>
-          <ActivityIndicator style={styles.loading} testID='loading-indicator' size='large' />
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator style={styles.loading} testID='loadingID' size='large' />
         </View>
       ) : searchError ? (
-        <Text style={styles.error}>Data Unavailable</Text>
+        <View style={styles.loadingContainer}>
+          <Text style={styles.error}>Something went wrong</Text>
+        </View>
       ) : (
         <View style={{ flex: 1 }}>
           <FlatList
