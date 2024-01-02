@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react-native';
-import SignUp from '../(auth)/sign-up';
-import useSignup from '../../hook/useSignup';
+import SignUp from '../../(auth)/sign-up';
+import useSignup from '../../../hook/useSignup';
 
-jest.mock('../../hook/useSignup', () => ({
+jest.mock('../../../hook/useSignup', () => ({
   __esModule: true,
   default: jest.fn().mockReturnValue({
     signUp: jest.fn(),
@@ -14,7 +14,7 @@ jest.mock('../../hook/useSignup', () => ({
 
 describe('SignUp Component:', () => {
   it('renders correctly', () => {
-    const { getByText, getByPlaceholderText, getByTestId } = render(<SignUp />);
+    const { getByText, getByPlaceholderText } = render(<SignUp />);
 
     const headerTextOne = getByText('Create Account');
     const headerTextTwo = getByText('Please fill in the fields.');

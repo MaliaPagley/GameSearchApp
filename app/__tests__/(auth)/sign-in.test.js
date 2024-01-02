@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react-native';
-import SignIn from '../(auth)/sign-in';
-import useSignIn from '../../hook/useSignin';
+import SignIn from '../../(auth)/sign-in';
+import useSignIn from '../../../hook/useSignin';
 
-jest.mock('../../hook/useSignin', () => ({
+jest.mock('../../../hook/useSignin', () => ({
   __esModule: true,
   default: jest.fn().mockReturnValue({
     signIn: jest.fn(),
