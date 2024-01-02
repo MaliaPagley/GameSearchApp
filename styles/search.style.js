@@ -18,11 +18,15 @@ const styles = StyleSheet.create({
         fontSize: SIZES.medium,
         color: COLORS.grayThunder,
     },
-    loaderContainer: {
+    loadingContainer: {
         marginTop: SIZES.small,
     },
     header: {
         padding: 10,
+    },
+    error: {
+        color: COLORS.white,
+        alignSelf: 'center',
     }
 });
 
