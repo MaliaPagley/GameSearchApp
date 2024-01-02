@@ -76,6 +76,19 @@ const Layout = () => {
             headerShown: false,
           }}
         />
+
+        <Stack.Screen
+        name='game-details/[id]'
+        options={{
+          headerStyle: { backgroundColor: COLORS.blackOnyx },
+          headerShadowVisible: false,
+          headerBackVisible: false,
+          headerLeft: () => (
+            <ScreenHeaderBtn iconUrl={icons.left} dimension="60%" handlePress={() => router.back()} />
+          ),
+          headerTitle: '',
+        }}
+      />  
       </Stack>
       <StatusBar barStyle={'light-content'} />
     </Provider>
