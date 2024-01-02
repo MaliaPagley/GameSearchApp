@@ -8,6 +8,7 @@ jest.mock('../../../hook/useFetch');
 jest.mock('expo-router');
 
 describe('GameDetails Component: ', () => {
+  useLocalSearchParams.mockReturnValue({ id: '123' });
   const mockUseFetchResponse = {
     data: {
       name: 'Test Game',
@@ -27,7 +28,6 @@ describe('GameDetails Component: ', () => {
   };
 
   it('renders component correctly', () => {
-    useLocalSearchParams.mockReturnValue({ id: '123' });
     useFetch.mockReturnValue(mockUseFetchResponse);
 
     const { getByTestId, getByText } = render(<GameDetails />);
@@ -52,7 +52,6 @@ describe('GameDetails Component: ', () => {
   });
 
   it('renders loading indicator', () => {
-    useLocalSearchParams.mockReturnValue({ id: '123' });
     useFetch.mockReturnValue({ isLoading: true, error: null, data: null });
 
     const { getByTestId } = render(<GameDetails />);
@@ -61,7 +60,6 @@ describe('GameDetails Component: ', () => {
   });
 
   it('renders error message', () => {
-    useLocalSearchParams.mockReturnValue({ id: '123' });
     useFetch.mockReturnValue({ isLoading: false, error: true, data: null });
 
     const { getByText } = render(<GameDetails />);
