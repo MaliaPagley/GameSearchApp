@@ -1,8 +1,8 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, SafeAreaView, Text, View } from 'react-native';
-import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import { ScreenHeaderBtn, NewGameCard } from '../../components';
-import { COLORS, icons, SIZES } from '../../constants';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { NewGameCard } from '../../components';
+import { COLORS, SIZES } from '../../constants';
 import styles from '../../styles/search.style';
 import useSearch from '../../hook/useSearch';
 
@@ -17,20 +17,6 @@ const GameSearch = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.blackOnyx }}>
-      <Stack.Screen
-        options={{
-          headerStyle: { backgroundColor: COLORS.blackOnyx },
-          headerShadowVisible: false,
-          headerLeft: () => (
-            <ScreenHeaderBtn
-              iconUrl={icons.left}
-              dimension='60%'
-              handlePress={() => router.back()}
-            />
-          ),
-          headerTitle: "",
-        }}
-      />
       {searchLoader ? (
         <View style={styles.loadingContainer}>
           <ActivityIndicator style={styles.loading} testID='loadingID' size='large' />

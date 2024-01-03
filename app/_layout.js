@@ -39,7 +39,7 @@ const Layout = () => {
         />
         
         <Stack.Screen
-          name='profile'
+          name='profile/index'
           options={{
             headerStyle: { backgroundColor: COLORS.blackOnyx },
             headerShadowVisible: false,
@@ -78,13 +78,29 @@ const Layout = () => {
         />
 
         <Stack.Screen
-        name='game-details/[id]'
+          name='game-details/[id]'
+          options={{
+            headerStyle: { backgroundColor: COLORS.blackOnyx },
+            headerShadowVisible: false,
+            headerBackVisible: false,
+            headerLeft: () => (
+              <ScreenHeaderBtn iconUrl={icons.left} dimension="60%" handlePress={() => router.back()} />
+            ),
+            headerTitle: '',
+          }}
+      />
+
+      <Stack.Screen
+        name='search/[id]'
         options={{
           headerStyle: { backgroundColor: COLORS.blackOnyx },
           headerShadowVisible: false,
-          headerBackVisible: false,
           headerLeft: () => (
-            <ScreenHeaderBtn iconUrl={icons.left} dimension="60%" handlePress={() => router.back()} />
+            <ScreenHeaderBtn
+              iconUrl={icons.left}
+              dimension='60%'
+              handlePress={() => router.back()}
+            />
           ),
           headerTitle: '',
         }}

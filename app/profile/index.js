@@ -2,19 +2,23 @@ import { View, Text, Button, FlatList, Pressable, ActivityIndicator } from 'reac
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import useUserData from '../hook/useUserData'; 
-import styles from '../styles/profile.style';
-import { COLORS } from '../constants';
+import useUserData from '../../hook/useUserData'; 
+import styles from '../../styles/profile.style';
+import { COLORS } from '../../constants';
 
 const Profile = () => {
   const router = useRouter();
-  const { favorites, fullName, loading, handleSignOut, user } = useUserData();
+  const { favorites, fullName, loading, handleSignOut, user, error } = useUserData();
 
   return (
     <View style={styles.container}>
       {loading ? (
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color={COLORS.white} />
+          <ActivityIndicator testID='loadingID' size="large" color={COLORS.white} />
+        </View>
+      ) : error ? (
+        <View style={styles.loadingContainer}>
+            <Text style={styles.error}>Something went wrong</Text>
         </View>
       ) : (
         <>
@@ -30,6 +34,7 @@ const Profile = () => {
           <View style={styles.container}>
             <FlatList
               data={favorites}
+              testID='list-id'
               keyExtractor={(item, index) => item.name + index.toString()}
               renderItem={({ item }) => (
                 <Pressable onPress={() => router.push(`/game-details/${item.id}`)}>
