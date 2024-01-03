@@ -8,6 +8,7 @@ const useUserData = () => {
   const [favorites, setFavorites] = useState([]);
   const [fullName, setFullName] = useState('');
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -26,6 +27,7 @@ const useUserData = () => {
         setLoading(false);
       } catch (error) {
         console.error('Error fetching favorites:', error.message);
+        setError(true);
         setLoading(false);
       }
     };
@@ -39,7 +41,7 @@ const useUserData = () => {
     signOut();
   };
 
-  return { favorites, fullName, loading, handleSignOut, user};
+  return { favorites, fullName, loading, handleSignOut, user, error};
 };
 
 export default useUserData;
