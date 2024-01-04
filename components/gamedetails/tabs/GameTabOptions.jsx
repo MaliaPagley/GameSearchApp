@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import GameTabScreenshots from './options/GameTabScreenshots';
-import GameTabPreview from './options/GameTabPreview';
+import GameTabPreview from './options/preview/GameTabPreview';
 import styles from './gametabs.style';
 
 const GameTabOptions = ({ id, name }) => {
