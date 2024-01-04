@@ -10,12 +10,12 @@ import GameHeader from "./gamedetails/header/GameHeader";
 import GameTabOptions from "./gamedetails/tabs/GameTabOptions";
 import GameAbout from "./gamedetails/about/GameAbout";
 import GameFooter from "./gamedetails/footer/GameFooter";
-import GamePlatforms from "./gamedetails/specifics/GamePlatforms";
-import GameTags from "./gamedetails//specifics/GameTags";
-import GameGenres from "./gamedetails/specifics/GameGenres";
-import GameFavoritesButton from "./gamedetails/specifics/GameFavoritesButton";
+import GamePlatforms from "./gamedetails/specifics/platforms/GamePlatforms";
+import GameTags from "./gamedetails/specifics/tags/GameTags";
+import GameGenres from "./gamedetails/specifics/genres/GameGenres";
+import GameFavoritesButton from "./gamedetails/specifics/button/GameFavoritesButton";
 
-// common
+//common
 import NewGameCard from "./common/cards/new/NewGameCard";
 
 export {
