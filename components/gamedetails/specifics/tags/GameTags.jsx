@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native';
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import styles from './gamespecifics.style';
+import styles from '../tags/gametags.style';
 
 const GameTags = ({ tags }) => {
   const tagNames = tags ? tags.map(item => item.name) : [];
