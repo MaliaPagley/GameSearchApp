@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import GameTabScreenshots from './options/GameTabScreenshots';
+import GameTabScreenshots from './options/screenshots/GameTabScreenshots';
 import GameTabPreview from './options/preview/GameTabPreview';
 import styles from './gametabs.style';
 
@@ -25,9 +25,14 @@ const GameTabOptions = ({ id, name }) => {
           </Text>
         </TouchableOpacity>
       </View>
-
-      {activeTab === 'Screenshots' && <GameTabScreenshots id={id} />}
-      {activeTab === 'Preview' && <GameTabPreview name={name} />}
+      {activeTab === 'Screenshots' && 
+      <View testID='screenshotsID'>
+        <GameTabScreenshots id={id} />
+      </View>}
+      {activeTab === 'Preview' && 
+      <View testID='previewID'>
+        <GameTabPreview testID='previewID' name={name} />
+      </View>}
     </View>
   );
 };
