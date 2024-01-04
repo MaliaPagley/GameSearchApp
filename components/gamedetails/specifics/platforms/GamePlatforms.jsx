@@ -1,8 +1,8 @@
-import { View, Text, Image } from 'react-native';
+import { View, Image } from 'react-native';
 import React from 'react';
-import styles from './gamespecifics.style';
+import styles from '../platforms/gameplatforms.style';
 import { Ionicons } from '@expo/vector-icons';
-import { icons } from '../../../constants';
+import { icons } from '../../../../constants';
 
 const GamePlatforms = ({ platforms }) => {
   const platformNames = platforms ? platforms.map(item => item.platform.name) : [];
