@@ -2,12 +2,13 @@ import React from 'react';
 import { render } from '@testing-library/react-native';
 import GameAbout from './GameAbout';
 
-describe('GameAbout Component:', () => {
-  it('successfully renders', () => {
-    const {getByText} = render(<GameAbout />);
-
+describe('GameAbout Component: ', () => {
+  it('successfully renders about title', () => {
+    const { getByText } = render(<GameAbout />);
+    
     expect(getByText('About:')).toBeTruthy();
   });
+
   describe('prop handling', () => {
     it('renders with provided description', () => {
       const description = 'This is a test description.';

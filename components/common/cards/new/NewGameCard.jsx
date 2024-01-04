@@ -2,8 +2,8 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Image, Pressable } from 'react-native';
 import styles from './newgamecard.style';
 import { checkImageURL } from '../../../../utils';
-import GamePlatforms from '../../../gamedetails/specifics/GamePlatforms';
-import GameGenres from '../../../gamedetails/specifics/GameGenres';
+import GamePlatforms from '../../../gamedetails/specifics/platforms/GamePlatforms';
+import GameGenres from '../../../gamedetails/specifics/genres/GameGenres';
 
 const NewGameCard = ({ game, handleCardPress }) => {
 

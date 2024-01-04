@@ -40,7 +40,7 @@ describe('Profile Component: ', () => {
         const signOutButton = getByText('Sign Out');
         expect(signOutButton).toBeTruthy();
 
-        fireEvent(signOutButton, 'press');
+        fireEvent.press(signOutButton);
        
         await waitFor(() => {
             expect(useUserData().handleSignOut).toHaveBeenCalled();
