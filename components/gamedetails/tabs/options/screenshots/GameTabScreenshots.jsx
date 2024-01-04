@@ -1,13 +1,16 @@
 import React, { useState, useRef } from 'react';
-import { View, Image, ActivityIndicator, FlatList } from 'react-native';
-import { checkImageURL } from '../../../../utils';
-import styles from '../gametabs.style';
-import useFetch from '../../../../hook/useFetch';
+import { View, Image, ActivityIndicator, FlatList, Text } from 'react-native';
+import { checkImageURL } from '../../../../../utils';
+import styles from '../screenshots/gametabscreenshots.style'
+import useFetch from '../../../../../hook/useFetch';
 import { Ionicons } from '@expo/vector-icons';
+import noImage from '../../../../../assets/noimage.png';
+
 
 const GameTabScreenshots = ({ id }) => {
-  const { data, isLoading } = useFetch(`screenshots/${id}`);
-  // console.log(data)
+  const { data, isLoading, error  } = useFetch(`screenshots/${id}`);
+
+
   const screenshots = data?.results || [];
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollViewRef = useRef();
@@ -26,7 +29,7 @@ const GameTabScreenshots = ({ id }) => {
           />
         ) : (
           <Image
-            source={require('../../../../assets/noimage.png')}
+            source={require('../../../../../assets/noimage.png')}
             resizeMode="contain"
             style={[styles.addBackgroundImage, isActive && styles.activeBackgroundImage]}
             testID={`screenshot-default-${index}`}
@@ -50,11 +53,19 @@ const GameTabScreenshots = ({ id }) => {
 
   if (isLoading) {
     return (
-      <View testID="loading-indicator" style={styles.loadingContainer}>
+      <View testID="loadingID" style={styles.loadingContainer}>
         <ActivityIndicator size="large" color="white" />
       </View>
     );
   }
+
+  if(error) {
+    return (
+      <View style={styles.errorContainer}>
+       <Text style={styles.error}>Screenshots are Unavailable</Text>
+      </View>
+    )
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -96,7 +107,7 @@ const GameTabScreenshots = ({ id }) => {
       ) : (
         <View style={styles.slide}>
           <Image
-            source={require('../../../../assets/noimage.png')}
+            source={require('../../../../../assets/noimage.png')}
             resizeMode="contain"
             style={styles.addBackgroundImage}
             testID="screenshot-default"
