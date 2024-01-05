@@ -7,7 +7,6 @@ import GameGenres from '../../../gamedetails/specifics/genres/GameGenres';
 
 const NewGameCard = ({ game, handleCardPress }) => {
 
- 
   return (
     <TouchableOpacity style={styles.container} 
       testID='touchable-id'
@@ -24,14 +23,14 @@ const NewGameCard = ({ game, handleCardPress }) => {
               }}
               resizeMode="cover"
               style={styles.mainImage}
-              testID='main-image'
+              testID='imageID'
             />
           ) : (
             <Image
               source={require('../../../../assets/noimage.png')}
               resizeMode="contain"
               style={styles.mainImage}
-              testID='default-image'
+              testID='noImageID'
             />
           )}
         </Pressable>
