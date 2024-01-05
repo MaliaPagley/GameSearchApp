@@ -9,24 +9,22 @@ describe('NewGameCard Component: ', () => {
         name: 'Test Game',
     };
 
-    it('renders correctly with game data and image URL (main image)', () => {
-        const { getByTestId } = render(<PopularGameCard game={mockGame}  />);
-        const mainImage = getByTestId('main-image');
+    it('renders correctly with game data and valid image URL', () => {
+        const { getByTestId, getByText } = render(<PopularGameCard game={mockGame}  />);
+        const image = getByTestId('imageID');
+        const name = getByText('Test Game');
 
-        expect(mainImage).toBeTruthy();
+        expect(image).toBeTruthy();
+        expect(name).toBeDefined();
     })
-    it('renders correctly with game data and no image URL (default image)', () => {
-        const mockGameNoImage = { ...mockGame, background_image: undefined };
+    describe('when image is invalid', () => {
+        it('renders correctly with default image', () => {
+            const mockGameNoImage = { background_image: 'invalid-image-url' };
+            const { getByTestId } = render(<PopularGameCard game={mockGameNoImage}  />);
+        
+            const defaultImage = getByTestId('noImageID');
     
-        const { getByTestId } = render(<PopularGameCard game={mockGameNoImage}  />);
-    
-        const defaultImage = getByTestId('default-image');
-        expect(defaultImage).toBeTruthy();
-    });
-    it('renders name correctly', () => {
-        const { getByText } = render(<PopularGameCard game={mockGame} />);
-        const gameName = getByText('Test Game');
-
-        expect(gameName).toBeDefined();
+            expect(defaultImage).toBeTruthy();
+        });
     });
 });

@@ -4,6 +4,7 @@ import styles from './populargamecard.style';
 import { checkImageURL } from '../../../../utils';
 
 const PopularGameCard = ({ game, handleCardPress }) => {
+
   return (
     <TouchableOpacity 
       style={styles.container} 
@@ -15,14 +16,14 @@ const PopularGameCard = ({ game, handleCardPress }) => {
             }}
             resizeMode="center"
             style={styles.backgroundImage}
-            testID='main-image'
+            testID='imageID'
           />
         ) : (
           <Image
             source={require('../../../../assets/noimage.png')}
             resizeMode="contain"
             style={styles.backgroundImage}
-            testID='default-image'
+            testID='noImageID'
           />
         )}
         <View style={styles.nameContainer}>
