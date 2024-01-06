@@ -1,7 +1,6 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react-native';
+import { render, fireEvent } from '@testing-library/react-native';
 import PopularGameCard from './PopularGameCard';
-import NewGameCard from '../new/NewGameCard';
 
 describe('NewGameCard Component: ', () => {
     const mockGame = {
@@ -27,4 +26,14 @@ describe('NewGameCard Component: ', () => {
             expect(defaultImage).toBeTruthy();
         });
     });
+    describe('when card is pressed', () => {
+        it('handles card press correctly', () => {
+          const mockHandleCardPress = jest.fn();
+          const { getByTestId } = render(<PopularGameCard game={mockGame} handleCardPress={mockHandleCardPress} />);
+      
+          fireEvent.press(getByTestId('touchable-id'));
+      
+          expect(mockHandleCardPress).toHaveBeenCalledWith(mockGame);
+        });
+      });
 });

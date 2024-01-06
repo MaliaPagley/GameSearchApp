@@ -8,6 +8,7 @@ const PopularGameCard = ({ game, handleCardPress }) => {
   return (
     <TouchableOpacity 
       style={styles.container} 
+      testID='touchable-id'
       onPress={() => handleCardPress(game)}>
         {checkImageURL(game.background_image) ? (
           <Image
