@@ -8,7 +8,6 @@ import { FlashList } from "@shopify/flash-list";
 
 const Populargames = () => {
   const { games, loadingList, listError, loadMoreGames } = useInfiniteList('popular'); 
-
   const router = useRouter();
   const handleCardPress = (item) => {
     router.push(`/game-details/${item.id}`);
@@ -21,13 +20,13 @@ const Populargames = () => {
       </View>
       <View>
         {loadingList ? (
-          <ActivityIndicator testID='loading-indicator' size="large" style={styles.loading} />
+          <ActivityIndicator testID='loadingID' size="large" style={styles.loading} />
         ) : listError ? (
           <Text style={styles.error}>Data Unavailable</Text>
         ) : (
           <View style={{ minHeight: 2 }}>
             <FlashList
-              testID='list-id'
+              testID='listID'
               data={games}
               renderItem={({ item }) => (
                 <PopularGameCard
