@@ -9,7 +9,6 @@ import { FlashList } from '@shopify/flash-list';
 const Newgames = () => {
   const { games, loadingList, listError, loadMoreGames } = useInfiniteList('new');
   const router = useRouter();
-
   const handleCardPress = (item) => {
     router.push(`/game-details/${item.id}`);
   };
