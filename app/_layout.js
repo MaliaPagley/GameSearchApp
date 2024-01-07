@@ -35,6 +35,7 @@ const Layout = () => {
               </Link>
             ),
             title: 'GameSearch',
+            headerTitleAlign: 'center'
           }}
         />
         
@@ -52,6 +53,7 @@ const Layout = () => {
               />
             ),
             title: 'Profile',
+            headerTitleAlign: 'center'
           }}
         />
 
