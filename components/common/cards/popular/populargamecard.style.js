@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.medium,
     justifyContent: "space-between",
     marginRight: SIZES.large,
+    marginTop: 10
   },
   backgroundImage: {
     width: "100%",
