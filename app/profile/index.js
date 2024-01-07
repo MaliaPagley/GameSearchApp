@@ -34,7 +34,7 @@ const Profile = () => {
           <View style={styles.container}>
             <FlatList
               data={favorites}
-              testID='list-id'
+              testID='listID'
               keyExtractor={(item, index) => item.name + index.toString()}
               renderItem={({ item }) => (
                 <Pressable onPress={() => router.push(`/game-details/${item.id}`)}>
