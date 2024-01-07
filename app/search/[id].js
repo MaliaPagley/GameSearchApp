@@ -28,7 +28,7 @@ const GameSearch = () => {
       ) : (
         <View style={{ flex: 1 }}>
           <FlatList
-            testID='list-id'
+            testID='listID'
             data={searchResult}
             renderItem={({ item }) => (
               <NewGameCard
