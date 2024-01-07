@@ -1,10 +1,11 @@
-import { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { getAuth } from '../firebase';
-import { Alert } from 'react-native';
-import { useAuthContext } from '../context/auth';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
+import { Alert } from "react-native";
 
-const useSignIn = (auth) => {
+import { useAuthContext } from "../context/auth";
+import { auth } from "../firebase";
+
+const useSignIn = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { setUser } = useAuthContext();
@@ -16,18 +17,22 @@ const useSignIn = (auth) => {
       if (response.user) {
         setUser(response.user);
       } else {
-        setError("Sign-in Authentication failed. Please check your credentials and try again.");
+        setError(
+          "Sign-in Authentication failed. Please check your credentials and try again.",
+        );
       }
     } catch (error) {
       console.error("Sign-in error:", error.message);
 
       switch (error.code) {
-        case 'auth/invalid-login-credentials':
-          setError('Invalid login credentials. Please check your email and password.');
+        case "auth/invalid-login-credentials":
+          setError(
+            "Invalid login credentials. Please check your email and password.",
+          );
           break;
         default:
-          setError('An unexpected error occurred. Please try again later.');
-      } 
+          setError("An unexpected error occurred. Please try again later.");
+      }
     } finally {
       setLoading(false);
     }
@@ -38,7 +43,7 @@ const useSignIn = (auth) => {
   };
 
   if (error) {
-    Alert.alert('Error', error);
+    Alert.alert("Error", error);
     clearError();
   }
 

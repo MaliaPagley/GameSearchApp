@@ -4,15 +4,13 @@ import { useRouter } from 'expo-router';
 import { COLORS } from '../../constants';
 import styles from '../../styles/signup.style';
 import useSignUp from '../../hook/useSignup';
-import { getAuth } from '../../firebase';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const router = useRouter();
-  const auth = getAuth();
-  const { signUp, loading, error } = useSignUp(auth);
+  const { signUp, loading, error } = useSignUp();
 
   const onHandlerSignUp = async () => {
     try {
