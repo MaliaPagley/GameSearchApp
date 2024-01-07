@@ -3,31 +3,36 @@ import { render } from '@testing-library/react-native';
 import SignIn from '../../(auth)/sign-in';
 import useSignIn from '../../../hook/useSignin';
 
-jest.mock('../../../hook/useSignin', () => ({
-  __esModule: true,
-  default: jest.fn().mockReturnValue({
-    signIn: jest.fn(),
-    loading: false,
-    error: null,
-  })
-}));
+jest.mock('../../../hook/useSignin');
 
 describe('SignIn Component: ', () => {
-  it('renders correctly', () => {
-    const { getByText, getByPlaceholderText } = render(<SignIn />);
+  useSignIn.mockReturnValue({
+    signIn: jest.fn(),
+    loading: false,
+  });
+  
+describe('when sign-in screen displays', () => {
+  it('renders inputs correctly', () => {
+    const { getByPlaceholderText } = render(<SignIn />);
 
-    const headerTextOne = getByText('Welcome Back');
-    const headerTextTwo = getByText('Please Sign in to your account.');
     const emailInput = getByPlaceholderText('Email');
     const passwordInput = getByPlaceholderText('Password');
 
-    expect(headerTextOne).toBeDefined();
-    expect(headerTextTwo).toBeDefined();
     expect(emailInput).toBeDefined();
     expect(passwordInput).toBeDefined();
   });
 
-  it('renders button correctly', () => {
+  it ('renders headers correctly', () => {
+    const { getByText } = render(<SignIn />);
+
+    const headerTextOne = getByText('Welcome Back');
+    const headerTextTwo = getByText('Please Sign in to your account.');
+
+    expect(headerTextOne).toBeDefined();
+    expect(headerTextTwo).toBeDefined();
+  });
+
+  it('renders buttons correctly', () => {
     const { getByTestId, getByText } = render(<SignIn />);
   
     const signInText = getByText('Sign in');
@@ -36,14 +41,14 @@ describe('SignIn Component: ', () => {
     expect(signInText).toBeDefined();
     expect(signInButton).toBeTruthy();
   });
-  
-  it('renders loading indicater', () => {
-    useSignIn.mockReturnValue({
-      loading: true,
-    });
-    const { getByTestId } = render(<SignIn />);
-    const activityIndicator = getByTestId('loadingID');
+});
+ describe('when loading', () => {
+    it('renders loading indicater', () => {
+      useSignIn.mockReturnValueOnce({ loading: true });
+      const { getByTestId } = render(<SignIn />);
+      const activityIndicator = getByTestId('loadingID');
 
-    expect(activityIndicator).toBeTruthy();
+      expect(activityIndicator).toBeTruthy();
+    });
   });
 });
