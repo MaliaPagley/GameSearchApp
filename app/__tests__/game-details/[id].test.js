@@ -7,7 +7,7 @@ import useFetch from '../../../hook/useFetch';
 jest.mock('../../../hook/useFetch');
 jest.mock('expo-router');
 
-describe('GameDetails Component: ', () => {
+describe('GameDetails Component', () => {
   useLocalSearchParams.mockReturnValue({ id: '123' });
   const mockUseFetchResponse = {
     data: {
@@ -27,9 +27,8 @@ describe('GameDetails Component: ', () => {
     error: null,
   };
 
-  it('renders component correctly', () => {
+  it('renders data correctly', () => {
     useFetch.mockReturnValue(mockUseFetchResponse);
-
     const { getByTestId, getByText } = render(<GameDetails />);
 
     const name = getByText('Test Game');
@@ -51,18 +50,22 @@ describe('GameDetails Component: ', () => {
     expect(description).toBeDefined();
   });
 
-  it('renders loading indicator', () => {
-    useFetch.mockReturnValue({ isLoading: true, error: null, data: null });
+  describe('when loading', () => {
+    it('renders loading indicator', () => {
+      useFetch.mockReturnValue({ isLoading: true, error: null, data: null });
 
-    const { getByTestId } = render(<GameDetails />);
-    const activityIndicator = getByTestId('loadingID');
-    expect(activityIndicator).toBeTruthy();
+      const { getByTestId } = render(<GameDetails />);
+      const activityIndicator = getByTestId('loadingID');
+      expect(activityIndicator).toBeTruthy();
+    });
   });
 
-  it('renders error message', () => {
-    useFetch.mockReturnValue({ isLoading: false, error: true, data: null });
+  describe('when on error', () => {
+    it('renders error message', () => {
+      useFetch.mockReturnValue({ isLoading: false, error: true, data: null });
 
-    const { getByText } = render(<GameDetails />);
-    expect(getByText('Something went wrong')).toBeDefined();
+      const { getByText } = render(<GameDetails />);
+      expect(getByText('Something went wrong')).toBeDefined();
+    });
   });
 });
