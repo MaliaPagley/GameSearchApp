@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { CURRENT_HOST } from '../utils/host';
+import axios from "axios";
+import { useState, useEffect } from "react";
+
+import { CURRENT_HOST } from "../utils/host";
 
 const useInfiniteList = (endpoint) => {
   const [games, setGames] = useState([]);
@@ -11,16 +12,19 @@ const useInfiniteList = (endpoint) => {
 
   const fetchGames = async (page) => {
     try {
-      const response = await axios.get(`http://${CURRENT_HOST}:8000/${endpoint}`, {
-        params: {
-          page,
-          page_size: pageSize,
+      const response = await axios.get(
+        `http://${CURRENT_HOST}:8000/${endpoint}`,
+        {
+          params: {
+            page,
+            page_size: pageSize,
+          },
         },
-      });
+      );
       setGames((prevGames) => [...prevGames, ...response.data.results]);
       setLoadingList(false);
     } catch (error) {
-      console.error('Error fetching games:', error);
+      console.error("Error fetching games:", error);
       setListError(true);
       setLoadingList(false);
     } finally {
@@ -37,7 +41,7 @@ const useInfiniteList = (endpoint) => {
 
   const refreshLoad = () => {
     fetchGames(listPage + 1);
-  }
+  };
 
   useEffect(() => {
     fetchGames(listPage); // Fetch data initially when the component mounts.
@@ -47,4 +51,3 @@ const useInfiniteList = (endpoint) => {
 };
 
 export default useInfiniteList;
-

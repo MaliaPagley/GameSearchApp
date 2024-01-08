@@ -1,42 +1,43 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { CURRENT_HOST } from '../utils/host';
+import axios from "axios";
+import { useState, useEffect } from "react";
+
+import { CURRENT_HOST } from "../utils/host";
 
 const useFetch = (endpoint, query) => {
-    const [data, setData] = useState({ results: [] });
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
+  const [data, setData] = useState({ results: [] });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-    const options = {
-        method: 'GET',
-        url: `http://${CURRENT_HOST}:8000/${endpoint}`,
-        params: { ...query },
-    };
+  const options = {
+    method: "GET",
+    url: `http://${CURRENT_HOST}:8000/${endpoint}`,
+    params: { ...query },
+  };
 
-    const fetchData = async () => {
-        setIsLoading(true);
-        try {
-            const response = await axios.request(options);
-            const dataResults = response.data;
-            setData(dataResults);
-        } catch (error) {
-            setError(error);
-            alert('There is an error');
-        } finally {
-            setIsLoading(false);
-        }
-    };
+  const fetchData = async () => {
+    setIsLoading(true);
+    try {
+      const response = await axios.request(options);
+      const dataResults = response.data;
+      setData(dataResults);
+    } catch (error) {
+      setError(error);
+      alert("There is an error");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-    const refetch = () => {
-        setIsLoading(true);
-        fetchData();
-    };
+  const refetch = () => {
+    setIsLoading(true);
+    fetchData();
+  };
 
-    return { data, isLoading, error, refetch };
+  return { data, isLoading, error, refetch };
 };
 
 export default useFetch;

@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { CURRENT_HOST } from '../utils/host';
+import axios from "axios";
+import { useState, useEffect } from "react";
+
+import { CURRENT_HOST } from "../utils/host";
 
 const useSearch = (params) => {
   const [searchLoader, setSearchLoader] = useState(false);
@@ -13,7 +14,7 @@ const useSearch = (params) => {
 
     try {
       const options = {
-        method: 'GET',
+        method: "GET",
         url: `http://${CURRENT_HOST}:8000/search/${params}`,
       };
 

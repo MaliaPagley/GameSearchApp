@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
-import { Alert } from 'react-native';
-import { doc, updateDoc, setDoc, getDoc } from 'firebase/firestore';
-import { db } from '../firebase/index';
-import { useAuthContext } from '../context/auth';
+import { doc, updateDoc, setDoc, getDoc } from "firebase/firestore";
+import { useState } from "react";
+import { Alert } from "react-native";
+
+import { useAuthContext } from "../context/auth";
+import { db } from "../firebase/index";
 
 const useAddToFavorites = () => {
   const { user } = useAuthContext();
@@ -10,7 +11,7 @@ const useAddToFavorites = () => {
   const [loading, setLoading] = useState(false);
 
   const addToFavorites = async (id, name) => {
-    const userDocRef = doc(db, 'users', user.uid);
+    const userDocRef = doc(db, "users", user.uid);
 
     try {
       setLoading(true);
@@ -23,17 +24,17 @@ const useAddToFavorites = () => {
         });
         setLoading(false);
       } else {
-          await setDoc(userDocRef, {
-            uid: user.uid,
-            favorites: [{ id, name }],
-          });
-          setLoading(false);
+        await setDoc(userDocRef, {
+          uid: user.uid,
+          favorites: [{ id, name }],
+        });
+        setLoading(false);
       }
     } catch (error) {
-        console.error('Error adding game to favorites:', error.message);
-        setError('An unexpected error occurred. Please try again later.');
+      console.error("Error adding game to favorites:", error.message);
+      setError("An unexpected error occurred. Please try again later.");
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
   };
 
@@ -42,7 +43,7 @@ const useAddToFavorites = () => {
   };
 
   if (error) {
-    Alert.alert('Error adding favorite: ', error);
+    Alert.alert("Error adding favorite: ", error);
     clearError();
   }
 
