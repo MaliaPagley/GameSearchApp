@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { COLORS, FONT, SHADOWS, SIZES } from "../../../../constants";
+import { COLORS, FONT, SIZES } from "../../../../constants";
 
 const styles = StyleSheet.create({
   container: {
@@ -10,14 +10,14 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.medium,
     justifyContent: "space-between",
     marginRight: SIZES.large,
-    marginTop: 10
+    marginTop: 10,
   },
   backgroundImage: {
     width: "100%",
     height: "100%",
     objectFit: "cover",
     borderRadius: SIZES.small,
-    borderTopLeftRadius: 10, 
+    borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
   gameName: {
@@ -31,9 +31,9 @@ const styles = StyleSheet.create({
     bottom: 8,
     left: 0,
     right: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.4)", 
-    padding: 10, 
-  },  
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
+    padding: 10,
+  },
 
   infoContainer: {
     marginTop: SIZES.large,
@@ -45,8 +45,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
   },
- 
-
 });
 
 export default styles;
