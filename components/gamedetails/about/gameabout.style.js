@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.medium,
   },
   gameInfo: {
-    color: COLORS.white
+    color: COLORS.white,
   },
   gameInfoBox: {
     marginTop: SIZES.small / 2,
@@ -17,15 +17,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingTop: SIZES.small / 2,
-    marginLeft: SIZES.small / 1
+    marginLeft: SIZES.small / 1,
   },
   pageHeaders: {
-      fontSize: SIZES.xLarge,
-      fontFamily: FONT.bold,
-      color: COLORS.white,
-      marginLeft: SIZES.small / 1,
-      marginTop: SIZES.medium
-    },
+    fontSize: SIZES.xLarge,
+    fontFamily: FONT.bold,
+    color: COLORS.white,
+    marginLeft: SIZES.small / 1,
+    marginTop: SIZES.medium,
+  },
 });
 
 export default styles;
