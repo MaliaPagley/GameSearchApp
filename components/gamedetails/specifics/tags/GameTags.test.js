@@ -1,19 +1,20 @@
-import React from 'react';
-import { render } from '@testing-library/react-native';
-import GameTags from './GameTags';
+import { render } from "@testing-library/react-native";
+import React from "react";
 
-describe('GameTags Component: ', () => {
-    const mockTagsData = [
-        { name: 'Singleplayer'},
-        { name: 'Multiplayer'},
-        { name: 'Open World'},
-    ];
+import GameTags from "./GameTags";
 
-    it('renders all tags correctly', () => {
-        const { getByText } = render(<GameTags tags={mockTagsData}/>);
+describe("GameTags Component: ", () => {
+  const mockTagsData = [
+    { name: "Singleplayer" },
+    { name: "Multiplayer" },
+    { name: "Open World" },
+  ];
 
-        expect(getByText('Singleplayer')).toBeDefined();
-        expect(getByText('Multiplayer')).toBeDefined();
-        expect(getByText('Open World')).toBeDefined();
-    });
+  it("renders all tags correctly", () => {
+    const { getByText } = render(<GameTags tags={mockTagsData} />);
+
+    expect(getByText("Singleplayer")).toBeDefined();
+    expect(getByText("Multiplayer")).toBeDefined();
+    expect(getByText("Open World")).toBeDefined();
+  });
 });

@@ -1,21 +1,22 @@
-import { StyleSheet } from 'react-native';
-import { COLORS, FONT, SIZES } from '../../../../constants';
+import { StyleSheet } from "react-native";
+
+import { COLORS, FONT, SIZES } from "../../../../constants";
 
 const styles = StyleSheet.create({
   tagContainer: {
     paddingLeft: SIZES.large,
     gap: 15,
     paddingBottom: SIZES.medium,
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'left'
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "left",
   },
   tag: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    width: '33.33%',
-    boxSizing: 'border-box',
+    alignItems: "center",
+    flexDirection: "row",
+    width: "33.33%",
+    boxSizing: "border-box",
     marginRight: SIZES.large,
   },
   tagText: {
@@ -24,7 +25,6 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     fontSize: 15,
   },
- 
 });
 
 export default styles;
