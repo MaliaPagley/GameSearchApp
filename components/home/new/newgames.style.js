@@ -27,23 +27,23 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     width: 200,
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'center', 
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
   },
   buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
+    color: "white",
+    fontWeight: "bold",
   },
   error: {
     color: COLORS.grayThunder,
     fontSize: 15,
     padding: 10,
-    alignSelf: 'center', 
+    alignSelf: "center",
   },
   loading: {
-    color: COLORS.white
-  }
+    color: COLORS.white,
+  },
 });
 
 export default styles;

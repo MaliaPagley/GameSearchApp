@@ -3,25 +3,10 @@ import { StyleSheet } from "react-native";
 import { COLORS, FONT, SIZES } from "../../../constants";
 
 const styles = StyleSheet.create({
-  // container: {
-  //   width: "80%",
-  // },
-  // userName: {
-  //   fontFamily: FONT.regular,
-  //   fontSize: SIZES.large,
-  //   color: COLORS.redDark,
-  // },
-  // welcomeMessage: {
-  //   fontFamily: FONT.bold,
-  //   fontSize: SIZES.xLarge,
-  //   color: COLORS.redLight,
-  //   marginTop: 2,
-  // },
   searchContainer: {
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
-    // marginTop: SIZES.small,
     height: 40,
   },
   searchWrapper: {
@@ -62,7 +47,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: SIZES.small,
     borderRadius: SIZES.medium,
     borderWidth: 1,
-    borderColor: activeGamePlatform === item ? COLORS.blackDecent : COLORS.grayThunder,
+    borderColor:
+      activeGamePlatform === item ? COLORS.blackDecent : COLORS.grayThunder,
   }),
   tabText: (activeGamePlatform, item) => ({
     fontFamily: FONT.medium,

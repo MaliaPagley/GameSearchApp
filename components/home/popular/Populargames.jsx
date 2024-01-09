@@ -1,13 +1,15 @@
-import React from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
-import { useRouter } from 'expo-router';
-import styles from './populargames.style';
-import PopularGameCard from '../../common/cards/popular/PopularGameCard';
-import useInfiniteList from '../../../hook/useInfiniteList';
 import { FlashList } from "@shopify/flash-list";
+import { useRouter } from "expo-router";
+import React from "react";
+import { View, Text, ActivityIndicator } from "react-native";
+
+import styles from "./populargames.style";
+import useInfiniteList from "../../../hook/useInfiniteList";
+import PopularGameCard from "../../common/cards/popular/PopularGameCard";
 
 const Populargames = () => {
-  const { games, loadingList, listError, loadMoreGames } = useInfiniteList('popular'); 
+  const { games, loadingList, listError, loadMoreGames } =
+    useInfiniteList("popular");
   const router = useRouter();
   const handleCardPress = (item) => {
     router.push(`/game-details/${item.id}`);
@@ -20,13 +22,17 @@ const Populargames = () => {
       </View>
       <View>
         {loadingList ? (
-          <ActivityIndicator testID='loadingID' size="large" style={styles.loading} />
+          <ActivityIndicator
+            testID="loadingID"
+            size="large"
+            style={styles.loading}
+          />
         ) : listError ? (
           <Text style={styles.error}>Data Unavailable</Text>
         ) : (
           <View style={{ minHeight: 2 }}>
             <FlashList
-              testID='listID'
+              testID="listID"
               data={games}
               renderItem={({ item }) => (
                 <PopularGameCard
@@ -38,8 +44,8 @@ const Populargames = () => {
               keyExtractor={(item, index) => `${item.id}-${index}`}
               horizontal
               showsHorizontalScrollIndicator={false}
-              onEndReached={loadMoreGames} 
-              onEndReachedThreshold={0.5} 
+              onEndReached={loadMoreGames}
+              onEndReachedThreshold={0.5}
             />
           </View>
         )}

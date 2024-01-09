@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
     fontSize: SIZES.large,
     fontFamily: FONT.medium,
     color: COLORS.white,
-    
   },
   headerBtn: {
     fontSize: SIZES.medium,
@@ -29,10 +28,10 @@ const styles = StyleSheet.create({
     color: COLORS.grayThunder,
     fontSize: 15,
     padding: 10,
-    alignSelf: 'center', 
+    alignSelf: "center",
   },
   loading: {
-    color: COLORS.white
+    color: COLORS.white,
   },
   sliderContainer: {
     paddingBottom: 15,
@@ -46,11 +45,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: SIZES.small,
     borderRadius: SIZES.medium,
     borderWidth: 1,
-    borderColor: activeGamePlatform === item.name ? COLORS.blackDecent : COLORS.grayThunder,
+    borderColor:
+      activeGamePlatform === item.name
+        ? COLORS.blackDecent
+        : COLORS.grayThunder,
   }),
   tabText: (activeGamePlatform, item) => ({
     fontFamily: FONT.medium,
-    color: activeGamePlatform === item.name ? COLORS.grayThunder : COLORS.lightWhite,
+    color:
+      activeGamePlatform === item.name ? COLORS.grayThunder : COLORS.lightWhite,
   }),
 });
 
