@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+
 import { COLORS, FONT, SIZES } from "../../../constants";
 
 const styles = StyleSheet.create({
@@ -34,9 +35,9 @@ const styles = StyleSheet.create({
     marginLeft: SIZES.xSmall,
   },
   gameInfoContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between', 
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 });
 
