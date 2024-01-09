@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { COLORS, SHADOWS, SIZES, FONT } from "../../../../constants";
+import { COLORS, SIZES, FONT } from "../../../../constants";
 
 const styles = StyleSheet.create({
   container: {
@@ -14,8 +14,6 @@ const styles = StyleSheet.create({
     shadowColor: COLORS.redLight,
     marginTop: SIZES.medium,
     marginBottom: SIZES.medium,
-
-    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -32,7 +30,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingBottom: SIZES.small,
-
   },
   mainImage: {
     width: 350,
@@ -60,7 +57,6 @@ const styles = StyleSheet.create({
     marginTop: SIZES.xsmall,
     flexWrap: "wrap",
     borderRadius: SIZES.large,
-
   },
 });
 
