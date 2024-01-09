@@ -1,26 +1,31 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
-import GameTabOptions from './GameTabOptions';
+import { render, fireEvent } from "@testing-library/react-native";
+import React from "react";
 
-describe('GameTabOptions: ', () => {
-    const mockGameId = 123;
-    const mockGameName = 'Test Game';
+import GameTabOptions from "./GameTabOptions";
 
-    it('renders default tab (Screenshots)', () => {
-        const { getByText, getByTestId } = render(<GameTabOptions id={mockGameId} name={mockGameName} />);
+describe("GameTabOptions: ", () => {
+  const mockGameId = 123;
+  const mockGameName = "Test Game";
 
-        expect(getByText('Screenshots')).toBeDefined();
-        expect(getByText('Preview')).toBeDefined();
-        expect(getByTestId('screenshotsID')).toBeTruthy();
-    })
+  it("renders default tab (Screenshots)", () => {
+    const { getByText, getByTestId } = render(
+      <GameTabOptions id={mockGameId} name={mockGameName} />,
+    );
 
-    it('switches to Preview tab and renders its content', () => {
-        const { getByText, getByTestId } = render(<GameTabOptions id={mockGameId} name={mockGameName} />);
-    
-        fireEvent.press(getByText('Preview'));
-    
-        expect(getByText('Screenshots')).toBeTruthy();
-        expect(getByText('Preview')).toBeTruthy();
-        expect(getByTestId('previewID')).toBeTruthy();
-      });
+    expect(getByText("Screenshots")).toBeDefined();
+    expect(getByText("Preview")).toBeDefined();
+    expect(getByTestId("screenshotsID")).toBeTruthy();
+  });
+
+  it("switches to Preview tab and renders its content", () => {
+    const { getByText, getByTestId } = render(
+      <GameTabOptions id={mockGameId} name={mockGameName} />,
+    );
+
+    fireEvent.press(getByText("Preview"));
+
+    expect(getByText("Screenshots")).toBeTruthy();
+    expect(getByText("Preview")).toBeTruthy();
+    expect(getByTestId("previewID")).toBeTruthy();
+  });
 });

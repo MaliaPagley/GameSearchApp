@@ -1,15 +1,13 @@
-import React, { useState, useRef } from 'react';
-import { View, Image, ActivityIndicator, FlatList, Text } from 'react-native';
-import { checkImageURL } from '../../../../../utils';
-import styles from '../screenshots/gametabscreenshots.style'
-import useFetch from '../../../../../hook/useFetch';
-import { Ionicons } from '@expo/vector-icons';
-import noImage from '../../../../../assets/noimage.png';
+import { Ionicons } from "@expo/vector-icons";
+import React, { useState, useRef } from "react";
+import { View, Image, ActivityIndicator, FlatList, Text } from "react-native";
 
+import useFetch from "../../../../../hook/useFetch";
+import { checkImageURL } from "../../../../../utils";
+import styles from "../screenshots/gametabscreenshots.style";
 
 const GameTabScreenshots = ({ id }) => {
-  const { data, isLoading, error  } = useFetch(`screenshots/${id}`);
-
+  const { data, isLoading, error } = useFetch(`screenshots/${id}`);
 
   const screenshots = data?.results || [];
   const [activeIndex, setActiveIndex] = useState(0);
@@ -24,14 +22,20 @@ const GameTabScreenshots = ({ id }) => {
           <Image
             source={{ uri: item.image }}
             resizeMode="cover"
-            style={[styles.addBackgroundImage, isActive && styles.activeBackgroundImage]}
+            style={[
+              styles.addBackgroundImage,
+              isActive && styles.activeBackgroundImage,
+            ]}
             testID={`screenshot-${index}`}
           />
         ) : (
           <Image
-            source={require('../../../../../assets/noimage.png')}
+            source={require("../../../../../assets/noimage.png")}
             resizeMode="contain"
-            style={[styles.addBackgroundImage, isActive && styles.activeBackgroundImage]}
+            style={[
+              styles.addBackgroundImage,
+              isActive && styles.activeBackgroundImage,
+            ]}
             testID={`screenshot-default-${index}`}
           />
         )}
@@ -59,13 +63,13 @@ const GameTabScreenshots = ({ id }) => {
     );
   }
 
-  if(error) {
+  if (error) {
     return (
       <View style={styles.errorContainer}>
-       <Text style={styles.error}>Screenshots are Unavailable</Text>
+        <Text style={styles.error}>Screenshots are Unavailable</Text>
       </View>
-    )
-  };
+    );
+  }
 
   return (
     <View style={{ flex: 1 }}>
@@ -107,7 +111,7 @@ const GameTabScreenshots = ({ id }) => {
       ) : (
         <View style={styles.slide}>
           <Image
-            source={require('../../../../../assets/noimage.png')}
+            source={require("../../../../../assets/noimage.png")}
             resizeMode="contain"
             style={styles.addBackgroundImage}
             testID="screenshot-default"
@@ -118,7 +122,7 @@ const GameTabScreenshots = ({ id }) => {
               size={32}
               color="white"
               style={[styles.indicatorText, styles.activeIndicatorText]}
-              testID={`indicator-1`}
+              testID="indicator-1"
             />
           </View>
         </View>
