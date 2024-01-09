@@ -1,19 +1,20 @@
-import React from 'react';
-import { Stack, Link, useRouter } from 'expo-router';
-import { StatusBar } from 'react-native';
-import { useFonts } from 'expo-font';
-import { ScreenHeaderBtn } from '../components';
-import { Provider } from '../context/auth';
-import { COLORS, icons } from '../constants';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
+import { useFonts } from "expo-font";
+import { Stack, Link, useRouter } from "expo-router";
+import React from "react";
+import { StatusBar } from "react-native";
+
+import { ScreenHeaderBtn } from "../components";
+import { COLORS, icons } from "../constants";
+import { Provider } from "../context/auth";
 
 const Layout = () => {
   const router = useRouter();
   const [fontsLoaded] = useFonts({
-    'dm-bold': require('../assets/fonts/DMSans-Bold.ttf'),
-    'dm-medium': require('../assets/fonts/DMSans-Medium.ttf'),
-    'dm-regular': require('../assets/fonts/DMSans-Regular.ttf'),
-    'dm-extraBold': require('../assets/fonts/DMSans-ExtraBold.ttf'),
+    "dm-bold": require("../assets/fonts/DMSans-Bold.ttf"),
+    "dm-medium": require("../assets/fonts/DMSans-Medium.ttf"),
+    "dm-regular": require("../assets/fonts/DMSans-Regular.ttf"),
+    "dm-extraBold": require("../assets/fonts/DMSans-ExtraBold.ttf"),
   });
 
   if (!fontsLoaded) {
@@ -24,23 +25,23 @@ const Layout = () => {
     <Provider>
       <Stack>
         <Stack.Screen
-          name='index'
+          name="index"
           options={{
             headerStyle: { backgroundColor: COLORS.blackOnyx },
             headerShadowVisible: false,
             contentStyle: { backgroundColor: COLORS.blackOnyx },
             headerRight: () => (
-              <Link href='profile'>
-                <Ionicons name={'person-sharp'} size={20} color='white' />
+              <Link href="profile">
+                <Ionicons name="person-sharp" size={20} color="white" />
               </Link>
             ),
-            title: 'GameSearch',
-            headerTitleAlign: 'center'
+            title: "GameSearch",
+            headerTitleAlign: "center",
           }}
         />
-        
+
         <Stack.Screen
-          name='profile/index'
+          name="profile/index"
           options={{
             headerStyle: { backgroundColor: COLORS.blackOnyx },
             headerShadowVisible: false,
@@ -48,67 +49,71 @@ const Layout = () => {
             headerLeft: () => (
               <ScreenHeaderBtn
                 iconUrl={icons.left}
-                dimension='60%'
+                dimension="60%"
                 handlePress={() => router.back()}
               />
             ),
-            title: 'Profile',
-            headerTitleAlign: 'center'
+            title: "Profile",
+            headerTitleAlign: "center",
           }}
         />
 
         <Stack.Screen
-          name='(auth)/sign-in'
+          name="(auth)/sign-in"
           options={{
             headerStyle: { backgroundColor: COLORS.blackOnyx },
             headerShadowVisible: false,
             contentStyle: { backgroundColor: COLORS.blackNavy },
-            title: '',
-            headerShown: false,
-          }}
-        />
-        
-        <Stack.Screen
-          name='(auth)/sign-up'
-          options={{
-            headerStyle: { backgroundColor: COLORS.blackOnyx },
-            headerShadowVisible: false,
-            contentStyle: { backgroundColor: COLORS.blackNavy },
-            title: '',
+            title: "",
             headerShown: false,
           }}
         />
 
         <Stack.Screen
-          name='game-details/[id]'
+          name="(auth)/sign-up"
+          options={{
+            headerStyle: { backgroundColor: COLORS.blackOnyx },
+            headerShadowVisible: false,
+            contentStyle: { backgroundColor: COLORS.blackNavy },
+            title: "",
+            headerShown: false,
+          }}
+        />
+
+        <Stack.Screen
+          name="game-details/[id]"
           options={{
             headerStyle: { backgroundColor: COLORS.blackOnyx },
             headerShadowVisible: false,
             headerBackVisible: false,
             headerLeft: () => (
-              <ScreenHeaderBtn iconUrl={icons.left} dimension="60%" handlePress={() => router.back()} />
+              <ScreenHeaderBtn
+                iconUrl={icons.left}
+                dimension="60%"
+                handlePress={() => router.back()}
+              />
             ),
-            headerTitle: '',
+            headerTitle: "",
           }}
-      />
+        />
 
-      <Stack.Screen
-        name='search/[id]'
-        options={{
-          headerStyle: { backgroundColor: COLORS.blackOnyx },
-          headerShadowVisible: false,
-          headerLeft: () => (
-            <ScreenHeaderBtn
-              iconUrl={icons.left}
-              dimension='60%'
-              handlePress={() => router.back()}
-            />
-          ),
-          headerTitle: '',
-        }}
-      />  
+        <Stack.Screen
+          name="search/[id]"
+          options={{
+            headerStyle: { backgroundColor: COLORS.blackOnyx },
+            headerShadowVisible: false,
+            headerLeft: () => (
+              <ScreenHeaderBtn
+                iconUrl={icons.left}
+                dimension="60%"
+                handlePress={() => router.back()}
+              />
+            ),
+            headerTitle: "",
+          }}
+        />
       </Stack>
-      <StatusBar barStyle={'light-content'} />
+      <StatusBar barStyle="light-content" />
     </Provider>
   );
 };

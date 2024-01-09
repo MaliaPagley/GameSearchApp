@@ -1,10 +1,17 @@
-import React from 'react';
-import { ActivityIndicator, FlatList, SafeAreaView, Text, View } from 'react-native';
-import { useLocalSearchParams, useRouter } from 'expo-router';
-import { NewGameCard } from '../../components';
-import { COLORS, SIZES } from '../../constants';
-import styles from '../../styles/search.style';
-import useSearch from '../../hook/useSearch';
+import { useLocalSearchParams, useRouter } from "expo-router";
+import React from "react";
+import {
+  ActivityIndicator,
+  FlatList,
+  SafeAreaView,
+  Text,
+  View,
+} from "react-native";
+
+import { NewGameCard } from "../../components";
+import { COLORS, SIZES } from "../../constants";
+import useSearch from "../../hook/useSearch";
+import styles from "../../styles/search.style";
 
 const GameSearch = () => {
   const params = useLocalSearchParams();
@@ -19,7 +26,11 @@ const GameSearch = () => {
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.blackOnyx }}>
       {searchLoader ? (
         <View style={styles.loadingContainer}>
-          <ActivityIndicator style={styles.loading} testID='loadingID' size='large' />
+          <ActivityIndicator
+            style={styles.loading}
+            testID="loadingID"
+            size="large"
+          />
         </View>
       ) : searchError ? (
         <View style={styles.loadingContainer}>
@@ -28,7 +39,7 @@ const GameSearch = () => {
       ) : (
         <View style={{ flex: 1 }}>
           <FlatList
-            testID='listID'
+            testID="listID"
             data={searchResult}
             renderItem={({ item }) => (
               <NewGameCard

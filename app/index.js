@@ -1,15 +1,18 @@
-import React from 'react';
-import { View, ScrollView, SafeAreaView } from 'react-native';
-import { Newgames, Populargames, Welcome } from '../components';
+import React from "react";
+import { View, ScrollView, SafeAreaView } from "react-native";
+
+import { Newgames, Populargames, Welcome } from "../components";
 
 const Home = () => {
   return (
     <SafeAreaView>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{
-          flex: 1,
-          padding: 15
-        }}>
+        <View
+          style={{
+            flex: 1,
+            padding: 15,
+          }}
+        >
           <Welcome />
           <Populargames />
           <Newgames />

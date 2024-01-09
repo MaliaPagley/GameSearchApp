@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
-import { View, TextInput, Pressable, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
-import { useRouter } from 'expo-router';
-import { COLORS } from '../../constants';
-import styles from '../../styles/signup.style';
-import useSignUp from '../../hook/useSignup';
+import { useRouter } from "expo-router";
+import React, { useState } from "react";
+import {
+  View,
+  TextInput,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
+
+import { COLORS } from "../../constants";
+import useSignUp from "../../hook/useSignup";
+import styles from "../../styles/signup.style";
 
 const SignUp = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [fullName, setFullName] = useState("");
   const router = useRouter();
-  const { signUp, loading, error } = useSignUp();
+  const { signUp, loading } = useSignUp();
 
   const onHandlerSignUp = async () => {
     try {
-        await signUp(email, password, fullName);
+      await signUp(email, password, fullName);
     } catch (error) {
-        console.log('Sign-up failed:', error.message)
+      console.log("Sign-up failed:", error.message);
     }
   };
 
@@ -50,7 +58,7 @@ const SignUp = () => {
           value={password}
           onChangeText={setPassword}
           autoCapitalize="none"
-          secureTextEntry={true}
+          secureTextEntry
         />
       </View>
 
@@ -61,7 +69,7 @@ const SignUp = () => {
           onPress={() => onHandlerSignUp()}
         >
           {loading ? (
-            <ActivityIndicator testID='loadingID' color={COLORS.blackNavy} />
+            <ActivityIndicator testID="loadingID" color={COLORS.blackNavy} />
           ) : (
             <Text style={styles.signupText}>Sign Up</Text>
           )}
@@ -69,7 +77,7 @@ const SignUp = () => {
 
         <Pressable
           style={styles.signinLinkBtn}
-          onPress={() => router.replace('sign-in')}
+          onPress={() => router.replace("sign-in")}
         >
           <Text style={styles.signinLinkText}>Already have an account?</Text>
         </Pressable>

@@ -1,23 +1,29 @@
-import React, { useState } from 'react';
-import { View, TextInput, Pressable, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
-import { useRouter } from 'expo-router';
-import { COLORS } from '../../constants';
-import styles from '../../styles/signin.style';
-import useSignIn from '../../hook/useSignin';
+import { useRouter } from "expo-router";
+import React, { useState } from "react";
+import {
+  View,
+  TextInput,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 
-
+import { COLORS } from "../../constants";
+import useSignIn from "../../hook/useSignin";
+import styles from "../../styles/signin.style";
 
 const SignIn = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const router = useRouter();
-  const { signIn, loading, error } = useSignIn();
+  const { signIn, loading } = useSignIn();
 
   const onHandlerSignIn = async () => {
     try {
       await signIn(email, password);
     } catch (error) {
-      console.log('Sign-in failed:', error.message);
+      console.log("Sign-in failed:", error.message);
     }
   };
 
@@ -25,7 +31,9 @@ const SignIn = () => {
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.headerTextOne}>Welcome Back</Text>
-        <Text style={styles.headerTextTwo}>Please Sign in to your account.</Text>
+        <Text style={styles.headerTextTwo}>
+          Please Sign in to your account.
+        </Text>
       </View>
 
       <View style={styles.inputContainer}>
@@ -44,7 +52,7 @@ const SignIn = () => {
           value={password}
           onChangeText={setPassword}
           autoCapitalize="none"
-          secureTextEntry={true}
+          secureTextEntry
         />
       </View>
 
@@ -56,7 +64,7 @@ const SignIn = () => {
           disabled={loading}
         >
           {loading ? (
-            <ActivityIndicator testID='loadingID' color={COLORS.blackNavy} />
+            <ActivityIndicator testID="loadingID" color={COLORS.blackNavy} />
           ) : (
             <Text style={styles.signinText}>Sign in</Text>
           )}
@@ -64,8 +72,8 @@ const SignIn = () => {
 
         <Pressable
           style={styles.signupLinkBtn}
-          testID='routeID'
-          onPress={() => router.replace('sign-up')}
+          testID="routeID"
+          onPress={() => router.replace("sign-up")}
         >
           <Text style={styles.signUpLinkText}>Create an account</Text>
         </Pressable>
