@@ -1,14 +1,14 @@
 import { StyleSheet } from "react-native";
 
-import { COLORS, FONT, SIZES } from "../../../constants";
+import { COLORS, SIZES } from "../../../constants";
 
 const styles = StyleSheet.create({
   link: {
     color: "#0066b2",
-    textAlign: "center"
-  }, 
+    textAlign: "center",
+  },
   dev: {
-    color: COLORS.white
+    color: COLORS.white,
   },
   container: {
     position: "absolute",
@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
   },
- 
 });
 
 export default styles;
