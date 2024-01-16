@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Alert } from "react-native";
 
 import { useAuthContext } from "../context/auth";
-import { db } from "../firebase/index";
+import { db } from "../firebase";
 
 const useAddToFavorites = () => {
   const { user } = useAuthContext();
