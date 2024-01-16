@@ -27,6 +27,7 @@ const useSignup = () => {
         await setDoc(userDocRef, {
           favorites: [],
           fullName,
+          image: `${"https://robohash.org/"}` + user.email,
           uid: user.uid,
         });
       } else {

@@ -8,6 +8,7 @@ import {
   FlatList,
   Pressable,
   ActivityIndicator,
+  Image,
 } from "react-native";
 
 import { COLORS } from "../../constants";
@@ -16,8 +17,15 @@ import styles from "../../styles/profile.style";
 
 const Profile = () => {
   const router = useRouter();
-  const { favorites, fullName, loading, handleSignOut, user, error } =
-    useUserData();
+  const {
+    favorites,
+    fullName,
+    profileImage,
+    loading,
+    handleSignOut,
+    user,
+    error,
+  } = useUserData();
 
   return (
     <View style={styles.container}>
@@ -36,7 +44,7 @@ const Profile = () => {
       ) : (
         <>
           <View style={styles.profileContainer}>
-            <Ionicons name="person-circle-outline" size={100} color="white" />
+            <Image style={styles.profile} source={{ uri: profileImage }} />
             <Text style={styles.userName}>{fullName}</Text>
             <Text style={styles.email}>{user.email}</Text>
             <Button title="Sign Out" onPress={handleSignOut} />

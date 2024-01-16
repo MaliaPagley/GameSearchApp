@@ -8,6 +8,7 @@ const useUserData = () => {
   const { user, signOut } = useAuthContext();
   const [favorites, setFavorites] = useState([]);
   const [fullName, setFullName] = useState("");
+  const [profileImage, setProfileImage] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -21,8 +22,10 @@ const useUserData = () => {
           const userData = doc.data();
           const userFavorites = userData.favorites || [];
           const userFullName = userData.fullName || "";
+          const userImage = userData.image || "";
           setFavorites(userFavorites);
           setFullName(userFullName);
+          setProfileImage(userImage);
         });
 
         setLoading(false);
@@ -42,7 +45,15 @@ const useUserData = () => {
     signOut();
   };
 
-  return { favorites, fullName, loading, handleSignOut, user, error };
+  return {
+    favorites,
+    fullName,
+    loading,
+    handleSignOut,
+    user,
+    error,
+    profileImage,
+  };
 };
 
 export default useUserData;
