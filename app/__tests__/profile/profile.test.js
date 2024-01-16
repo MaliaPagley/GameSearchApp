@@ -5,6 +5,9 @@ import useUserData from "../../../hook/useUserData";
 import Profile from "../../profile";
 
 jest.mock("../../../hook/useUserData");
+jest.mock("../../../firebase/index", () =>
+  require("../../../firebase/firebaseMock"),
+);
 
 describe("Profile Component", () => {
   const mockUserData = {

@@ -7,6 +7,9 @@ import GameSearch from "../../search/[id]";
 
 jest.mock("../../../hook/useSearch");
 jest.mock("expo-router");
+jest.mock("../../../firebase/index", () =>
+  require("../../../firebase/firebaseMock"),
+);
 
 describe("GameSearch Component: ", () => {
   useLocalSearchParams.mockReturnValue({ id: "Param Search" });

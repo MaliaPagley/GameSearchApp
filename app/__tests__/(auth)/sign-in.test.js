@@ -5,6 +5,9 @@ import SignIn from "../../(auth)/sign-in";
 import useSignIn from "../../../hook/useSignin";
 
 jest.mock("../../../hook/useSignin");
+jest.mock("../../../firebase/index", () =>
+  require("../../../firebase/firebaseMock"),
+);
 
 describe("SignIn Component: ", () => {
   useSignIn.mockReturnValue({

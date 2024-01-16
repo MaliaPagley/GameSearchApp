@@ -7,6 +7,9 @@ import GameDetails from "../../game-details/[id]";
 
 jest.mock("../../../hook/useFetch");
 jest.mock("expo-router");
+jest.mock("../../../firebase/index", () =>
+  require("../../../firebase/firebaseMock"),
+);
 
 describe("GameDetails Component", () => {
   useLocalSearchParams.mockReturnValue({ id: "123" });

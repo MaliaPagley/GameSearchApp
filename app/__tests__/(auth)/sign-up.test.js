@@ -5,6 +5,9 @@ import SignUp from "../../(auth)/sign-up";
 import useSignup from "../../../hook/useSignup";
 
 jest.mock("../../../hook/useSignup");
+jest.mock("../../../firebase/index", () =>
+  require("../../../firebase/firebaseMock"),
+);
 
 describe("SignUp Component: ", () => {
   useSignup.mockReturnValue({

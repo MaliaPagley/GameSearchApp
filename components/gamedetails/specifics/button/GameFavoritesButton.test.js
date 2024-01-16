@@ -5,6 +5,9 @@ import GameFavoritesButton from "./GameFavoritesButton";
 import useAddToFavorites from "../../../../hook/useAddToFavorites";
 
 jest.mock("../../../../hook/useAddToFavorites");
+jest.mock("../../../../firebase/index", () =>
+  require("../../../../firebase/firebaseMock"),
+);
 
 describe("GameFavoritesButton Component: ", () => {
   it("renders correctly", () => {
