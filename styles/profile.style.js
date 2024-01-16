@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     borderRadius: 20,
+    padding: 20,
   },
   email: {
     color: COLORS.white,
@@ -56,6 +57,14 @@ const styles = StyleSheet.create({
   error: {
     color: COLORS.white,
     alignSelf: "center",
+  },
+  profile: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    borderWidth: 2,
+    borderColor: "white",
+    marginBottom: 10,
   },
 });
 export default styles;
