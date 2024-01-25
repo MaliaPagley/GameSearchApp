@@ -3,7 +3,7 @@
 
 GameSearchApp is a feature-rich mobile application for both IOS and Android designed to provide users with an immersive and convenient platform to explore, discover, and save information about their favorite video games. Developed using Expo and React Native, the app seamlessly integrates with the Rawg.io API to fetch real-time data about games. It also incorporates Firebase for user authentication and data storage, along with a custom-built Node.js and Express.js backend server.
 
-![GameSearchApp-Gif (1)](https://github.com/MaliaPagley/GameSearchApp/assets/103156594/1085dc87-a979-45de-8369-720a89f152ca)
+https://www.canva.com/design/DAF2vByngMs/lYf_038lAEDbZ0Qt7gZy5g/watch?utm_content=DAF2vByngMs&utm_campaign=designshare&utm_medium=link&utm_source=editor
 
 
 ## Tech Stack:
