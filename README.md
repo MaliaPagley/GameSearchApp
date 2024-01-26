@@ -9,8 +9,8 @@ GameSearchApp is a feature-rich mobile application for both IOS and Android desi
 ![GameSearchApp-Gif-home](https://github.com/MaliaPagley/GameSearchApp/assets/103156594/0123424e-6de7-4257-9db8-9a36a95c55b7)
 ![GameSearchApp-Gif-gamedetails](https://github.com/MaliaPagley/GameSearchApp/assets/103156594/4d4a11c7-c2b2-438e-882c-8ea55bdeb3de)
 ![GameSearchApp-Gif-profile](https://github.com/MaliaPagley/GameSearchApp/assets/103156594/dcf74410-0728-4c26-8319-d79b37f22d52)
-![GameSearchApp-Gif-authentication](https://github.com/MaliaPagley/GameSearchApp/assets/103156594/75c1adbf-1954-4975-85ef-34c9c9a650de)
-![GameSearchApp-Gif-search](https://github.com/MaliaPagley/GameSearchApp/assets/103156594/14b3ecc4-90db-45c5-979d-13a0f051c848)
+![GameSearchApp-Gif-authentication](https://github.com/MaliaPagley/GameSearchApp/assets/103156594/a4d3b0ec-7ce1-41ab-b5a0-ec34d92f480f)
+![GameSearchApp-Gif-search](https://github.com/MaliaPagley/GameSearchApp/assets/103156594/be1091a3-a925-41a1-9670-562d9394fab1)
 
 ### Live Video Demo:
 https://www.canva.com/design/DAF5mpprnK8/LpAph5gniwXTdRDEePRcRg/watch?utm_content=DAF5mpprnK8&utm_campaign=designshare&utm_medium=link&utm_source=editor
