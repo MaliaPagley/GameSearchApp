@@ -1,15 +1,16 @@
 
 # GameSearchApp
+
 ![GameSearchApp-MaliaPagley-cover](https://github.com/MaliaPagley/GameSearchApp/assets/103156594/6e30f29e-0465-42c5-bb4d-85ccef693808)
 
 This is a full-stack, feature-rich mobile application for both IOS and Android designed to provide users with an immersive and convenient platform to explore, discover, and save information about their favorite video games. Developed using Expo and React Native, the app seamlessly integrates with the Rawg.io API to fetch real-time data about games. It also incorporates Firebase for user authentication and data storage, along with a custom-built Node.js and Express.js backend server.
 
-![GameSearchApp-Gif-home](https://github.com/MaliaPagley/GameSearchApp/assets/103156594/0123424e-6de7-4257-9db8-9a36a95c55b7)
 
 ### Live Video Demo:
 https://www.canva.com/design/DAF5mpprnK8/LpAph5gniwXTdRDEePRcRg/watch?utm_content=DAF5mpprnK8&utm_campaign=designshare&utm_medium=link&utm_source=editor
 
 # 💻 Tech Stack:
+
 ![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)
 
 **Client:** React Native, Expo
