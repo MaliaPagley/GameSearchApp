@@ -8,21 +8,20 @@ GameSearchApp is a feature-rich mobile application for both IOS and Android desi
 ### Live Video Demo:
 https://www.canva.com/design/DAF5mpprnK8/LpAph5gniwXTdRDEePRcRg/watch?utm_content=DAF5mpprnK8&utm_campaign=designshare&utm_medium=link&utm_source=editor
 
-## Tech Stack:
+# 💻 Tech Stack:
+![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)
 
 **Client:** React Native, Expo
-
 **Server:** Node, Express
-
 **Testing:** Jest, React Native Testing Library
 
-**API:** Rawg.io, Youtube(Google)
-## Project Details:
-
+# Project Details:
 
  #### Game Discovery: 
  Users can effortlessly search for any game, explore a vertical infinite-scrolling Popular list, and navigate a horizontal scroll list showcasing new games. The app's integration with the Rawg.io API ensures up-to-date and comprehensive information about a vast array of games.
- ![GameSearchApp-Gif-search](https://github.com/MaliaPagley/GameSearchApp/assets/103156594/be1091a3-a925-41a1-9670-562d9394fab1)
+ 
+![GameSearchApp-Gif-search](https://github.com/MaliaPagley/GameSearchApp/assets/103156594/be1091a3-a925-41a1-9670-562d9394fab1)
+ 
 #### Detailed Game Pages:
 Each game in the app has its own dedicated page, presenting users with a wealth of information including the main image, title, release date, developers and studio details, a gallery of screenshots, a preview video sourced from YouTube using the Google API, tags, genres, supported platforms, and a detailed game description.
 
@@ -38,4 +37,6 @@ Users can curate a list of their favorite games, stored securely in the Firestor
 
 ![GameSearchApp-Gif-profile](https://github.com/MaliaPagley/GameSearchApp/assets/103156594/dcf74410-0728-4c26-8319-d79b37f22d52)
 
+## 🌐 Socials:
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/maliapagley) 
 
